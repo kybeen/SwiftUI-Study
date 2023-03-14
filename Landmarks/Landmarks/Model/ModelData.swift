@@ -7,9 +7,14 @@
 
 // ModelData.swift
 import Foundation
+import Combine
 
-// landmarkData.json 파일을 불러와서 배열로 저장합니다.
-var landmarks: [Landmark] = load("landmarkData.json")
+// Combine 프레임워크의 ObservableObject 프로토콜을 준수하는 새로운 모델 타입을 정의합니다.
+final class ModelData: ObservableObject {
+    // landmarkData.json 파일을 불러와서 배열로 저장합니다.
+    // Observable 객체는 SwiftUI가 변경사항을 감지할 수 있도록 @Published 키워드를 붙여줍니다.
+    @Published var landmarks: [Landmark] = load("landmarkData.json")
+}
 
 // json 파일로부터 데이터를 불러오는 함수
 func load<T: Decodable>(_ filename: String) -> T {

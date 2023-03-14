@@ -19,11 +19,18 @@ struct LandmarkRow: View {
             Text(landmark.name)
             
             Spacer() // 랜드마크 정보를 행의 왼쪽으로 밀어주기 위해 넣어줌
+            
+            if landmark.isFavorite {
+                Image(systemName: "star.fill")
+                    .foregroundColor(.yellow)
+            }
         }
     }
 }
 
 struct LandmarkRow_Previews: PreviewProvider {
+    static var landmarks = ModelData().landmarks
+    
     static var previews: some View {
         Group {
             LandmarkRow(landmark: landmarks[0]) // 이니셜라이저에 landmark 파라미터를 넣어준다.

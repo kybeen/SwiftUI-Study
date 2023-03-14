@@ -5,6 +5,7 @@
 //  Created by 김영빈 on 2023/03/13.
 //
 
+//  ContentView.swift
 import SwiftUI
 
 // View 프로토콜을 상속받으며 뷰의 콘텐츠와 레이아웃을 보여준다.
@@ -18,5 +19,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ModelData())
     }
 }
