@@ -5,13 +5,15 @@
 //  Created by 김영빈 on 2023/03/13.
 //
 
+//  Landmark.swift
 import Foundation
 import SwiftUI
 import CoreLocation
 
 // landmarkData.json 파일의 키:값에 맞는 구조체를 정의해준다.
 // Codable 프로토콜 : 구조체와 데이터 파일 간에 데이터를 더 쉽게 이동할 수 있게 해준다. Codable의 컴포넌트인 Decodable을 사용해서 파일로부터 데이터를 읽어올 수 있다.
-struct Landmark: Hashable, Codable {
+// Identifiable : 데이터가 identifiable하도록 준수하는 프로토콜
+struct Landmark: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
     var park: String

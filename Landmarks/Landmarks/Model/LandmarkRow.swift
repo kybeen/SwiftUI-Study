@@ -25,6 +25,10 @@ struct LandmarkRow: View {
 
 struct LandmarkRow_Previews: PreviewProvider {
     static var previews: some View {
-        LandmarkRow(landmark: landmarks[0]) // 이니셜라이저에 landmark 파라미터를 넣어준다.
+        Group {
+            LandmarkRow(landmark: landmarks[0]) // 이니셜라이저에 landmark 파라미터를 넣어준다.
+            LandmarkRow(landmark: landmarks[1])
+        }
+        .previewLayout(.fixed(width: 300, height: 70))
     }
 }

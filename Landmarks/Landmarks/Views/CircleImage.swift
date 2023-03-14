@@ -5,11 +5,14 @@
 //  Created by 김영빈 on 2023/03/13.
 //
 
+//  CircleImage.swift
 import SwiftUI
 
 struct CircleImage: View {
+    var image: Image
+    
     var body: some View {
-        Image("turtlerock") // 이미지
+        image
             .clipShape(Circle()) // 원 모양으로 이미지 자르기
             .overlay {
                 Circle().stroke(.white, lineWidth: 4) // 회색 원 추가해서 보더 넣어주기
@@ -20,6 +23,6 @@ struct CircleImage: View {
 
 struct CircleImage_Previews: PreviewProvider {
     static var previews: some View {
-        CircleImage()
+        CircleImage(image: Image("turtlerock"))
     }
 }
