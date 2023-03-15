@@ -14,6 +14,8 @@ final class ModelData: ObservableObject {
     // landmarkData.json 파일을 불러와서 배열로 저장합니다.
     // Observable 객체는 SwiftUI가 변경사항을 감지할 수 있도록 @Published 키워드를 붙여줍니다.
     @Published var landmarks: [Landmark] = load("landmarkData.json")
+    // hikeData.json 파일을 불러와서 배열로 저장합니다. (이후 수정할 일이 없기 때문에 @Published 키워드 안붙여도 됨)
+    var hikes: [Hike] = load("hikeData.json")
 }
 
 // json 파일로부터 데이터를 불러오는 함수
