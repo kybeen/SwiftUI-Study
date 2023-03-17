@@ -20,6 +20,14 @@ struct Landmark: Hashable, Codable, Identifiable {
     var state: String
     var description: String
     var isFavorite: Bool // 즐겨찾기 여부 프로퍼티
+    var isFeatured: Bool // 추천 장소 여부 프로퍼티
+    
+    var category: Category
+    enum Category: String, CaseIterable, Codable {
+        case lakes = "Lakes"
+        case rivers = "Rivers"
+        case mountains = "Mountains"
+    }
     
     private var imageName: String // 이미지 데이터의 이름을 불러오기 위한 프로퍼티
     var image: Image {

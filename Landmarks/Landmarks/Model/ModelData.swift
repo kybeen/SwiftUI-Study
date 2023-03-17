@@ -16,6 +16,20 @@ final class ModelData: ObservableObject {
     @Published var landmarks: [Landmark] = load("landmarkData.json")
     // hikeData.json 파일을 불러와서 배열로 저장합니다. (이후 수정할 일이 없기 때문에 @Published 키워드 안붙여도 됨)
     var hikes: [Hike] = load("hikeData.json")
+    @Published var profile = Profile.default // 프로필 인스턴스
+    
+    // 추천 장소들 (isFeatured 값이 true인 장소들)
+    var features: [Landmark] {
+        landmarks.filter { $0.isFeatured }
+    }
+    
+    // 각 카테고리의 이름을 key로 갖는 카테고리 딕셔너리를 만들어줍니다.
+    var categories: [String: [Landmark]] {
+        Dictionary(
+            grouping: landmarks,
+            by: { $0.category.rawValue }
+        )
+    }
 }
 
 // json 파일로부터 데이터를 불러오는 함수
