@@ -33,6 +33,9 @@ struct Landmark: Hashable, Codable, Identifiable {
     var image: Image {
         Image(imageName)
     }
+    var featureImage: Image? { // 추천 랜드마크 사진이 있는 곳은 추천용 사진도 불러옴
+        isFeatured ? Image(imageName + "_feature") : nil
+    }
     
     // 좌표 속성
     private var coordinates: Coordinates
