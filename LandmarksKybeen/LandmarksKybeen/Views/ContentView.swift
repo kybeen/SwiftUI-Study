@@ -13,9 +13,10 @@ struct ContentView: View {
     }
 }
 
-// 미리보가
+// 미리보기
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ModelData())
     }
 }
