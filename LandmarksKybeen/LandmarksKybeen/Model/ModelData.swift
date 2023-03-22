@@ -12,6 +12,7 @@ import Combine
 final class ModelData: ObservableObject {
     // SwiftUI가 값의 변화를 감지할 수 있도록 ObservableObject 프로토콜을 준수하는 클래스의 프로퍼티에 @Published를 붙여준다.
     @Published var landmarks: [Landmark] = load("landmarkKybeenData.json")
+    var hikes: [Hike] = load("hikeData.json") // 이후 수정할 일 없기 때문에 @Published 안붙혀도 됨
 }
 
 //// landmarkKybeenData.json 파일을 불러와서 Landmark 타입의 배열로 저장
