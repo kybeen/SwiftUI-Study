@@ -16,9 +16,15 @@ struct Landmark: Hashable, Codable, Identifiable {
     var state: String
     var detailAddress: String
     var description: String
-    var isFavorite: Bool
-    // category
-    // isFeatured
+    var isFavorite: Bool // 즐겨찾기 여부
+    var isFeatured: Bool // 추천장소 여부
+    
+    var category: Category
+    enum Category: String, CaseIterable, Codable {
+        case postech = "POSTECH"
+        case tourSpot = "관광지"
+        case etc = "기타"
+    }
 
     private var imageName: String
     var image: Image {
