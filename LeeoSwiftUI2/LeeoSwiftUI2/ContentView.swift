@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isShowingModal: Bool = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Button {
+            isShowingModal = true
+        } label: {
+            Text("Call modal")
         }
-        .padding()
+        .fullScreenCover(isPresented: $isShowingModal) {
+            ZStack {
+                Color.orange.ignoresSafeArea()
+                VStack {
+                    Text("Modal View")
+                    Button {
+                        isShowingModal = false
+                    } label: {
+                        Text("dismiss")
+                    }
+                }
+            }
+        }
     }
 }
 
