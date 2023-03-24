@@ -10,4 +10,4 @@
 
 
 ----
-- LandmarksKybeen 프로젝트에서는 복습 차원에서 포항의 Landmarks 앱을 만들어 보고 있습니다.
+- LandmarksKybeen 프로젝트에서는 복습 차원에서 포항 버전의 Landmarks 앱을 만들어 보고 있습니다.
