@@ -11,6 +11,20 @@
 		B8F5AA1529CD648100F18CCC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA1429CD648100F18CCC /* ContentView.swift */; };
 		B8F5AA1729CD648300F18CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8F5AA1629CD648300F18CCC /* Assets.xcassets */; };
 		B8F5AA1A29CD648300F18CCC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8F5AA1929CD648300F18CCC /* Preview Assets.xcassets */; };
+		B8F5AA7F29D0540800F18CCC /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA7E29D0540800F18CCC /* Summary.swift */; };
+		B8F5AA8129D0546700F18CCC /* MyFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA8029D0546700F18CCC /* MyFrame.swift */; };
+		B8F5AA8329D0549B00F18CCC /* MyPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA8229D0549B00F18CCC /* MyPadding.swift */; };
+		B8F5AA8529D054BB00F18CCC /* MyModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA8429D054BB00F18CCC /* MyModifier.swift */; };
+		B8F5AA8729D054E000F18CCC /* MyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA8629D054E000F18CCC /* MyState.swift */; };
+		B8F5AA8929D0550700F18CCC /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA8829D0550700F18CCC /* MyView.swift */; };
+		B8F5AA8C29D0555100F18CCC /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA8B29D0555100F18CCC /* MyColor.swift */; };
+		B8F5AA8E29D055BC00F18CCC /* MySpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA8D29D055BC00F18CCC /* MySpacer.swift */; };
+		B8F5AA9029D055E800F18CCC /* MySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA8F29D055E800F18CCC /* MySection.swift */; };
+		B8F5AA9229D0560400F18CCC /* MyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA9129D0560400F18CCC /* MyList.swift */; };
+		B8F5AA9429D0563800F18CCC /* MyStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA9329D0563800F18CCC /* MyStack.swift */; };
+		B8F5AA9629D0565800F18CCC /* MyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA9529D0565800F18CCC /* MyImage.swift */; };
+		B8F5AA9829D0567500F18CCC /* MyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA9729D0567500F18CCC /* MyText.swift */; };
+		B8F5AA9A29D0569E00F18CCC /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA9929D0569E00F18CCC /* MyButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +33,20 @@
 		B8F5AA1429CD648100F18CCC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B8F5AA1629CD648300F18CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8F5AA1929CD648300F18CCC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B8F5AA7E29D0540800F18CCC /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
+		B8F5AA8029D0546700F18CCC /* MyFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFrame.swift; sourceTree = "<group>"; };
+		B8F5AA8229D0549B00F18CCC /* MyPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPadding.swift; sourceTree = "<group>"; };
+		B8F5AA8429D054BB00F18CCC /* MyModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModifier.swift; sourceTree = "<group>"; };
+		B8F5AA8629D054E000F18CCC /* MyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyState.swift; sourceTree = "<group>"; };
+		B8F5AA8829D0550700F18CCC /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		B8F5AA8B29D0555100F18CCC /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
+		B8F5AA8D29D055BC00F18CCC /* MySpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpacer.swift; sourceTree = "<group>"; };
+		B8F5AA8F29D055E800F18CCC /* MySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySection.swift; sourceTree = "<group>"; };
+		B8F5AA9129D0560400F18CCC /* MyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyList.swift; sourceTree = "<group>"; };
+		B8F5AA9329D0563800F18CCC /* MyStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStack.swift; sourceTree = "<group>"; };
+		B8F5AA9529D0565800F18CCC /* MyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImage.swift; sourceTree = "<group>"; };
+		B8F5AA9729D0567500F18CCC /* MyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyText.swift; sourceTree = "<group>"; };
+		B8F5AA9929D0569E00F18CCC /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +79,15 @@
 		B8F5AA1129CD648100F18CCC /* LeeoSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B8F5AA8A29D0554200F18CCC /* SwiftUIComponents */,
 				B8F5AA1229CD648100F18CCC /* LeeoSwiftUIApp.swift */,
 				B8F5AA1429CD648100F18CCC /* ContentView.swift */,
+				B8F5AA7E29D0540800F18CCC /* Summary.swift */,
+				B8F5AA8029D0546700F18CCC /* MyFrame.swift */,
+				B8F5AA8229D0549B00F18CCC /* MyPadding.swift */,
+				B8F5AA8429D054BB00F18CCC /* MyModifier.swift */,
+				B8F5AA8629D054E000F18CCC /* MyState.swift */,
+				B8F5AA8829D0550700F18CCC /* MyView.swift */,
 				B8F5AA1629CD648300F18CCC /* Assets.xcassets */,
 				B8F5AA1829CD648300F18CCC /* Preview Content */,
 			);
@@ -65,6 +100,21 @@
 				B8F5AA1929CD648300F18CCC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B8F5AA8A29D0554200F18CCC /* SwiftUIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B8F5AA8B29D0555100F18CCC /* MyColor.swift */,
+				B8F5AA8D29D055BC00F18CCC /* MySpacer.swift */,
+				B8F5AA8F29D055E800F18CCC /* MySection.swift */,
+				B8F5AA9129D0560400F18CCC /* MyList.swift */,
+				B8F5AA9329D0563800F18CCC /* MyStack.swift */,
+				B8F5AA9529D0565800F18CCC /* MyImage.swift */,
+				B8F5AA9729D0567500F18CCC /* MyText.swift */,
+				B8F5AA9929D0569E00F18CCC /* MyButton.swift */,
+			);
+			path = SwiftUIComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +187,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8F5AA8929D0550700F18CCC /* MyView.swift in Sources */,
+				B8F5AA9629D0565800F18CCC /* MyImage.swift in Sources */,
+				B8F5AA8529D054BB00F18CCC /* MyModifier.swift in Sources */,
+				B8F5AA8C29D0555100F18CCC /* MyColor.swift in Sources */,
+				B8F5AA8E29D055BC00F18CCC /* MySpacer.swift in Sources */,
+				B8F5AA9029D055E800F18CCC /* MySection.swift in Sources */,
+				B8F5AA9829D0567500F18CCC /* MyText.swift in Sources */,
+				B8F5AA9229D0560400F18CCC /* MyList.swift in Sources */,
+				B8F5AA9429D0563800F18CCC /* MyStack.swift in Sources */,
 				B8F5AA1529CD648100F18CCC /* ContentView.swift in Sources */,
+				B8F5AA8129D0546700F18CCC /* MyFrame.swift in Sources */,
+				B8F5AA9A29D0569E00F18CCC /* MyButton.swift in Sources */,
+				B8F5AA8329D0549B00F18CCC /* MyPadding.swift in Sources */,
+				B8F5AA7F29D0540800F18CCC /* Summary.swift in Sources */,
+				B8F5AA8729D054E000F18CCC /* MyState.swift in Sources */,
 				B8F5AA1329CD648100F18CCC /* LeeoSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
