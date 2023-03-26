@@ -18,6 +18,10 @@
 		B8F5AA5D29D03E6100F18CCC /* MyBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA5C29D03E6100F18CCC /* MyBinding.swift */; };
 		B8F5AA5F29D03EAC00F18CCC /* MyShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA5E29D03EAC00F18CCC /* MyShape.swift */; };
 		B8F5AA6129D03EDA00F18CCC /* MyColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA6029D03EDA00F18CCC /* MyColorHex.swift */; };
+		B8F5AA9C29D0605D00F18CCC /* MyAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA9B29D0605D00F18CCC /* MyAnimation.swift */; };
+		B8F5AA9E29D0655800F18CCC /* MyGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA9D29D0655800F18CCC /* MyGradient.swift */; };
+		B8F5AAA029D06D5000F18CCC /* MyForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA9F29D06D5000F18CCC /* MyForm.swift */; };
+		B8F5AAA229D06F3A00F18CCC /* MyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AAA129D06F3A00F18CCC /* MyGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		B8F5AA5C29D03E6100F18CCC /* MyBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBinding.swift; sourceTree = "<group>"; };
 		B8F5AA5E29D03EAC00F18CCC /* MyShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShape.swift; sourceTree = "<group>"; };
 		B8F5AA6029D03EDA00F18CCC /* MyColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorHex.swift; sourceTree = "<group>"; };
+		B8F5AA9B29D0605D00F18CCC /* MyAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimation.swift; sourceTree = "<group>"; };
+		B8F5AA9D29D0655800F18CCC /* MyGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGradient.swift; sourceTree = "<group>"; };
+		B8F5AA9F29D06D5000F18CCC /* MyForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyForm.swift; sourceTree = "<group>"; };
+		B8F5AAA129D06F3A00F18CCC /* MyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,10 @@
 				B8F5AA5C29D03E6100F18CCC /* MyBinding.swift */,
 				B8F5AA5E29D03EAC00F18CCC /* MyShape.swift */,
 				B8F5AA4A29CF600600F18CCC /* Assets.xcassets */,
+				B8F5AA9B29D0605D00F18CCC /* MyAnimation.swift */,
+				B8F5AA9D29D0655800F18CCC /* MyGradient.swift */,
+				B8F5AA9F29D06D5000F18CCC /* MyForm.swift */,
+				B8F5AAA129D06F3A00F18CCC /* MyGrid.swift */,
 				B8F5AA4C29CF600600F18CCC /* Preview Content */,
 			);
 			path = LeeoSwiftUI3;
@@ -162,9 +174,13 @@
 				B8F5AA5B29D03E2C00F18CCC /* MySlider.swift in Sources */,
 				B8F5AA4929CF600500F18CCC /* ContentView.swift in Sources */,
 				B8F5AA5729D03D7E00F18CCC /* MyPicker.swift in Sources */,
+				B8F5AA9C29D0605D00F18CCC /* MyAnimation.swift in Sources */,
 				B8F5AA5529D03D2400F18CCC /* MyTextEditor.swift in Sources */,
+				B8F5AAA229D06F3A00F18CCC /* MyGrid.swift in Sources */,
 				B8F5AA5929D03E0600F18CCC /* MyStepper.swift in Sources */,
+				B8F5AA9E29D0655800F18CCC /* MyGradient.swift in Sources */,
 				B8F5AA6129D03EDA00F18CCC /* MyColorHex.swift in Sources */,
+				B8F5AAA029D06D5000F18CCC /* MyForm.swift in Sources */,
 				B8F5AA4729CF600500F18CCC /* LeeoSwiftUI3App.swift in Sources */,
 				B8F5AA5F29D03EAC00F18CCC /* MyShape.swift in Sources */,
 			);
