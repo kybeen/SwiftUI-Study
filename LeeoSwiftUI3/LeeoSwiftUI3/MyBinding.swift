@@ -5,6 +5,7 @@
 //  Created by 김영빈 on 2023/03/26.
 //
 
+/* @Binding (바인딩) */
 import SwiftUI
 
 struct MyBinding: View {

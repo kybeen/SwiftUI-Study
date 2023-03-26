@@ -5,6 +5,7 @@
 //  Created by 김영빈 on 2023/03/26.
 //
 
+/* ColorHex (디자이너가 주는 색상을 그려보기) */
 import SwiftUI
 
 struct MyColorHex: View {

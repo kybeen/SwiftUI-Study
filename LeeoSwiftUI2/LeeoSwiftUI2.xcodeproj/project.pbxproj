@@ -11,6 +11,20 @@
 		B8F5AA2F29CD991600F18CCC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA2E29CD991600F18CCC /* ContentView.swift */; };
 		B8F5AA3129CD991800F18CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8F5AA3029CD991800F18CCC /* Assets.xcassets */; };
 		B8F5AA3429CD991800F18CCC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8F5AA3329CD991800F18CCC /* Preview Assets.xcassets */; };
+		B8F5AA6329D04FF100F18CCC /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA6229D04FF100F18CCC /* Summary.swift */; };
+		B8F5AA6529D050B100F18CCC /* MyOnAppeaarDisappear.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA6429D050B100F18CCC /* MyOnAppeaarDisappear.swift */; };
+		B8F5AA6729D050F100F18CCC /* MyNavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA6629D050F100F18CCC /* MyNavigationStack.swift */; };
+		B8F5AA6929D0513B00F18CCC /* MyNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA6829D0513B00F18CCC /* MyNavigationView.swift */; };
+		B8F5AA6B29D0517500F18CCC /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA6A29D0517500F18CCC /* MyLabel.swift */; };
+		B8F5AA6D29D051A500F18CCC /* MyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA6C29D051A500F18CCC /* MyProgressView.swift */; };
+		B8F5AA6F29D051E100F18CCC /* MySecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA6E29D051E100F18CCC /* MySecureField.swift */; };
+		B8F5AA7129D0521A00F18CCC /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA7029D0521A00F18CCC /* MyTextField.swift */; };
+		B8F5AA7329D0524A00F18CCC /* MyToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA7229D0524A00F18CCC /* MyToggle.swift */; };
+		B8F5AA7529D0529300F18CCC /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA7429D0529300F18CCC /* MyTabView.swift */; };
+		B8F5AA7729D052BB00F18CCC /* MyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA7629D052BB00F18CCC /* MyAlert.swift */; };
+		B8F5AA7929D0530700F18CCC /* MyModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA7829D0530700F18CCC /* MyModal.swift */; };
+		B8F5AA7B29D0533A00F18CCC /* MyDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA7A29D0533A00F18CCC /* MyDivider.swift */; };
+		B8F5AA7D29D0536C00F18CCC /* MyDarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F5AA7C29D0536C00F18CCC /* MyDarkMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +33,20 @@
 		B8F5AA2E29CD991600F18CCC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B8F5AA3029CD991800F18CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8F5AA3329CD991800F18CCC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B8F5AA6229D04FF100F18CCC /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
+		B8F5AA6429D050B100F18CCC /* MyOnAppeaarDisappear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOnAppeaarDisappear.swift; sourceTree = "<group>"; };
+		B8F5AA6629D050F100F18CCC /* MyNavigationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationStack.swift; sourceTree = "<group>"; };
+		B8F5AA6829D0513B00F18CCC /* MyNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationView.swift; sourceTree = "<group>"; };
+		B8F5AA6A29D0517500F18CCC /* MyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
+		B8F5AA6C29D051A500F18CCC /* MyProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProgressView.swift; sourceTree = "<group>"; };
+		B8F5AA6E29D051E100F18CCC /* MySecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySecureField.swift; sourceTree = "<group>"; };
+		B8F5AA7029D0521A00F18CCC /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		B8F5AA7229D0524A00F18CCC /* MyToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyToggle.swift; sourceTree = "<group>"; };
+		B8F5AA7429D0529300F18CCC /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabView.swift; sourceTree = "<group>"; };
+		B8F5AA7629D052BB00F18CCC /* MyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlert.swift; sourceTree = "<group>"; };
+		B8F5AA7829D0530700F18CCC /* MyModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModal.swift; sourceTree = "<group>"; };
+		B8F5AA7A29D0533A00F18CCC /* MyDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDivider.swift; sourceTree = "<group>"; };
+		B8F5AA7C29D0536C00F18CCC /* MyDarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDarkMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +81,20 @@
 			children = (
 				B8F5AA2C29CD991600F18CCC /* LeeoSwiftUI2App.swift */,
 				B8F5AA2E29CD991600F18CCC /* ContentView.swift */,
+				B8F5AA6229D04FF100F18CCC /* Summary.swift */,
+				B8F5AA6429D050B100F18CCC /* MyOnAppeaarDisappear.swift */,
+				B8F5AA6629D050F100F18CCC /* MyNavigationStack.swift */,
+				B8F5AA6829D0513B00F18CCC /* MyNavigationView.swift */,
+				B8F5AA6A29D0517500F18CCC /* MyLabel.swift */,
+				B8F5AA6C29D051A500F18CCC /* MyProgressView.swift */,
+				B8F5AA6E29D051E100F18CCC /* MySecureField.swift */,
+				B8F5AA7029D0521A00F18CCC /* MyTextField.swift */,
+				B8F5AA7229D0524A00F18CCC /* MyToggle.swift */,
+				B8F5AA7429D0529300F18CCC /* MyTabView.swift */,
+				B8F5AA7629D052BB00F18CCC /* MyAlert.swift */,
+				B8F5AA7829D0530700F18CCC /* MyModal.swift */,
+				B8F5AA7A29D0533A00F18CCC /* MyDivider.swift */,
+				B8F5AA7C29D0536C00F18CCC /* MyDarkMode.swift */,
 				B8F5AA3029CD991800F18CCC /* Assets.xcassets */,
 				B8F5AA3229CD991800F18CCC /* Preview Content */,
 			);
@@ -138,7 +180,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8F5AA2F29CD991600F18CCC /* ContentView.swift in Sources */,
+				B8F5AA6329D04FF100F18CCC /* Summary.swift in Sources */,
+				B8F5AA7B29D0533A00F18CCC /* MyDivider.swift in Sources */,
+				B8F5AA6929D0513B00F18CCC /* MyNavigationView.swift in Sources */,
+				B8F5AA7729D052BB00F18CCC /* MyAlert.swift in Sources */,
+				B8F5AA6F29D051E100F18CCC /* MySecureField.swift in Sources */,
 				B8F5AA2D29CD991600F18CCC /* LeeoSwiftUI2App.swift in Sources */,
+				B8F5AA7129D0521A00F18CCC /* MyTextField.swift in Sources */,
+				B8F5AA7D29D0536C00F18CCC /* MyDarkMode.swift in Sources */,
+				B8F5AA6B29D0517500F18CCC /* MyLabel.swift in Sources */,
+				B8F5AA7329D0524A00F18CCC /* MyToggle.swift in Sources */,
+				B8F5AA7929D0530700F18CCC /* MyModal.swift in Sources */,
+				B8F5AA6D29D051A500F18CCC /* MyProgressView.swift in Sources */,
+				B8F5AA6729D050F100F18CCC /* MyNavigationStack.swift in Sources */,
+				B8F5AA7529D0529300F18CCC /* MyTabView.swift in Sources */,
+				B8F5AA6529D050B100F18CCC /* MyOnAppeaarDisappear.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

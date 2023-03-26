@@ -5,6 +5,7 @@
 //  Created by 김영빈 on 2023/03/26.
 //
 
+/* TextEditor (장문의 글 입력하기) */
 import SwiftUI
 
 struct MyTextEditor: View {

@@ -5,6 +5,7 @@
 //  Created by 김영빈 on 2023/03/26.
 //
 
+/* Picker (원하는 값 선택하기) */
 import SwiftUI
 
 struct MyPicker: View {

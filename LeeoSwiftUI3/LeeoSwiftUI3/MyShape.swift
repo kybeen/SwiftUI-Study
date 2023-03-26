@@ -5,6 +5,7 @@
 //  Created by 김영빈 on 2023/03/26.
 //
 
+/* 도형 그리기 (Shape) */
 import SwiftUI
 
 struct MyShape: View {
