@@ -11,7 +11,8 @@ import Vision
 
 struct ContentView: View {
     @State var classificationResultLabel: String = "분류 시작 버튼을 눌러주세요."
-    let imageName = "myImage"
+    @State var imageName = "myImage"
+    var images = ["myImage", "myImage1", "myImage2"]
     
     var body: some View {
         VStack {
@@ -28,9 +29,6 @@ struct ContentView: View {
                 .font(.title)
                 .fontWeight(.bold)
             Text(classificationResultLabel)
-//                .onAppear {
-//                    classifyAnimals()
-//                }
             
             Button {
                 classifyAnimals()
@@ -38,13 +36,19 @@ struct ContentView: View {
                 Text("분류 시작!")
             }
             .padding()
-
+            
+            Picker("사진 선택", selection: $imageName) {
+                ForEach(images, id: \.self) {
+                    Text($0)
+                }
+            }
+            .pickerStyle(.segmented)
         }
         .padding()
     }
     
     func classifyAnimals() {
-        let image = UIImage(named: "myImage")!
+        let image = UIImage(named: imageName)!
         guard let ciImage = CIImage(image: image) else {
             fatalError("CIImage 변환 실패")
         }
@@ -67,7 +71,7 @@ struct ContentView: View {
                 fatalError("VNClassificationObservation로 변환 실패")
                 return
             }
-            print(topResult)
+            print(results)
             self.classificationResultLabel = "\(topResult.identifier) - \(topResult.confidence)"
         }
         

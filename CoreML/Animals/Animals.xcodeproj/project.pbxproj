@@ -12,7 +12,6 @@
 		B881148B29E06F0E00B3EA96 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B881148A29E06F0E00B3EA96 /* ContentView.swift */; };
 		B881148D29E06F0F00B3EA96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B881148C29E06F0F00B3EA96 /* Assets.xcassets */; };
 		B881149029E06F0F00B3EA96 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B881148F29E06F0F00B3EA96 /* Preview Assets.xcassets */; };
-		B881149729E06F2900B3EA96 /* MobileNetV2Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B881149629E06F2900B3EA96 /* MobileNetV2Int8LUT.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +22,6 @@
 		B881148A29E06F0E00B3EA96 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B881148C29E06F0F00B3EA96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B881148F29E06F0F00B3EA96 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B881149629E06F2900B3EA96 /* MobileNetV2Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2Int8LUT.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +56,6 @@
 			children = (
 				B825A7BA29E08ACE00607A4F /* AnimalsClassifier.mlmodel */,
 				B831BD5729E072B60067BC94 /* Info.plist */,
-				B881149629E06F2900B3EA96 /* MobileNetV2Int8LUT.mlmodel */,
 				B881148829E06F0E00B3EA96 /* AnimalsApp.swift */,
 				B881148A29E06F0E00B3EA96 /* ContentView.swift */,
 				B881148C29E06F0F00B3EA96 /* Assets.xcassets */,
@@ -146,7 +143,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B881148B29E06F0E00B3EA96 /* ContentView.swift in Sources */,
-				B881149729E06F2900B3EA96 /* MobileNetV2Int8LUT.mlmodel in Sources */,
 				B881148929E06F0E00B3EA96 /* AnimalsApp.swift in Sources */,
 				B825A7BB29E08ACE00607A4F /* AnimalsClassifier.mlmodel in Sources */,
 			);

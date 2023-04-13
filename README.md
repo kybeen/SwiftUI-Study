@@ -30,3 +30,8 @@ Apple의 Exploring SwiftUI Sample Apps 튜토리얼을 보며 샘플 앱들을 �
 
 - AboutMe : 탭뷰를 사용한 화면 전환 구현
 - ChooseYourOwnStory : NavigationStack을 사용한 화면 전환 구현
+
+
+----
+### [ AnimationStudy ]
+- SwiftUI를 사용한 다양한 애니메이션 효과들을 공부해봅니다.
