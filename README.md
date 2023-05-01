@@ -35,3 +35,13 @@ Apple의 Exploring SwiftUI Sample Apps 튜토리얼을 보며 샘플 앱들을 �
 ----
 ### [ AnimationStudy ]
 - SwiftUI를 사용한 다양한 애니메이션 효과들을 공부해봅니다.
+
+
+----
+### [ CoreML ]
+- Apple의 머신러닝 툴을 활용해보기 위해 공부한 내용입니다.
+
+
+----
+### [ ScreenTime ]
+- Apple Screen Time API를 활용하기 위해 공부한 내용입니다.
