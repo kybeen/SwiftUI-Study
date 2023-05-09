@@ -17,12 +17,13 @@ import DeviceActivity
 import ManagedSettings
 import SwiftUI
 import FamilyControls
+import Foundation
 
 // Optionally override any of the functions below.
 // Make sure that your class name matches the NSExtensionPrincipalClass in your Info.plist.
 class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     
-    @AppStorage("selectedApps", store: UserDefaults(suiteName: "group.com.worklog"))
+    @AppStorage("selectedApps", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
     var shieldedApps = FamilyActivitySelection()
     
     // schedule의 시작 시점 이후 처음으로 기기가 사용될 때 호출
@@ -32,6 +33,7 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
             let store = ManagedSettingsStore(named: .tenSeconds)
             store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
             store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
+            
         }
     }
     

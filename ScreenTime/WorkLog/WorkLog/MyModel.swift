@@ -15,14 +15,15 @@ class MyModel: ObservableObject {
     static let shared = MyModel() // 싱글톤 패턴 사용
     private init() {}
     
-    @AppStorage("selectedApps", store: UserDefaults(suiteName: "group.comm.worklog"))
+    @AppStorage("selectedApps", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
     var selectedApps = FamilyActivitySelection() {
         didSet {
             handleSetBlockApplication()
         }
     }
     
-    @AppStorage("testInt", store: UserDefaults(suiteName: "group.com.worklog")) var testInt = 0
+    @AppStorage("testInt", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
+    var testInt = 0
     
     let store = ManagedSettingsStore()
     let deviceActivityCenter = DeviceActivityCenter()
@@ -32,14 +33,15 @@ class MyModel: ObservableObject {
     }
     
     func handleStartDeviceActivityMonitoring(includeUsageThreshold: Bool = true) {
-        let dateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: Date())
         // 새 스케쥴 시간 설정 - 하루
+        let dateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: Date()) // 현재시간
         let schedule = DeviceActivitySchedule(
             intervalStart: DateComponents(hour: dateComponents.hour, minute: dateComponents.minute! + 1, second: dateComponents.second),
             intervalEnd: DateComponents(hour: 23, minute: 59),
             repeats: true,
             warningTime: DateComponents(minute: 1)
         )
+        print("Current Time: \(dateComponents.hour!):\(dateComponents.minute!)")
         // 새 이벤트 생성
         let event = DeviceActivityEvent(
             applications: selectedApps.applicationTokens,
@@ -48,6 +50,8 @@ class MyModel: ObservableObject {
             // 앱 사용을 허용할 시간
             threshold: DateComponents(second: 10)
         )
+        print("Selected apps: \(selectedApps.applications)")
+        print("Selected categories: \(selectedApps.categories.first)")
         do {
             MyModel.shared.deviceActivityCenter.stopMonitoring()
             try MyModel.shared.deviceActivityCenter.startMonitoring(
@@ -110,11 +114,13 @@ extension FamilyActivitySelection: RawRepresentable {
     }
 }
 
+//MARK: Schedule Name List
 extension DeviceActivityName {
     static let daily = Self("daily")
     static let weekend = Self("weekend")
 }
 
+//MARK: Schedule Event Name List
 extension DeviceActivityEvent.Name {
     static let tenSeconds = Self("threshold.seconds.ten")
 }

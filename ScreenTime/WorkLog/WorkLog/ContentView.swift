@@ -20,7 +20,7 @@ import ManagedSettings
 struct ContentView: View {
     @ObservedObject var store: MyModel
     
-    @State private var isDiscouragedPresented = false
+    @State var isDiscouragedPresented = false
     //@State private var isEncouragedPresented = false
     
     
@@ -43,16 +43,29 @@ struct ContentView: View {
             }
             .padding()
 
+            // 실드 리셋
+            Button {
+                handleResetSelection()
+            } label: {
+                Text("Reset shielded apps")
+            }
             
             Spacer()
             
             Button("Select Apps to Discourage") {
                 isDiscouragedPresented = true
             }
-            .familyActivityPicker(isPresented: $isDiscouragedPresented, selection: MyModel.shared.$selectedApps)
+            .familyActivityPicker(headerText: "FamilyActivityPicker 헤더명", isPresented: $isDiscouragedPresented, selection: MyModel.shared.$selectedApps)
             .padding()
             .foregroundColor(.gray)
             
+            if let firstToken = MyModel.shared.selectedApps.applicationTokens.first {
+                Label(firstToken)
+                    .frame(maxWidth: .infinity)
+                    .labelStyle(.iconOnly)
+            } else {
+                Text("선택된 앱이 없습니다.")
+            }
 //            Button("Select Apps to Encourage") {
 //                isEncouragedPresented = true
 //            }
@@ -103,12 +116,6 @@ struct ContentView: View {
             } label: {
                 Text("Block shield")
             }
-            
-            Button {
-                handleResetSelection()
-            } label: {
-                Text("Reset shielded apps")
-            }
 
 
             
@@ -141,7 +148,7 @@ struct ContentView: View {
 }
 
 extension ContentView {
-    //MARK: 스크린터임 권한 요청
+    //MARK: 스크린타임 권한 요청
     private func requestScreenTimePermission() {
         let center = AuthorizationCenter.shared
         
