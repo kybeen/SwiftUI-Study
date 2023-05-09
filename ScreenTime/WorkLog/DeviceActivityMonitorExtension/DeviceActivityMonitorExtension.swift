@@ -45,8 +45,7 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
             store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
         } else if activity == .additionalFifteen {
             let store = ManagedSettingsStore(named: .dailySleep)
-            store.shield.applications = nil
-            store.shield.applicationCategories = nil
+            store.clearAllSettings()
         }
     }
     

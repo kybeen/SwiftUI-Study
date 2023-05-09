@@ -104,7 +104,7 @@ class MyModel: ObservableObject {
         let currentHour = currentDateComponents.hour ?? 0
         let currentMinute = currentDateComponents.minute ?? 0
         var endHour = currentHour + 0
-        var endMinute = currentMinute + 8 // 원래 15분으로 해줘야함
+        var endMinute = currentMinute + 20 // 15분
         if endMinute >= 60 {
             endMinute -= 60
             endHour += 1
@@ -118,26 +118,26 @@ class MyModel: ObservableObject {
         // 현재 시간부터 15분 동안의 새로운 스케줄 생성
         let additionalSchedule = DeviceActivitySchedule(
             intervalStart: DateComponents(hour: currentHour, minute: currentMinute + 1, second: currentDateComponents.second),
-            //intervalEnd: DateComponents(hour: endHour, minute: endMinute),
-            intervalEnd: sleepEndDateComponent,
-            repeats: true,
+            intervalEnd: DateComponents(hour: endHour, minute: endMinute),
+            //intervalEnd: sleepEndDateComponent,
+            repeats: false,
             warningTime: DateComponents(minute: 5) // 15분 추가시간 종료 5분 전에 알림
         )
         
-        // 15분동안 앱 사용을 허용할 이벤트 생성
-        let additionalEvent = DeviceActivityEvent(
-            applications: selectedApps.applicationTokens,
-            categories: selectedApps.categoryTokens,
-            // 앱 사용을 허용할 시간
-            threshold: DateComponents(minute: 15)
-        )
+//        // 15분동안 앱 사용을 허용할 이벤트 생성
+//        let additionalEvent = DeviceActivityEvent(
+//            applications: selectedApps.applicationTokens,
+//            categories: selectedApps.categoryTokens,
+//            // 앱 사용을 허용할 시간
+//            threshold: DateComponents(second: 20)
+//        )
         
         do {
             MyModel.shared.deviceActivityCenter.stopMonitoring([.dailySleep]) // 기존 수면시간 스케줄의 모니터링 중단
             try MyModel.shared.deviceActivityCenter.startMonitoring(
                 .additionalFifteen,
-                during: additionalSchedule,
-                events: [.additionalFifteen: additionalEvent]
+                during: additionalSchedule
+                //events: [.additionalFifteen: additionalEvent]
             )
             print("Additional 15minutes Monitoring started!!")
         } catch {
