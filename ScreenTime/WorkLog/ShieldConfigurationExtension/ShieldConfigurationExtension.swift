@@ -18,8 +18,8 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     @AppStorage("testInt", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
     var testInt = 0
     
-    let title = "Worklog"
-    let body = "해당 앱은 현재 사용이 제한됩니다."
+    let title = "😴\n잠에 들 시간이에요"
+    let body = "\n(설정한 시간)이상의 수면은\n내일의 계획을 지키는 데 필수에요\n\n내일의 계획을 지키려면\n지금 반드시 주무셔야 해요\n\n내일의 계획을 지키기 위해\n이제 그만 앱을 종료해볼까요?\n"
     
     // 애플리케이션 단위로 선택했을 때
     override func configuration(shielding application: Application) -> ShieldConfiguration {
@@ -39,14 +39,14 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     override func configuration(shielding application: Application, in category: ActivityCategory) -> ShieldConfiguration {
         // Customize the shield as needed for applications shielded because of their category.
         return ShieldConfiguration(
-            backgroundBlurStyle: UIBlurEffect.Style.systemThickMaterial,
-            backgroundColor: UIColor.white,
+            backgroundBlurStyle: UIBlurEffect.Style.extraLight,
+            backgroundColor: UIColor.white.withAlphaComponent(0.1),
             icon: UIImage(systemName: "stopwatch"),
-            title: ShieldConfiguration.Label(text: "No app for you!!!!: : \(testInt)", color: .blue),
+            title: ShieldConfiguration.Label(text: self.title, color: .black),
             //subtitle: ShieldConfiguration.Label(text: "Sorry, no apps for you", color: .black),
-            subtitle: ShieldConfiguration.Label(text: "7일 이상의 충분한 잠은\n계획 달성의 필수 조건이에요.\n\n내일의 계획을 지키기 위해\n이제 그만 유튜브를 종료해볼까요?\n\n현재 12일 연속 달성 중", color: .black),
-            primaryButtonLabel: ShieldConfiguration.Label(text: "Ask for a break?", color: .black),
-            secondaryButtonLabel: ShieldConfiguration.Label(text: "Quick Quick", color: .black)
+            subtitle: ShieldConfiguration.Label(text: "\n(설정한 시간)이상의 수면은\n내일의 계획을 지키는 데 필수에요\n\n내일의 계획을 지키려면\n지금 반드시 주무셔야 해요\n\n내일의 계획을 지키기 위해\n이제 그만 앱을 종료해볼까요?\n\(testInt)", color: .black),
+            primaryButtonLabel: ShieldConfiguration.Label(text: "종료하기", color: .black),
+            secondaryButtonLabel: ShieldConfiguration.Label(text: "내일의 계획 안지키기", color: .black)
         )
     }
     

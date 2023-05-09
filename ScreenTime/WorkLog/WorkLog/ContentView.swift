@@ -53,21 +53,21 @@ struct ContentView: View {
             }
             
             Spacer()
-            // 스크린 타임 권한 요청
-            Button {
-                requestScreenTimePermission()
-            } label: {
-                Text("Request Screen Time Authorization")
-            }
-            .padding()
-            
-            // 노티피케이션 권한 요천
-            Button {
-                NotificationManager.shared.requestAuthorization()
-            } label: {
-                Text("Request Notification Authorization")
-            }
-            .padding()
+//            // 스크린 타임 권한 요청
+//            Button {
+//                requestScreenTimePermission()
+//            } label: {
+//                Text("Request Screen Time Authorization")
+//            }
+//            .padding()
+//
+//            // 노티피케이션 권한 요천
+//            Button {
+//                NotificationManager.shared.requestAuthorization()
+//            } label: {
+//                Text("Request Notification Authorization")
+//            }
+//            .padding()
 
             // 실드 리셋
             Button {
@@ -136,6 +136,25 @@ struct ContentView: View {
                 .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
                 .cornerRadius(15)
             }
+            // 제한 시작 버튼
+            Button {
+                setDailySleepSchedule()
+            } label: {
+                ZStack {
+                    Color.orange
+                    Text("Daily Sleep Monitoring start")
+                        .foregroundColor(.black)
+                        .font(.title2)
+                }
+                .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
+                .cornerRadius(15)
+            }
+            Button {
+                MyModel.shared.setAdditionalFifteenSchedule()
+            } label: {
+                Text("15분 더 보기")
+            }
+
             
 //            Button {
 //                handleSetBlockApplication()
@@ -212,6 +231,11 @@ extension ContentView {
     
     private func handleSetBlockApplication() {
         MyModel.shared.handleSetBlockApplication()
+    }
+    
+    //MARK: 데일리 수면 모니터링 등록 및 시작
+    private func setDailySleepSchedule() {
+        MyModel.shared.setDailySleepSchedule()
     }
 }
 

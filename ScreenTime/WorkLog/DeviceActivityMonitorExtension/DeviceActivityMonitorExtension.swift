@@ -34,6 +34,19 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
             store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
             store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
             
+//        } else if activity == .weekend {
+//            let store = ManagedSettingsStore(named: .weekend)
+////            store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
+////            store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
+            
+        } else if activity == .dailySleep {
+            let store = ManagedSettingsStore(named: .dailySleep)
+            store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
+            store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
+        } else if activity == .additionalFifteen {
+            let store = ManagedSettingsStore(named: .dailySleep)
+            store.shield.applications = nil
+            store.shield.applicationCategories = nil
         }
     }
     
@@ -46,6 +59,17 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
             let store = ManagedSettingsStore(named: .tenSeconds)
             store.clearAllSettings()
             print("Schedule is ended!!")
+//        } else if activity == .weekend {
+//            let store = ManagedSettingsStore(named: .weekend)
+//            store.clearAllSettings()
+        } else if activity == .dailySleep {
+            let store = ManagedSettingsStore(named: .dailySleep)
+            store.shield.applications = nil
+            store.shield.applicationCategories = nil
+        } else if activity == .additionalFifteen {
+            let store = ManagedSettingsStore(named: .dailySleep)
+            store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
+            store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
         }
     }
     
@@ -58,13 +82,18 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     // activity가 시작되기 전에 지정한 시간에 다가오는 activity에 대해 앱에 알림
     override func intervalWillStartWarning(for activity: DeviceActivityName) {
         super.intervalWillStartWarning(for: activity)
-        NotificationManager.shared.scheduleNotification()
+        if activity == .daily || activity == .dailySleep {
+            NotificationManager.shared.scheduleNotification()
+        }
         // Handle the warning before the interval starts.
     }
     
     override func intervalWillEndWarning(for activity: DeviceActivityName) {
         super.intervalWillEndWarning(for: activity)
-        
+        if activity == .additionalFifteen {
+            // 추가시간 5분 남음 알림
+            NotificationManager.shared.additionalFifteenNotification()
+        }
         // Handle the warning before the interval ends.
     }
     
@@ -98,10 +127,12 @@ extension FamilyActivitySelection: RawRepresentable {
 
 extension DeviceActivityName {
     static let daily = Self("daily")
-    static let weekend = Self("weekend")
+    static let dailySleep = Self("dailySleep")
+    static let additionalFifteen = Self("additionalFifteen")
 }
 
 extension ManagedSettingsStore.Name {
     static let tenSeconds = Self("threshold.seconds.ten")
-    static let weekend = Self("weekend")
+    static let dailySleep = Self("dailySleep")
+    static let additionalFifteen = Self("additionalFifteen")
 }
