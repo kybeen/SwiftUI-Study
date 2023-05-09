@@ -13,9 +13,14 @@
  - 앱을 선택한 뒤에는 familyActivityPicker에서 반환된 토큰을 사용할 수 있음.
    - 이 토큰은 각각의 앱과 웹사이트 등을 나타내며, 토큰을 통해 해당하는 앱 등에 제한을 적용해준다.
 */
+import DeviceActivity
 import SwiftUI
 import FamilyControls
 import ManagedSettings
+
+extension DeviceActivityReport.Context {
+    static let totalActivity = Self("Total Activity")
+}
 
 struct ContentView: View {
     @ObservedObject var store: MyModel
@@ -23,9 +28,30 @@ struct ContentView: View {
     @State var isDiscouragedPresented = false
     //@State private var isEncouragedPresented = false
     
+    @State var isReportShowing = false
+    // DeviceActivityReportExtension을 추가하여 커스텀했던 view를 식별하기 위해 사용됨
+    @State private var context: DeviceActivityReport.Context = .totalActivity
+    // DeviceActivityReportExtension에서 makeConfiguration() 메서드 안에 받아오는 데이터(DeviceActivityResults)를 필터링 해주기 위해 사용됨
+    @State private var filter = DeviceActivityFilter(
+        segment: .daily(
+            during: Calendar.current.dateInterval(
+                of: .weekOfYear, for: .now
+            )!
+        ),
+        users: .all,
+        devices: .init([.iPhone, .iPad]),
+        applications: MyModel.shared.selectedApps.applicationTokens,
+        categories: MyModel.shared.selectedApps.categoryTokens
+    )
     
     var body: some View {
         VStack {
+            Button {
+                isReportShowing = true
+            } label: {
+                Text("Report")
+            }
+            
             Spacer()
             // 스크린 타임 권한 요청
             Button {
@@ -111,39 +137,22 @@ struct ContentView: View {
                 .cornerRadius(15)
             }
             
-            Button {
-                handleSetBlockApplication()
-            } label: {
-                Text("Block shield")
-            }
-
-
-            
-//            // 제한 풀기 버튼
 //            Button {
-//                let store = ManagedSettingsStore()
-//                store.shield.applications = nil
-//                store.shield.applicationCategories = nil
-//                print("Application shields are removed!!")
+//                handleSetBlockApplication()
 //            } label: {
-//                ZStack {
-//                    Color.black
-//                    Text("Remove Shield.")
-//                        .foregroundColor(.red)
-//                        .font(.title2)
-//                }
-//                .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
-//                .cornerRadius(15)
+//                Text("Block shield")
 //            }
-
-
-
         }
         .padding()
-//        // selectionToDiscourage 값이 변경될 때마다 모델의 shield 세팅 값 변경
-//        .onChange(of: model.selectionToDiscourage) { newSelection in
-//            MyModel.shared.setShieldRestriction()
-//        }
+        .sheet(isPresented: $isReportShowing) {
+            // DeviceActivityReport 생성
+            DeviceActivityReport(context, filter: filter) // 필터를 지정하지 않을 경우에는 현재 사용자와 현재 기기에 대한 모든 device activity 데이터를 device activity report app extension에 제공함
+                .frame(
+                    width: UIScreen.main.bounds.width*0.8,
+                    height: UIScreen.main.bounds.height*0.6
+                )
+                .background(.gray)
+        }
     }
 }
 
