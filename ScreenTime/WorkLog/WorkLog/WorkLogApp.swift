@@ -15,18 +15,18 @@ struct WorklogApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(MyModel())
-                .onAppear {
-                    Task {
-                        do {
-                            try await center.requestAuthorization(for: .individual)
-                            print("Approved Status: \(AuthorizationStatus.approved)")
-                        } catch {
-                            print("Failed to enroll User with error: \(error)")
-                        }
-                    }
-                }
+            ContentView(store: MyModel.shared)
+//                .environmentObject(MyModel())
+//                .onAppear {
+//                    Task {
+//                        do {
+//                            try await center.requestAuthorization(for: .individual)
+//                            print("Approved Status: \(AuthorizationStatus.approved)")
+//                        } catch {
+//                            print("Failed to enroll User with error: \(error)")
+//                        }
+//                    }
+//                }
         }
     }
 }

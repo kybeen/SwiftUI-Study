@@ -5,46 +5,116 @@
 //  Created by 김영빈 on 2023/04/28.
 //
 
+import SwiftUI
 import Foundation
 import FamilyControls
 import ManagedSettings
-
-// MyModel 클래스의 인스턴스를 만들고, _MyModel이라는 이름으로 전역 상수로 저장
-private let _MyModel = MyModel()
+import DeviceActivity
 
 class MyModel: ObservableObject {
+    static let shared = MyModel() // 싱글톤 패턴 사용
+    private init() {}
+    
+    @AppStorage("selectedApps", store: UserDefaults(suiteName: "group.comm.worklog"))
+    var selectedApps = FamilyActivitySelection() {
+        didSet {
+            handleSetBlockApplication()
+        }
+    }
+    
+    @AppStorage("testInt", store: UserDefaults(suiteName: "group.com.worklog")) var testInt = 0
+    
     let store = ManagedSettingsStore()
+    let deviceActivityCenter = DeviceActivityCenter()
     
-    // FamilyActivitySelection : 사용자가 선택한 앱,카테고리,웹도메인의 모음
-    @Published var selectionToDiscourage: FamilyActivitySelection
-    @Published var selectionToEncourage: FamilyActivitySelection
-    
-    init() {
-        selectionToDiscourage = FamilyActivitySelection() // selection 인스턴스 생성
-        selectionToEncourage = FamilyActivitySelection()
+    func handleResetSelection() {
+        selectedApps = FamilyActivitySelection()
     }
     
-    // 공유 인스턴스를 반환하는 정적 메서드
-    class var shared: MyModel {
-        return _MyModel
+    func handleStartDeviceActivityMonitoring(includeUsageThreshold: Bool = true) {
+        let dateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: Date())
+        // 새 스케쥴 시간 설정 - 하루
+        let schedule = DeviceActivitySchedule(
+            intervalStart: DateComponents(hour: dateComponents.hour, minute: dateComponents.minute! + 1, second: dateComponents.second),
+            intervalEnd: DateComponents(hour: 23, minute: 59),
+            repeats: true,
+            warningTime: DateComponents(minute: 1)
+        )
+        // 새 이벤트 생성
+        let event = DeviceActivityEvent(
+            applications: selectedApps.applicationTokens,
+            categories: selectedApps.categoryTokens,
+            webDomains: selectedApps.webDomainTokens,
+            // 앱 사용을 허용할 시간
+            threshold: DateComponents(second: 10)
+        )
+        do {
+            MyModel.shared.deviceActivityCenter.stopMonitoring()
+            try MyModel.shared.deviceActivityCenter.startMonitoring(
+                .daily,
+                during: schedule,
+                events: includeUsageThreshold ? [.tenSeconds: event] : [:]
+                
+            )
+            print("Monitoring started")
+        } catch {
+            print("Unexpected error: \(error).")
+        }
     }
     
-    func setShieldRestriction() {
-        // Pull the selection out of the app's model and configure the application shield restriction accordingly
-        let applications = MyModel.shared.selectionToDiscourage // 사용자가 선택한 제한시킬 앱 리스트
-
-        // shield : Settings that affect what activities the system covers with a shielding view on this device.
-        // FamilyActivitySelection인스턴스에는 사용자가 선택한 카테고리와 앱을 나타내는 토큰값이 들어 있음
-        store.shield.applications = applications.applicationTokens.isEmpty ? nil : applications.applicationTokens // ManagedSettingsStore에 토큰값 저장? (Set<ApplicationToken>)
-        store.shield.applicationCategories = applications.categoryTokens.isEmpty ? nil : ShieldSettings.ActivityCategoryPolicy.specific(applications.categoryTokens) // Set<ActivityCategoryToken>
+    
+    func handleSetBlockApplication() {
+        store.shield.applications = selectedApps.applicationTokens.isEmpty ? nil : selectedApps.applicationTokens
+        store.shield.applicationCategories = selectedApps.categoryTokens.isEmpty ? nil : ShieldSettings.ActivityCategoryPolicy.specific(selectedApps.categoryTokens)
+    }
+    
+    func addScheduleWeek() {
+        let event = DeviceActivityEvent(
+            applications: selectedApps.applicationTokens,
+            categories: selectedApps.categoryTokens,
+            threshold: DateComponents(second: 10)
+        )
+        let weekSchedule = DeviceActivitySchedule(
+            intervalStart: DateComponents(hour: 0, minute: 0, weekday: 7),
+            intervalEnd: DateComponents(hour: 23, minute: 59, weekday: 1),
+            repeats: true,
+            warningTime: DateComponents(minute: 5)
+        )
+        do {
+            try deviceActivityCenter.startMonitoring(.weekend, during: weekSchedule)
+        } catch {
+            // Handle error
+        }
     }
 }
 
 
+//MARK: FamilyActivitySelection Parser
+extension FamilyActivitySelection: RawRepresentable {
+    public init?(rawValue: String) {
+        guard let data = rawValue.data(using: .utf8),
+            let result = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
+        else {
+            return nil
+        }
+        self = result
+    }
 
+    public var rawValue: String {
+        guard let data = try? JSONEncoder().encode(self),
+            let result = String(data: data, encoding: .utf8)
+        else {
+            return "[]"
+        }
+        return result
+    }
+}
 
+extension DeviceActivityName {
+    static let daily = Self("daily")
+    static let weekend = Self("weekend")
+}
 
-
-
-
-
+extension DeviceActivityEvent.Name {
+    static let tenSeconds = Self("threshold.seconds.ten")
+}
