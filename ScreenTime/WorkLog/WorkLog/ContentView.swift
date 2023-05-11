@@ -46,11 +46,12 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Button {
-                isReportShowing = true
-            } label: {
-                Text("Report")
-            }
+//            Button {
+//                isReportShowing = true
+//            } label: {
+//                Text("Report")
+//            }
+            Text("\(MyModel.shared.additionalCount)")
             
             Spacer()
             VStack {

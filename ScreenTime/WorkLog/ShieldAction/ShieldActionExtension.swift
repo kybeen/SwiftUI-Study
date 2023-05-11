@@ -81,10 +81,16 @@ class ShieldActionExtension: ShieldActionDelegate {
 //            actionSheetViewController?.showActionSheet()
 //            completionHandler(.defer)
             
-            testInt += 1
-            MyModel.shared.setAdditionalFifteenSchedule()
+            // additionalFifteen 스케줄이 시작되면 실드 세팅을 초기화해줌
+//            let store = ManagedSettingsStore(named: .dailySleep)
+//            store.clearAllSettings()
+            if MyModel.shared.additionalCount < 2 { //MARK: 연장 횟수 2회 미만
+                MyModel.shared.deviceActivityCenter.stopMonitoring() // 기존 스케줄의 모니터링 중단
+                MyModel.shared.setAdditionalFifteenSchedule() // 15분 연장 스케줄 모니터링 시작
+                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
+            } else { //MARK: 연장 횟수 2회 이상
+            }
             completionHandler(.none)
-            
         
         @unknown default:
             fatalError()

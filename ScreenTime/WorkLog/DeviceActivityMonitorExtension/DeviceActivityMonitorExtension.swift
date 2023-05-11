@@ -43,14 +43,15 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
             
         } else if activity == .additionalFifteen {
             
-            // additionalFifteen 스케줄이 시작되면 실드 세팅을 초기화해줌
+            // additionalFifteen 스케줄이 시작되면 다시 앱을 잠금
             let store = ManagedSettingsStore(named: .dailySleep)
-            store.clearAllSettings()
+            store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
+            store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
             
         }
     }
     
-    // schedule의 종료 시점 이후 처음으로 기기가 사용될 때 호출
+    // schedule의 종료 시점 이후 처음으로 기기가 사용될 때 호출 or 모니터링 중단 시에도 호출
     override func intervalDidEnd(for activity: DeviceActivityName) {
         super.intervalDidEnd(for: activity)
         // Handle the end of the interval.
@@ -64,11 +65,12 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
 //            store.clearAllSettings()
         } else if activity == .dailySleep {
             let store = ManagedSettingsStore(named: .dailySleep)
-            store.shield.applications = nil
-            store.shield.applicationCategories = nil
+            store.clearAllSettings()
+            MyModel.shared.additionalCount = 0 // 스케줄 연장 횟수 카운트 초기화
         } else if activity == .additionalFifteen {
             let store = ManagedSettingsStore(named: .dailySleep)
             store.clearAllSettings()
+            MyModel.shared.additionalCount = 0 // 스케줄 연장 횟수 카운트 초기화
         }
     }
     
@@ -81,8 +83,8 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
 //            MyModel.shared.setDailySleepSchedule() // 기존 데일리 수면 스케줄 모니터링 다시 시작
 //        }
         
-        MyModel.shared.deviceActivityCenter.stopMonitoring()
-        MyModel.shared.setDailySleepSchedule() // 기존 데일리 수면 스케줄 모니터링 다시 시작
+//        MyModel.shared.deviceActivityCenter.stopMonitoring()
+//        MyModel.shared.setDailySleepSchedule() // 기존 데일리 수면 스케줄 모니터링 다시 시작
         
         // Handle the event reaching its threshold.
     }
@@ -90,8 +92,12 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     // activity가 시작되기 전에 지정한 시간에 다가오는 activity에 대해 앱에 알림
     override func intervalWillStartWarning(for activity: DeviceActivityName) {
         super.intervalWillStartWarning(for: activity)
-        if activity == .daily || activity == .dailySleep {
-            NotificationManager.shared.scheduleNotification()
+        if activity == .dailySleep { // 기존 수면 스케줄 종료 알림
+            NotificationManager.shared.scheduleNotification(title: "수면 계획이 곧 시작됩니다.", subTitle: "5분 뒤에 설정한 수면 계획 시작")
+        } else if activity == .additionalFifteen { // 1회째 연장 시간 종료 알림
+            NotificationManager.shared.scheduleNotification(title: "약속한 시간이 다가옵니다.", subTitle: "5분 뒤에 설정한 수면 계획 시작")
+        } else { // 2회째 연장 시간 종료 알림
+            NotificationManager.shared.scheduleNotification(title: "최후의 약속이 끝나갑니다.", subTitle: "5분 뒤에 설정한 수면 계획 다시 시작")
         }
         // Handle the warning before the interval starts.
     }
@@ -108,8 +114,8 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
 //            // 추가시간 5분 남음 알림
 //            NotificationManager.shared.additionalFifteenNotification()
 //        }
-        // 추가시간 5분 남음 알림
-        NotificationManager.shared.additionalFifteenNotification()
+//        // 추가시간 5분 남음 알림
+//        NotificationManager.shared.additionalFifteenNotification()
     }
 }
 
