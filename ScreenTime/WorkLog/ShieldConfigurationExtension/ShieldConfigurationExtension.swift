@@ -18,8 +18,13 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     @AppStorage("testInt", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
     var testInt = 0
     
-    let title = "😴\n잠에 들 시간이에요"
-    let body = "\n(설정한 시간)이상의 수면은\n내일의 계획을 지키는 데 필수에요\n\n내일의 계획을 지키려면\n지금 반드시 주무셔야 해요\n\n내일의 계획을 지키기 위해\n이제 그만 앱을 종료해볼까요?\n"
+    let imageName = "stopwatch"
+    let title = "😴 잠에 들 시간이에요"
+    let subtitle = "\n(N)시간 이상의 숙면은\n내일의 계획을 지키는 데 필수적이에요\n\n내일의 계획을 지키려면\n지금 반드시 잠에 들어야 해요\n\n내일의 계획을 지키기 위해\n이제 그만 앱을 종료해볼까요?"
+    let primaryButtonnText = "내일의 계획 지키기"
+    let secondaryButtonText = "내일의 계획 안지키기"
+    
+    let uiColorValue = UIColor(red: 15/255, green: 0/255, blue: 148/255, alpha: 1.0) // Hex 0x0F0094의 UIColor값
     
     // 애플리케이션 단위로 선택했을 때
     override func configuration(shielding application: Application) -> ShieldConfiguration {
@@ -41,12 +46,12 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
         return ShieldConfiguration(
             backgroundBlurStyle: UIBlurEffect.Style.extraLight,
             backgroundColor: UIColor.white.withAlphaComponent(0.1),
-            icon: UIImage(systemName: "stopwatch"),
-            title: ShieldConfiguration.Label(text: self.title, color: .black),
-            //subtitle: ShieldConfiguration.Label(text: "Sorry, no apps for you", color: .black),
-            subtitle: ShieldConfiguration.Label(text: "\n(설정한 시간)이상의 수면은\n내일의 계획을 지키는 데 필수에요\n\n내일의 계획을 지키려면\n지금 반드시 주무셔야 해요\n\n내일의 계획을 지키기 위해\n이제 그만 앱을 종료해볼까요?\n\(testInt)", color: .black),
-            primaryButtonLabel: ShieldConfiguration.Label(text: "종료하기", color: .black),
-            secondaryButtonLabel: ShieldConfiguration.Label(text: "내일의 계획 안지키기", color: .black)
+            icon: UIImage(systemName: imageName),
+            title: ShieldConfiguration.Label(text: title, color: .black),
+            subtitle: ShieldConfiguration.Label(text: subtitle, color: .black),
+            primaryButtonLabel: ShieldConfiguration.Label(text: primaryButtonnText, color: .white),
+            primaryButtonBackgroundColor: uiColorValue,
+            secondaryButtonLabel: ShieldConfiguration.Label(text: secondaryButtonText, color: uiColorValue)
         )
     }
     

@@ -19,6 +19,13 @@
 		B813F31A2A0A8C29003E7590 /* AppDeviceActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F3192A0A8C29003E7590 /* AppDeviceActivity.swift */; };
 		B813F31B2A0A8C5D003E7590 /* AppDeviceActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F3192A0A8C29003E7590 /* AppDeviceActivity.swift */; };
 		B813F31C2A0A8C5F003E7590 /* TotalActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F30F2A0A8BFC003E7590 /* TotalActivityView.swift */; };
+		B813F3222A0B4039003E7590 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8348CB729FAE1FC0013FD65 /* MyModel.swift */; };
+		B813F3232A0B403A003E7590 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8348CB729FAE1FC0013FD65 /* MyModel.swift */; };
+		B813F3242A0B403C003E7590 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8348CB729FAE1FC0013FD65 /* MyModel.swift */; };
+		B813F3252A0B403C003E7590 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8348CB729FAE1FC0013FD65 /* MyModel.swift */; };
+		B813F32A2A0BBA87003E7590 /* DeviceActivityMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8348CC62A058F710013FD65 /* DeviceActivityMonitorExtension.swift */; };
+		B813F32C2A0BBAAE003E7590 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F2C62A0A70B1003E7590 /* NotificationManager.swift */; };
+		B813F32F2A0BBB71003E7590 /* ShieldActionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F2D02A0A7405003E7590 /* ShieldActionExtension.swift */; };
 		B8348CB829FAE1FC0013FD65 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8348CB729FAE1FC0013FD65 /* MyModel.swift */; };
 		B8348CBA29FEFA8F0013FD65 /* MySchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8348CB929FEFA8F0013FD65 /* MySchedule.swift */; };
 		B8348CC42A058F710013FD65 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8348CC32A058F700013FD65 /* DeviceActivity.framework */; };
@@ -467,6 +474,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B813F2D12A0A7405003E7590 /* ShieldActionExtension.swift in Sources */,
+				B813F32A2A0BBA87003E7590 /* DeviceActivityMonitorExtension.swift in Sources */,
+				B813F32C2A0BBAAE003E7590 /* NotificationManager.swift in Sources */,
+				B813F3242A0B403C003E7590 /* MyModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +486,7 @@
 			files = (
 				B813F31A2A0A8C29003E7590 /* AppDeviceActivity.swift in Sources */,
 				B813F3102A0A8BFC003E7590 /* TotalActivityView.swift in Sources */,
+				B813F3252A0B403C003E7590 /* MyModel.swift in Sources */,
 				B813F30C2A0A8BFC003E7590 /* ReportExtension.swift in Sources */,
 				B813F30E2A0A8BFC003E7590 /* TotalActivityReport.swift in Sources */,
 			);
@@ -486,6 +497,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B813F2C82A0A7331003E7590 /* NotificationManager.swift in Sources */,
+				B813F3232A0B403A003E7590 /* MyModel.swift in Sources */,
+				B813F32F2A0BBB71003E7590 /* ShieldActionExtension.swift in Sources */,
 				B8348CC72A058F710013FD65 /* DeviceActivityMonitorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8348CDC2A062D380013FD65 /* ShieldConfigurationExtension.swift in Sources */,
+				B813F3222A0B4039003E7590 /* MyModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

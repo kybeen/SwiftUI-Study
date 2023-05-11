@@ -30,22 +30,23 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     override func intervalDidStart(for activity: DeviceActivityName) {
         super.intervalDidStart(for: activity)
         if activity == .daily {
+            
             let store = ManagedSettingsStore(named: .tenSeconds)
             store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
             store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
             
-//        } else if activity == .weekend {
-//            let store = ManagedSettingsStore(named: .weekend)
-////            store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
-////            store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
-            
         } else if activity == .dailySleep {
+            
             let store = ManagedSettingsStore(named: .dailySleep)
             store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
             store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
+            
         } else if activity == .additionalFifteen {
+            
+            // additionalFifteen 스케줄이 시작되면 실드 세팅을 초기화해줌
             let store = ManagedSettingsStore(named: .dailySleep)
             store.clearAllSettings()
+            
         }
     }
     
@@ -67,13 +68,21 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
             store.shield.applicationCategories = nil
         } else if activity == .additionalFifteen {
             let store = ManagedSettingsStore(named: .dailySleep)
-            store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
-            store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
+            store.clearAllSettings()
         }
     }
     
     override func eventDidReachThreshold(_ event: DeviceActivityEvent.Name, activity: DeviceActivityName) {
         super.eventDidReachThreshold(event, activity: activity)
+        // additionalFifteen의 event threshold에 도달하면(15분)
+//        if activity == .additionalFifteen {
+//            //MyModel.shared.deviceActivityCenter.stopMonitoring([.additionalFifteen]) // additionalFifteen 스케줄의 모니터링 중단
+//            MyModel.shared.deviceActivityCenter.stopMonitoring()
+//            MyModel.shared.setDailySleepSchedule() // 기존 데일리 수면 스케줄 모니터링 다시 시작
+//        }
+        
+        MyModel.shared.deviceActivityCenter.stopMonitoring()
+        MyModel.shared.setDailySleepSchedule() // 기존 데일리 수면 스케줄 모니터링 다시 시작
         
         // Handle the event reaching its threshold.
     }
@@ -89,46 +98,47 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     
     override func intervalWillEndWarning(for activity: DeviceActivityName) {
         super.intervalWillEndWarning(for: activity)
-        if activity == .additionalFifteen {
-            // 추가시간 5분 남음 알림
-            NotificationManager.shared.additionalFifteenNotification()
-        }
         // Handle the warning before the interval ends.
     }
     
     override func eventWillReachThresholdWarning(_ event: DeviceActivityEvent.Name, activity: DeviceActivityName) {
         super.eventWillReachThresholdWarning(event, activity: activity)
-        
         // Handle the warning before the event reaches its threshold.
+//        if activity == .additionalFifteen {
+//            // 추가시간 5분 남음 알림
+//            NotificationManager.shared.additionalFifteenNotification()
+//        }
+        // 추가시간 5분 남음 알림
+        NotificationManager.shared.additionalFifteenNotification()
     }
 }
 
-//MARK: FamilyActivitySelection Parser
-extension FamilyActivitySelection: RawRepresentable {
-    public init?(rawValue: String) {
-        guard let data = rawValue.data(using: .utf8),
-            let result = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
-        else {
-            return nil
-        }
-        self = result
-    }
+////MARK: FamilyActivitySelection Parser
+//extension FamilyActivitySelection: RawRepresentable {
+//    public init?(rawValue: String) {
+//        guard let data = rawValue.data(using: .utf8),
+//            let result = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
+//        else {
+//            return nil
+//        }
+//        self = result
+//    }
+//
+//    public var rawValue: String {
+//        guard let data = try? JSONEncoder().encode(self),
+//            let result = String(data: data, encoding: .utf8)
+//        else {
+//            return "[]"
+//        }
+//        return result
+//    }
+//}
 
-    public var rawValue: String {
-        guard let data = try? JSONEncoder().encode(self),
-            let result = String(data: data, encoding: .utf8)
-        else {
-            return "[]"
-        }
-        return result
-    }
-}
-
-extension DeviceActivityName {
-    static let daily = Self("daily")
-    static let dailySleep = Self("dailySleep")
-    static let additionalFifteen = Self("additionalFifteen")
-}
+//extension DeviceActivityName {
+//    static let daily = Self("daily")
+//    static let dailySleep = Self("dailySleep")
+//    static let additionalFifteen = Self("additionalFifteen")
+//}
 
 extension ManagedSettingsStore.Name {
     static let tenSeconds = Self("threshold.seconds.ten")

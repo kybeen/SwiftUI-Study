@@ -53,21 +53,22 @@ struct ContentView: View {
             }
             
             Spacer()
-//            // 스크린 타임 권한 요청
-//            Button {
-//                requestScreenTimePermission()
-//            } label: {
-//                Text("Request Screen Time Authorization")
-//            }
-//            .padding()
-//
-//            // 노티피케이션 권한 요천
-//            Button {
-//                NotificationManager.shared.requestAuthorization()
-//            } label: {
-//                Text("Request Notification Authorization")
-//            }
-//            .padding()
+            VStack {
+                // 스크린 타임 권한 요청
+                Button {
+                    requestScreenTimePermission()
+                } label: {
+                    Text("Request Screen Time Authorization")
+                }
+
+                // 노티피케이션 권한 요천
+                Button {
+                    NotificationManager.shared.requestAuthorization()
+                } label: {
+                    Text("Request Notification Authorization")
+                }
+            }
+            .padding()
 
             // 실드 리셋
             Button {
@@ -98,57 +99,60 @@ struct ContentView: View {
 //            .familyActivityPicker(isPresented: $isEncouragedPresented, selection: $model.selectionToEncourage)
             Spacer()
             
-            // 제한 시작 버튼
-            Button {
-//                print("Discouraged apps: \(MyModel.shared.$selectedApps)")
-//                print("Discoureged app numbers: \(MyModel.shared.$selectedApps.applications.count)")
-//                // 시간 설정
-//                print("Setting schedule...")
-//                let hourComponents = Calendar.current.dateComponents([.hour], from: Date())
-//                let curHour = hourComponents.hour ?? 0
-//
-//                let minuteComponents = Calendar.current.dateComponents([.minute], from: Date())
-//                let curMins = minuteComponents.minute ?? 0
-//                print("CURRENT TIME: \(curHour):\(curMins)")
-//
-//                var endHour = curHour + 0
-//                var endMins = curMins + 5
-//                if(endMins >= 60) {
-//                    endMins -= 60
-//                    endHour += 1
-//                }
-//                if(endHour > 23) {
-//                    endHour = 23
-//                    endMins = 59
-//                }
-//                print("END TIME: \(endHour):\(endMins)")
+            VStack {
+                // 제한 시작 버튼
+                Button {
+    //                print("Discouraged apps: \(MyModel.shared.$selectedApps)")
+    //                print("Discoureged app numbers: \(MyModel.shared.$selectedApps.applications.count)")
+    //                // 시간 설정
+    //                print("Setting schedule...")
+    //                let hourComponents = Calendar.current.dateComponents([.hour], from: Date())
+    //                let curHour = hourComponents.hour ?? 0
+    //
+    //                let minuteComponents = Calendar.current.dateComponents([.minute], from: Date())
+    //                let curMins = minuteComponents.minute ?? 0
+    //                print("CURRENT TIME: \(curHour):\(curMins)")
+    //
+    //                var endHour = curHour + 0
+    //                var endMins = curMins + 5
+    //                if(endMins >= 60) {
+    //                    endMins -= 60
+    //                    endHour += 1
+    //                }
+    //                if(endHour > 23) {
+    //                    endHour = 23
+    //                    endMins = 59
+    //                }
+    //                print("END TIME: \(endHour):\(endMins)")
 
-//                MySchedule.setSchedule(curHour: curHour, curMins: curMins, endHour: endHour, endMins: endMins)
-                handleStartDeviceActivityMonitoring()
+    //                MySchedule.setSchedule(curHour: curHour, curMins: curMins, endHour: endHour, endMins: endMins)
+                    handleStartDeviceActivityMonitoring()
 
-            } label: {
-                ZStack {
-                    Color.orange
-                    Text("Start shield")
-                        .foregroundColor(.black)
-                        .font(.title2)
+                } label: {
+                    ZStack {
+                        Color.orange
+                        Text("Start shield")
+                            .foregroundColor(.black)
+                            .font(.title2)
+                    }
+                    .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
+                    .cornerRadius(15)
                 }
-                .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
-                .cornerRadius(15)
-            }
-            // 제한 시작 버튼
-            Button {
-                setDailySleepSchedule()
-            } label: {
-                ZStack {
-                    Color.orange
-                    Text("Daily Sleep Monitoring start")
-                        .foregroundColor(.black)
-                        .font(.title2)
+                // 데일리 수면 시작 버튼
+                Button {
+                    setDailySleepSchedule()
+                } label: {
+                    ZStack {
+                        Color.orange
+                        Text("Daily Sleep Monitoring start")
+                            .foregroundColor(.black)
+                            .font(.title2)
+                    }
+                    .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
+                    .cornerRadius(15)
                 }
-                .frame(width: UIScreen.main.bounds.width*0.8, height: 50)
-                .cornerRadius(15)
             }
+
             Button {
                 MyModel.shared.setAdditionalFifteenSchedule()
             } label: {

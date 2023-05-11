@@ -24,11 +24,15 @@ class MyModel: ObservableObject {
     
     // MARK: 스케쥴 시작 시간을 담기 위한 변수
     @AppStorage("sleepStartDateComponent", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
-    var sleepStartDateComponent = DateComponents(hour: 23, minute: 00)
+    var sleepStartDateComponent = DateComponents(hour: 07, minute: 00) // 밤 테스트용
+//    @AppStorage("sleepStartDateComponent", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
+//    var sleepStartDateComponent = DateComponents(hour: 07, minute: 00) // 낮 테스트용
     
     // MARK: 스케쥴 종료 시간을 담기 위한 변수
     @AppStorage("sleepEndDateComponent", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
-    var sleepEndDateComponent = DateComponents(hour: 07, minute: 00)
+    var sleepEndDateComponent = DateComponents(hour: 23, minute: 00) // 밤 테스트용
+//    @AppStorage("sleepEndDateComponent", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
+//    var sleepEndDateComponent = DateComponents(hour: 23, minute: 00) // 낮 테스트용
     
     @AppStorage("testInt", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
     var testInt = 0
@@ -86,11 +90,11 @@ class MyModel: ObservableObject {
             intervalStart: sleepStartDateComponent,
             intervalEnd: sleepEndDateComponent,
             repeats: true,
-            warningTime: DateComponents(minute: 5)
+            warningTime: DateComponents(minute: 5) // 5분 전 알림
         )
         print("Daily Sleep Schedule: \(sleepStartDateComponent.hour!):\(sleepStartDateComponent.minute!) ~ \(sleepEndDateComponent.hour!):\(sleepEndDateComponent.minute!)")
         do {
-            try deviceActivityCenter.startMonitoring(.dailySleep, during: dailySleepSchedule)
+            try deviceActivityCenter.startMonitoring(.dailySleep, during: dailySleepSchedule) // 모니터링 시작
             print("Daily sleep monitoring started")
         } catch {
             // Handle error
@@ -104,7 +108,7 @@ class MyModel: ObservableObject {
         let currentHour = currentDateComponents.hour ?? 0
         let currentMinute = currentDateComponents.minute ?? 0
         var endHour = currentHour + 0
-        var endMinute = currentMinute + 20 // 15분
+        var endMinute = currentMinute + 15 // 15분
         if endMinute >= 60 {
             endMinute -= 60
             endHour += 1
@@ -115,29 +119,28 @@ class MyModel: ObservableObject {
         }
         print("Additional time schedule: \(currentHour):\(currentMinute) ~ \(endHour):\(endMinute)")
         
-        // 현재 시간부터 15분 동안의 새로운 스케줄 생성
+        // 현재 시간부터 새로운 스케줄 생성
         let additionalSchedule = DeviceActivitySchedule(
-            intervalStart: DateComponents(hour: currentHour, minute: currentMinute + 1, second: currentDateComponents.second),
-            intervalEnd: DateComponents(hour: endHour, minute: endMinute),
-            //intervalEnd: sleepEndDateComponent,
+            intervalStart: DateComponents(hour: currentHour, minute: currentMinute, second: currentDateComponents.second),
+            //intervalEnd: DateComponents(hour: endHour, minute: endMinute),
+            intervalEnd: sleepEndDateComponent,
             repeats: false,
-            warningTime: DateComponents(minute: 5) // 15분 추가시간 종료 5분 전에 알림
+            warningTime: DateComponents(minute: 5) // 종료 5분 전에 알림
         )
         
-//        // 15분동안 앱 사용을 허용할 이벤트 생성
-//        let additionalEvent = DeviceActivityEvent(
-//            applications: selectedApps.applicationTokens,
-//            categories: selectedApps.categoryTokens,
-//            // 앱 사용을 허용할 시간
-//            threshold: DateComponents(second: 20)
-//        )
+        // 15분동안 앱 사용을 허용할 이벤트 생성
+        let additionalEvent = DeviceActivityEvent(
+    //        applications: selectedApps.applicationTokens,
+    //        categories: selectedApps.categoryTokens,
+            threshold: DateComponents(minute: 5) // 15분으로 해야됨
+        )
         
         do {
             MyModel.shared.deviceActivityCenter.stopMonitoring([.dailySleep]) // 기존 수면시간 스케줄의 모니터링 중단
             try MyModel.shared.deviceActivityCenter.startMonitoring(
                 .additionalFifteen,
-                during: additionalSchedule
-                //events: [.additionalFifteen: additionalEvent]
+                during: additionalSchedule,
+                events: [.additionalFifteen: additionalEvent]
             )
             print("Additional 15minutes Monitoring started!!")
         } catch {

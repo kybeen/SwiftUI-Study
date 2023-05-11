@@ -32,7 +32,7 @@ class ShieldActionExtension: ShieldActionDelegate {
     @AppStorage("testInt", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
     var testInt = 0
     
-    let store = ManagedSettingsStore(named: .tenSeconds)
+    //let store = ManagedSettingsStore(named: .tenSeconds)
     
     override func handle(action: ShieldAction, for application: ApplicationToken, completionHandler: @escaping (ShieldActionResponse) -> Void) {
         // Handle the action as needed.
@@ -81,7 +81,8 @@ class ShieldActionExtension: ShieldActionDelegate {
 //            actionSheetViewController?.showActionSheet()
 //            completionHandler(.defer)
             
-            
+            testInt += 1
+            MyModel.shared.setAdditionalFifteenSchedule()
             completionHandler(.none)
             
         
@@ -92,12 +93,11 @@ class ShieldActionExtension: ShieldActionDelegate {
 }
 
 
-extension DeviceActivityName {
-    static let daily = Self("daily")
-//    static let weekend = Self("weekend")
-}
+//extension DeviceActivityName {
+//    static let daily = Self("daily")
+//}
 
-extension ManagedSettingsStore.Name {
-    static let tenSeconds = Self("threshold.seconds.ten")
-//    static let weekend = Self("weekend")
-}
+//extension ManagedSettingsStore.Name {
+//    static let tenSeconds = Self("threshold.seconds.ten")
+////    static let weekend = Self("weekend")
+//}
