@@ -26,29 +26,17 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     @AppStorage("selectedApps", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
     var shieldedApps = FamilyActivitySelection()
     
+    
     // schedule의 시작 시점 이후 처음으로 기기가 사용될 때 호출
     override func intervalDidStart(for activity: DeviceActivityName) {
         super.intervalDidStart(for: activity)
-        if activity == .daily {
-            
-            let store = ManagedSettingsStore(named: .tenSeconds)
-            store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
-            store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
-            
-        } else if activity == .dailySleep {
-            
-            let store = ManagedSettingsStore(named: .dailySleep)
-            store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
-            store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
-            
-        } else if activity == .additionalFifteen {
-            
-            // additionalFifteen 스케줄이 시작되면 다시 앱을 잠금
-            let store = ManagedSettingsStore(named: .dailySleep)
-            store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
-            store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
-            
+        if activity == .test || activity == .dailySleep { //MARK: 수면 계획 스케줄 시작
+            MyModel.shared.additionalCount = 0
         }
+        MyModel.shared.isEndPoint = true // 현재 스케줄을 종료 지점이라고 봄
+        let store = ManagedSettingsStore(named: .dailySleep)
+        store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
+        store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(shieldedApps.categoryTokens)
     }
     
     // schedule의 종료 시점 이후 처음으로 기기가 사용될 때 호출 or 모니터링 중단 시에도 호출
@@ -56,22 +44,29 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         super.intervalDidEnd(for: activity)
         // Handle the end of the interval.
         
-        if activity == .daily {
-            let store = ManagedSettingsStore(named: .tenSeconds)
-            store.clearAllSettings()
-            print("Schedule is ended!!")
-//        } else if activity == .weekend {
-//            let store = ManagedSettingsStore(named: .weekend)
-//            store.clearAllSettings()
-        } else if activity == .dailySleep {
-            let store = ManagedSettingsStore(named: .dailySleep)
-            store.clearAllSettings()
-            MyModel.shared.additionalCount = 0 // 스케줄 연장 횟수 카운트 초기화
-        } else if activity == .additionalFifteen {
-            let store = ManagedSettingsStore(named: .dailySleep)
-            store.clearAllSettings()
-            MyModel.shared.additionalCount = 0 // 스케줄 연장 횟수 카운트 초기화
-        }
+//        if activity == .daily {
+//
+//        } else if activity == .dailySleep { //MARK: 수면 계획 스케줄 종료
+//            if MyModel.shared.isEndPoint == true { // 시간을 다 채워서 스케줄 종료
+//                MyModel.shared.additionalCount = 0
+//            }
+//
+//        } else if activity == .additionalFifteenOne { //MARK: 1차 추가 15분 스케줄 종료
+//            if MyModel.shared.isEndPoint == true { // 시간을 다 채워서 스케줄 종료
+//                MyModel.shared.additionalCount = 0
+//            }
+//
+//        } else if activity == .additionalFifteenTwo { //MARK: 2차 추가 15분 스케줄 종료
+//            MyModel.shared.additionalCount = 0
+//
+//        }
+        
+        //아래 코드가 계속 실행되는것 같음
+//        if MyModel.shared.isEndPoint == true { // 시간을 다 채워서 스케줄 종료
+//            MyModel.shared.additionalCount = 0
+//        }
+        let store = ManagedSettingsStore(named: .dailySleep)
+        store.clearAllSettings()
     }
     
     override func eventDidReachThreshold(_ event: DeviceActivityEvent.Name, activity: DeviceActivityName) {
@@ -94,7 +89,7 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         super.intervalWillStartWarning(for: activity)
         if activity == .dailySleep { // 기존 수면 스케줄 종료 알림
             NotificationManager.shared.scheduleNotification(title: "수면 계획이 곧 시작됩니다.", subTitle: "5분 뒤에 설정한 수면 계획 시작")
-        } else if activity == .additionalFifteen { // 1회째 연장 시간 종료 알림
+        } else if activity == .additionalFifteenOne { // 1회째 연장 시간 종료 알림
             NotificationManager.shared.scheduleNotification(title: "약속한 시간이 다가옵니다.", subTitle: "5분 뒤에 설정한 수면 계획 시작")
         } else { // 2회째 연장 시간 종료 알림
             NotificationManager.shared.scheduleNotification(title: "최후의 약속이 끝나갑니다.", subTitle: "5분 뒤에 설정한 수면 계획 다시 시작")
@@ -117,37 +112,4 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
 //        // 추가시간 5분 남음 알림
 //        NotificationManager.shared.additionalFifteenNotification()
     }
-}
-
-////MARK: FamilyActivitySelection Parser
-//extension FamilyActivitySelection: RawRepresentable {
-//    public init?(rawValue: String) {
-//        guard let data = rawValue.data(using: .utf8),
-//            let result = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
-//        else {
-//            return nil
-//        }
-//        self = result
-//    }
-//
-//    public var rawValue: String {
-//        guard let data = try? JSONEncoder().encode(self),
-//            let result = String(data: data, encoding: .utf8)
-//        else {
-//            return "[]"
-//        }
-//        return result
-//    }
-//}
-
-//extension DeviceActivityName {
-//    static let daily = Self("daily")
-//    static let dailySleep = Self("dailySleep")
-//    static let additionalFifteen = Self("additionalFifteen")
-//}
-
-extension ManagedSettingsStore.Name {
-    static let tenSeconds = Self("threshold.seconds.ten")
-    static let dailySleep = Self("dailySleep")
-    static let additionalFifteen = Self("additionalFifteen")
 }

@@ -40,7 +40,25 @@ class ShieldActionExtension: ShieldActionDelegate {
         case .primaryButtonPressed:
             completionHandler(.close)
         case .secondaryButtonPressed:
-            completionHandler(.defer)
+//            if MyModel.shared.additionalCount < 2 { //MARK: 연장 횟수 2회 미만
+//                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
+//                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
+//                MyModel.shared.setAdditionalFifteenSchedule() // 15분 연장 스케줄 모니터링 시작
+//            }
+            if MyModel.shared.additionalCount == 0 { //MARK: 연장 횟수 2회 미만
+                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
+                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
+                completionHandler(.defer)
+                MyModel.shared.setAdditionalFifteenScheduleOne() // 15분 연장 스케줄 모니터링 시작
+            } else if MyModel.shared.additionalCount == 1 {
+                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
+                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
+                completionHandler(.defer)
+                MyModel.shared.setAdditionalFifteenScheduleTwo() // 15분 연장 스케줄 모니터링 시작
+            } else {
+                completionHandler(.defer)
+            }
+        
         @unknown default:
             fatalError()
         }
@@ -53,6 +71,7 @@ class ShieldActionExtension: ShieldActionDelegate {
     
     override func handle(action: ShieldAction, for category: ActivityCategoryToken, completionHandler: @escaping (ShieldActionResponse) -> Void) {
         // Handle the action as needed.
+        var additionalCount = MyModel.shared.additionalCount
         switch action {
         case .primaryButtonPressed:
             completionHandler(.close)
@@ -66,12 +85,6 @@ class ShieldActionExtension: ShieldActionDelegate {
 //                testInt = 0
 //
 //                completionHandler(.none)
-//                /*
-//                 커스텀 실드 화면이 기본 실드로 잠깐 변경되는 이유는 completionHandler가 .defer로 설정되어 있기 때문입니다.
-//                 이 경우, 실드 화면이 닫히기 전에 다음 액션을 처리하기 위해 잠시 기본 실드 화면으로 전환됩니다.
-//                 - 라는 대답을 챗 지피티한테 들음
-//                 - 근데 WWDC영상 보면 아예 다른 화면도 가능할 것 같긴 한데.. .none으로 되면 신경 안써도 될 것 같기도
-//                */
 //            } else {
 //                testInt += 1
 //                completionHandler(.defer)
@@ -84,13 +97,24 @@ class ShieldActionExtension: ShieldActionDelegate {
             // additionalFifteen 스케줄이 시작되면 실드 세팅을 초기화해줌
 //            let store = ManagedSettingsStore(named: .dailySleep)
 //            store.clearAllSettings()
-            if MyModel.shared.additionalCount < 2 { //MARK: 연장 횟수 2회 미만
-                MyModel.shared.deviceActivityCenter.stopMonitoring() // 기존 스케줄의 모니터링 중단
-                MyModel.shared.setAdditionalFifteenSchedule() // 15분 연장 스케줄 모니터링 시작
+            
+
+//            if MyModel.shared.additionalCount < 2 { //MARK: 연장 횟수 2회 미만
+//                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
+//                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
+//                MyModel.shared.setAdditionalFifteenSchedule() // 15분 연장 스케줄 모니터링 시작
+//            }
+            
+            if MyModel.shared.additionalCount == 0 { //MARK: 연장 횟수 2회 미만
+                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
                 MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
-            } else { //MARK: 연장 횟수 2회 이상
+                MyModel.shared.setAdditionalFifteenScheduleOne() // 15분 연장 스케줄 모니터링 시작
+            } else if MyModel.shared.additionalCount == 1 {
+                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
+                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
+                MyModel.shared.setAdditionalFifteenScheduleTwo() // 15분 연장 스케줄 모니터링 시작
             }
-            completionHandler(.none)
+            completionHandler(.defer)
         
         @unknown default:
             fatalError()

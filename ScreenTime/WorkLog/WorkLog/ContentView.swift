@@ -23,7 +23,7 @@ extension DeviceActivityReport.Context {
 }
 
 struct ContentView: View {
-    @ObservedObject var store: MyModel
+    //@ObservedObject var store: MyModel
     
     @State var isDiscouragedPresented = false
     //@State private var isEncouragedPresented = false
@@ -46,93 +46,69 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-//            Button {
-//                isReportShowing = true
-//            } label: {
-//                Text("Report")
-//            }
-            Text("\(MyModel.shared.additionalCount)")
-            
-            Spacer()
             VStack {
-                // 스크린 타임 권한 요청
-                Button {
-                    requestScreenTimePermission()
-                } label: {
-                    Text("Request Screen Time Authorization")
+    //            Button {
+    //                isReportShowing = true
+    //            } label: {
+    //                Text("Report")
+    //            }
+                Text("연장 횟수: \(MyModel.shared.additionalCount.description)")
+                Text("isEndPoint: \(MyModel.shared.isEndPoint.description)")
+                
+                Spacer()
+                VStack {
+                    // 스크린 타임 권한 요청
+                    Button {
+                        requestScreenTimePermission()
+                    } label: {
+                        Text("Request Screen Time Authorization")
+                    }
+
+                    // 노티피케이션 권한 요천
+                    Button {
+                        NotificationManager.shared.requestAuthorization()
+                    } label: {
+                        Text("Request Notification Authorization")
+                    }
                 }
+                .padding()
 
-                // 노티피케이션 권한 요천
-                Button {
-                    NotificationManager.shared.requestAuthorization()
-                } label: {
-                    Text("Request Notification Authorization")
+    //            // 실드 리셋
+    //            Button {
+    //                handleResetSelection()
+    //            } label: {
+    //                Text("Reset shielded apps")
+    //            }
+                
+                Spacer()
+                
+                Button("Select Apps to Discourage") {
+                    isDiscouragedPresented = true
                 }
-            }
-            .padding()
-
-            // 실드 리셋
-            Button {
-                handleResetSelection()
-            } label: {
-                Text("Reset shielded apps")
-            }
-            
-            Spacer()
-            
-            Button("Select Apps to Discourage") {
-                isDiscouragedPresented = true
-            }
-            .familyActivityPicker(headerText: "FamilyActivityPicker 헤더명", isPresented: $isDiscouragedPresented, selection: MyModel.shared.$selectedApps)
-            .padding()
-            .foregroundColor(.gray)
-            
-            if let firstToken = MyModel.shared.selectedApps.applicationTokens.first {
-                Label(firstToken)
-                    .frame(maxWidth: .infinity)
-                    .labelStyle(.iconOnly)
-            } else {
-                Text("선택된 앱이 없습니다.")
-            }
-//            Button("Select Apps to Encourage") {
-//                isEncouragedPresented = true
-//            }
-//            .familyActivityPicker(isPresented: $isEncouragedPresented, selection: $model.selectionToEncourage)
-            Spacer()
-            
-            VStack {
-                // 제한 시작 버튼
+                .familyActivityPicker(headerText: "FamilyActivityPicker 헤더명", isPresented: $isDiscouragedPresented, selection: MyModel.shared.$selectedApps)
+                .padding()
+                .foregroundColor(.gray)
+                
+                if let firstToken = MyModel.shared.selectedApps.applicationTokens.first {
+                    Label(firstToken)
+                        .frame(maxWidth: .infinity)
+                        .labelStyle(.iconOnly)
+                } else {
+                    Text("선택된 앱이 없습니다.")
+                }
+    //            Button("Select Apps to Encourage") {
+    //                isEncouragedPresented = true
+    //            }
+    //            .familyActivityPicker(isPresented: $isEncouragedPresented, selection: $model.selectionToEncourage)
+                Spacer()
+                
+                // 데일리 테스트 시작 버튼
                 Button {
-    //                print("Discouraged apps: \(MyModel.shared.$selectedApps)")
-    //                print("Discoureged app numbers: \(MyModel.shared.$selectedApps.applications.count)")
-    //                // 시간 설정
-    //                print("Setting schedule...")
-    //                let hourComponents = Calendar.current.dateComponents([.hour], from: Date())
-    //                let curHour = hourComponents.hour ?? 0
-    //
-    //                let minuteComponents = Calendar.current.dateComponents([.minute], from: Date())
-    //                let curMins = minuteComponents.minute ?? 0
-    //                print("CURRENT TIME: \(curHour):\(curMins)")
-    //
-    //                var endHour = curHour + 0
-    //                var endMins = curMins + 5
-    //                if(endMins >= 60) {
-    //                    endMins -= 60
-    //                    endHour += 1
-    //                }
-    //                if(endHour > 23) {
-    //                    endHour = 23
-    //                    endMins = 59
-    //                }
-    //                print("END TIME: \(endHour):\(endMins)")
-
-    //                MySchedule.setSchedule(curHour: curHour, curMins: curMins, endHour: endHour, endMins: endMins)
                     handleStartDeviceActivityMonitoring()
-
                 } label: {
                     ZStack {
                         Color.orange
-                        Text("Start shield")
+                        Text("Daily test Monitoring start")
                             .foregroundColor(.black)
                             .font(.title2)
                     }
@@ -154,18 +130,27 @@ struct ContentView: View {
                 }
             }
 
-            Button {
-                MyModel.shared.setAdditionalFifteenSchedule()
-            } label: {
-                Text("15분 더 보기")
-            }
-
-            
-//            Button {
-//                handleSetBlockApplication()
-//            } label: {
-//                Text("Block shield")
-//            }
+                Button {
+                    //MyModel.shared.setAdditionalFifteenSchedule()
+                    print("Activitiies: \(MyModel.shared.deviceActivityCenter.activities)")
+                    if MyModel.shared.deviceActivityCenter.schedule(for: .test) != nil {
+                        print("Schedule .test: \(MyModel.shared.deviceActivityCenter.schedule(for: .test))\n")
+                    }
+                    if MyModel.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
+                        print("Schedule .dailySleep: \(MyModel.shared.deviceActivityCenter.schedule(for: .dailySleep))\n")
+                    }
+                    if MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenOne) != nil {
+                        print("Schedule .additionalFifteenOne: \(MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenOne))\n")
+                    }
+                    if MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenTwo) != nil {
+                        print("Schedule .additionalFifteenTwo: \(MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenTwo))\n")
+                    }
+                    print("additionalCount: \(MyModel.shared.additionalCount)")
+                    print("isEndPoint: \(MyModel.shared.isEndPoint.description)\n\n")
+                    
+                } label: {
+                    Text("액티비티 조회")
+                }
         }
         .padding()
         .sheet(isPresented: $isReportShowing) {
@@ -245,8 +230,8 @@ extension ContentView {
 }
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(store: MyModel.shared)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(store: MyModel.shared)
+//    }
+//}

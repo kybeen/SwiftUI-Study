@@ -15,7 +15,7 @@ struct WorklogApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(store: MyModel.shared)
+            ContentView()
 //                .environmentObject(MyModel())
 //                .onAppear {
 //                    Task {
