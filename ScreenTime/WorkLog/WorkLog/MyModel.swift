@@ -30,7 +30,7 @@ class MyModel: ObservableObject {
     
     // MARK: 스케쥴 종료 시간을 담기 위한 변수
     @AppStorage("sleepEndDateComponent", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
-    var sleepEndDateComponent = DateComponents(hour: 17, minute: 22) // 밤 테스트용
+    var sleepEndDateComponent = DateComponents(hour: 19, minute: 25) // 밤 테스트용
 //    @AppStorage("sleepEndDateComponent", store: UserDefaults(suiteName: "group.com.shield.dreamon"))
 //    var sleepEndDateComponent = DateComponents(hour: 22, minute: 7) // 낮 테스트용
     
@@ -57,11 +57,11 @@ class MyModel: ObservableObject {
         let currentDateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: Date()) // 현재시간
         let schedule = DeviceActivitySchedule(
             intervalStart: DateComponents(hour: currentDateComponents.hour, minute: currentDateComponents.minute!+2),
-            intervalEnd: DateComponents(hour: 17, minute: 45),
+            intervalEnd: DateComponents(hour: 23, minute: 00),
             repeats: true,
             warningTime: DateComponents(minute: 5)
         )
-        //print("Test Schedule: \(currentDateComponents.hour!):\(currentDateComponents.minute!+2) ~ 17:45")
+        //print("Test Schedule: \(currentDateComponents.hour!):\(currentDateComponents.minute!+2) ~ 23:00")
         do {
             print("additionalCount: \(additionalCount)")
             print("isEndPoint: \(isEndPoint)")

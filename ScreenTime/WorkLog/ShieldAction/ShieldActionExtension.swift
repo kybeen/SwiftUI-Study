@@ -45,19 +45,7 @@ class ShieldActionExtension: ShieldActionDelegate {
 //                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
 //                MyModel.shared.setAdditionalFifteenSchedule() // 15분 연장 스케줄 모니터링 시작
 //            }
-            if MyModel.shared.additionalCount == 0 { //MARK: 연장 횟수 2회 미만
-                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
-                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
-                completionHandler(.defer)
-                MyModel.shared.setAdditionalFifteenScheduleOne() // 15분 연장 스케줄 모니터링 시작
-            } else if MyModel.shared.additionalCount == 1 {
-                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
-                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
-                completionHandler(.defer)
-                MyModel.shared.setAdditionalFifteenScheduleTwo() // 15분 연장 스케줄 모니터링 시작
-            } else {
-                completionHandler(.defer)
-            }
+            completionHandler(.close)
         
         @unknown default:
             fatalError()
@@ -104,17 +92,20 @@ class ShieldActionExtension: ShieldActionDelegate {
 //                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
 //                MyModel.shared.setAdditionalFifteenSchedule() // 15분 연장 스케줄 모니터링 시작
 //            }
-            
             if MyModel.shared.additionalCount == 0 { //MARK: 연장 횟수 2회 미만
                 MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
                 MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
                 MyModel.shared.setAdditionalFifteenScheduleOne() // 15분 연장 스케줄 모니터링 시작
+                completionHandler(.defer)
             } else if MyModel.shared.additionalCount == 1 {
                 MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
                 MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
                 MyModel.shared.setAdditionalFifteenScheduleTwo() // 15분 연장 스케줄 모니터링 시작
+                completionHandler(.defer)
+            } else {
+                MyModel.shared.additionalCount += 1
+                completionHandler(.defer)
             }
-            completionHandler(.defer)
         
         @unknown default:
             fatalError()
