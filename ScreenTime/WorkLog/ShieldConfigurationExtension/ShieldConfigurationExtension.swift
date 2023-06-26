@@ -44,28 +44,38 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     // 카테고리 단위로 선택했을 때
     override func configuration(shielding application: Application, in category: ActivityCategory) -> ShieldConfiguration {
         // Customize the shield as needed for applications shielded because of their category.
-        if MyModel.shared.additionalCount >= 2 {
-            return ShieldConfiguration(
-                backgroundBlurStyle: UIBlurEffect.Style.extraLight,
-                backgroundColor: UIColor.white.withAlphaComponent(0.1),
-                icon: UIImage(systemName: imageName),
-                title: ShieldConfiguration.Label(text: "😴 잠에 들 시간이에요\n\(MyModel.shared.additionalCount)", color: .black),
-                subtitle: ShieldConfiguration.Label(text: subtitle, color: .black),
-                primaryButtonLabel: ShieldConfiguration.Label(text: primaryButtonnText, color: .white),
-                primaryButtonBackgroundColor: uiColorValue
-            )
-        } else {
-            return ShieldConfiguration(
-                backgroundBlurStyle: UIBlurEffect.Style.extraLight,
-                backgroundColor: UIColor.white.withAlphaComponent(0.1),
-                icon: UIImage(systemName: imageName),
-                title: ShieldConfiguration.Label(text: "😴 잠에 들 시간이에요\n\(MyModel.shared.additionalCount)", color: .black),
-                subtitle: ShieldConfiguration.Label(text: subtitle, color: .black),
-                primaryButtonLabel: ShieldConfiguration.Label(text: primaryButtonnText, color: .white),
-                primaryButtonBackgroundColor: uiColorValue,
-                secondaryButtonLabel: ShieldConfiguration.Label(text: secondaryButtonText, color: uiColorValue)
-            )
-        }
+        return ShieldConfiguration(
+            backgroundBlurStyle: UIBlurEffect.Style.extraLight,
+            backgroundColor: UIColor.white.withAlphaComponent(0.1),
+            icon: UIImage(systemName: imageName),
+            title: ShieldConfiguration.Label(text: "😴 잠에 들 시간이에요\n\(MyModel.shared.additionalCount)", color: .black),
+            subtitle: ShieldConfiguration.Label(text: subtitle, color: .black),
+            primaryButtonLabel: ShieldConfiguration.Label(text: primaryButtonnText, color: .white),
+            primaryButtonBackgroundColor: uiColorValue,
+            secondaryButtonLabel: ShieldConfiguration.Label(text: secondaryButtonText, color: uiColorValue)
+        )
+//        if MyModel.shared.additionalCount >= 2 {
+//            return ShieldConfiguration(
+//                backgroundBlurStyle: UIBlurEffect.Style.extraLight,
+//                backgroundColor: UIColor.white.withAlphaComponent(0.1),
+//                icon: UIImage(systemName: imageName),
+//                title: ShieldConfiguration.Label(text: "😴 잠에 들 시간이에요\n\(MyModel.shared.additionalCount)", color: .black),
+//                subtitle: ShieldConfiguration.Label(text: subtitle, color: .black),
+//                primaryButtonLabel: ShieldConfiguration.Label(text: primaryButtonnText, color: .white),
+//                primaryButtonBackgroundColor: uiColorValue
+//            )
+//        } else {
+//            return ShieldConfiguration(
+//                backgroundBlurStyle: UIBlurEffect.Style.extraLight,
+//                backgroundColor: UIColor.white.withAlphaComponent(0.1),
+//                icon: UIImage(systemName: imageName),
+//                title: ShieldConfiguration.Label(text: "😴 잠에 들 시간이에요\n\(MyModel.shared.additionalCount)", color: .black),
+//                subtitle: ShieldConfiguration.Label(text: subtitle, color: .black),
+//                primaryButtonLabel: ShieldConfiguration.Label(text: primaryButtonnText, color: .white),
+//                primaryButtonBackgroundColor: uiColorValue,
+//                secondaryButtonLabel: ShieldConfiguration.Label(text: secondaryButtonText, color: uiColorValue)
+//            )
+//        }
     }
     
     override func configuration(shielding webDomain: WebDomain) -> ShieldConfiguration {

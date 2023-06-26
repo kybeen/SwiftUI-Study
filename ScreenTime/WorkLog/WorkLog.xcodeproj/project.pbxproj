@@ -26,6 +26,9 @@
 		B813F32A2A0BBA87003E7590 /* DeviceActivityMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8348CC62A058F710013FD65 /* DeviceActivityMonitorExtension.swift */; };
 		B813F32C2A0BBAAE003E7590 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F2C62A0A70B1003E7590 /* NotificationManager.swift */; };
 		B813F32F2A0BBB71003E7590 /* ShieldActionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813F2D02A0A7405003E7590 /* ShieldActionExtension.swift */; };
+		B8252EA42A11312600D1B692 /* DeviceActivityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8252EA32A11312600D1B692 /* DeviceActivityTest.swift */; };
+		B8252EA62A11313E00D1B692 /* ShieldActionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8252EA52A11313E00D1B692 /* ShieldActionTest.swift */; };
+		B8252EA82A11314E00D1B692 /* ShieldConfigurationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8252EA72A11314E00D1B692 /* ShieldConfigurationTest.swift */; };
 		B8348CB829FAE1FC0013FD65 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8348CB729FAE1FC0013FD65 /* MyModel.swift */; };
 		B8348CBA29FEFA8F0013FD65 /* MySchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8348CB929FEFA8F0013FD65 /* MySchedule.swift */; };
 		B8348CC42A058F710013FD65 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8348CC32A058F700013FD65 /* DeviceActivity.framework */; };
@@ -112,6 +115,9 @@
 		B813F3112A0A8BFC003E7590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B813F3122A0A8BFC003E7590 /* ReportExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReportExtension.entitlements; sourceTree = "<group>"; };
 		B813F3192A0A8C29003E7590 /* AppDeviceActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeviceActivity.swift; sourceTree = "<group>"; };
+		B8252EA32A11312600D1B692 /* DeviceActivityTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityTest.swift; sourceTree = "<group>"; };
+		B8252EA52A11313E00D1B692 /* ShieldActionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldActionTest.swift; sourceTree = "<group>"; };
+		B8252EA72A11314E00D1B692 /* ShieldConfigurationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldConfigurationTest.swift; sourceTree = "<group>"; };
 		B8348CB729FAE1FC0013FD65 /* MyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
 		B8348CB929FEFA8F0013FD65 /* MySchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchedule.swift; sourceTree = "<group>"; };
 		B8348CC12A058F700013FD65 /* DeviceActivityMonitorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DeviceActivityMonitorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				B8348CB929FEFA8F0013FD65 /* MySchedule.swift */,
+				B8252EA32A11312600D1B692 /* DeviceActivityTest.swift */,
+				B8252EA52A11313E00D1B692 /* ShieldActionTest.swift */,
+				B8252EA72A11314E00D1B692 /* ShieldConfigurationTest.swift */,
 			);
 			path = NotUsed;
 			sourceTree = "<group>";
@@ -516,7 +525,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8252EA42A11312600D1B692 /* DeviceActivityTest.swift in Sources */,
+				B8252EA82A11314E00D1B692 /* ShieldConfigurationTest.swift in Sources */,
 				B813F31B2A0A8C5D003E7590 /* AppDeviceActivity.swift in Sources */,
+				B8252EA62A11313E00D1B692 /* ShieldActionTest.swift in Sources */,
 				B84E038229F91C4D0027126B /* ContentView.swift in Sources */,
 				B8348CB829FAE1FC0013FD65 /* MyModel.swift in Sources */,
 				B813F2C72A0A70B1003E7590 /* NotificationManager.swift in Sources */,

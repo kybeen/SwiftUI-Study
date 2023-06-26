@@ -30,9 +30,9 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     // schedule의 시작 시점 이후 처음으로 기기가 사용될 때 호출
     override func intervalDidStart(for activity: DeviceActivityName) {
         super.intervalDidStart(for: activity)
-        if activity == .test || activity == .dailySleep { //MARK: 수면 계획 스케줄 시작
-            MyModel.shared.additionalCount = 0
-        }
+//        if activity == .test || activity == .dailySleep { //MARK: 수면 계획 스케줄 시작
+//            MyModel.shared.additionalCount = 0
+//        }
         MyModel.shared.isEndPoint = true // 현재 스케줄을 종료 지점이라고 봄
         let store = ManagedSettingsStore(named: .dailySleep)
         store.shield.applications = shieldedApps.applicationTokens.isEmpty ? nil : shieldedApps.applicationTokens
@@ -65,6 +65,10 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
 //        if MyModel.shared.isEndPoint == true { // 시간을 다 채워서 스케줄 종료
 //            MyModel.shared.additionalCount = 0
 //        }
+//        //TODO: MyModel.shared.isEndPoint == true 조건이 계속 적용됨
+//        if activity == .additionalFifteen && MyModel.shared.isEndPoint == true { //MARK: 수면 계획 스케줄
+//            MyModel.shared.additionalCount = 0
+//        }
         let store = ManagedSettingsStore(named: .dailySleep)
         store.clearAllSettings()
     }
@@ -89,11 +93,14 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
         super.intervalWillStartWarning(for: activity)
         if activity == .dailySleep { // 기존 수면 스케줄 종료 알림
             NotificationManager.shared.scheduleNotification(title: "수면 계획이 곧 시작됩니다.", subTitle: "5분 뒤에 설정한 수면 계획 시작")
-        } else if activity == .additionalFifteenOne { // 1회째 연장 시간 종료 알림
-            NotificationManager.shared.scheduleNotification(title: "약속한 시간이 다가옵니다.", subTitle: "5분 뒤에 설정한 수면 계획 시작")
-        } else { // 2회째 연장 시간 종료 알림
-            NotificationManager.shared.scheduleNotification(title: "최후의 약속이 끝나갑니다.", subTitle: "5분 뒤에 설정한 수면 계획 다시 시작")
+        } else if activity == .additionalFifteen {
+            if MyModel.shared.additionalCount < 2 { //MARK: 1회째 연장 이후 수면 스케줄 시작 알림
+                NotificationManager.shared.scheduleNotification(title: "약속한 시간이 다가옵니다.", subTitle: "5분 뒤에 설정한 수면 계획 시작")
+            } else { //MARK: 2회째 연장 이후 수면 스케줄 시작 알림
+                NotificationManager.shared.scheduleNotification(title: "최후의 약속이 끝나갑니다.", subTitle: "5분 뒤에 설정한 수면 계획 다시 시작")
+            }
         }
+        
         // Handle the warning before the interval starts.
     }
     

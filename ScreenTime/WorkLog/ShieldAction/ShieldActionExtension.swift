@@ -87,25 +87,27 @@ class ShieldActionExtension: ShieldActionDelegate {
 //            store.clearAllSettings()
             
 
-//            if MyModel.shared.additionalCount < 2 { //MARK: 연장 횟수 2회 미만
+
+            MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
+            MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
+            MyModel.shared.setAdditionalFifteenSchedule() // 15분 연장 스케줄 모니터링 시작
+            completionHandler(.defer)
+            
+            
+//            if MyModel.shared.additionalCount == 0 { //MARK: 연장 횟수 2회 미만
 //                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
 //                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
-//                MyModel.shared.setAdditionalFifteenSchedule() // 15분 연장 스케줄 모니터링 시작
+//                MyModel.shared.setAdditionalFifteenScheduleOne() // 15분 연장 스케줄 모니터링 시작
+//                completionHandler(.defer)
+//            } else if MyModel.shared.additionalCount == 1 {
+//                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
+//                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
+//                MyModel.shared.setAdditionalFifteenScheduleTwo() // 15분 연장 스케줄 모니터링 시작
+//                completionHandler(.defer)
+//            } else {
+//                MyModel.shared.additionalCount += 1
+//                completionHandler(.defer)
 //            }
-            if MyModel.shared.additionalCount == 0 { //MARK: 연장 횟수 2회 미만
-                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
-                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
-                MyModel.shared.setAdditionalFifteenScheduleOne() // 15분 연장 스케줄 모니터링 시작
-                completionHandler(.defer)
-            } else if MyModel.shared.additionalCount == 1 {
-                MyModel.shared.isEndPoint = false // 종료 지점 다음 스케줄로 변경
-                MyModel.shared.additionalCount += 1 // 연장 횟수 1 카운트
-                MyModel.shared.setAdditionalFifteenScheduleTwo() // 15분 연장 스케줄 모니터링 시작
-                completionHandler(.defer)
-            } else {
-                MyModel.shared.additionalCount += 1
-                completionHandler(.defer)
-            }
         
         @unknown default:
             fatalError()
@@ -122,3 +124,6 @@ class ShieldActionExtension: ShieldActionDelegate {
 //    static let tenSeconds = Self("threshold.seconds.ten")
 ////    static let weekend = Self("weekend")
 //}
+
+
+
