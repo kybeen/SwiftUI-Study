@@ -139,11 +139,14 @@ struct ContentView: View {
                     if MyModel.shared.deviceActivityCenter.schedule(for: .dailySleep) != nil {
                         print("Schedule .dailySleep: \(MyModel.shared.deviceActivityCenter.schedule(for: .dailySleep))\n")
                     }
-                    if MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenOne) != nil {
-                        print("Schedule .additionalFifteenOne: \(MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenOne))\n")
-                    }
-                    if MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenTwo) != nil {
-                        print("Schedule .additionalFifteenTwo: \(MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenTwo))\n")
+//                    if MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenOne) != nil {
+//                        print("Schedule .additionalFifteenOne: \(MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenOne))\n")
+//                    }
+//                    if MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenTwo) != nil {
+//                        print("Schedule .additionalFifteenTwo: \(MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteenTwo))\n")
+//                    }
+                    if MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteen) != nil {
+                        print("Schedule .additionalFifteen: \(MyModel.shared.deviceActivityCenter.schedule(for: .additionalFifteen))\n")
                     }
                     print("additionalCount: \(MyModel.shared.additionalCount)")
                     print("isEndPoint: \(MyModel.shared.isEndPoint.description)\n\n")
