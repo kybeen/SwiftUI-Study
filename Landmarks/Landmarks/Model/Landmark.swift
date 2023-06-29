@@ -33,7 +33,8 @@ struct Landmark: Hashable, Codable, Identifiable {
     var image: Image {
         Image(imageName)
     }
-    var featureImage: Image? { // 추천 랜드마크 사진이 있는 곳은 추천용 사진도 불러옴
+    // 주요 랜드마크 이미지가 존재한다면 반환해주는 계산 프로퍼티
+    var featureImage: Image? {
         isFeatured ? Image(imageName + "_feature") : nil
     }
     

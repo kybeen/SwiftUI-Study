@@ -14,7 +14,7 @@ struct Profile {
     var seasonalPhoto = Season.winter // 랜드마크 선호 계절
     var goalDate = Date() // 랜드마크 방문 목표 날짜
     
-    static let `default` = Profile(username: "g_kumar") // 디폴트 프로필
+    static let `default` = Profile(username: "kybeen") // 디폴트 프로필
     
     enum Season: String, CaseIterable, Identifiable {
         case spring = "🌷"

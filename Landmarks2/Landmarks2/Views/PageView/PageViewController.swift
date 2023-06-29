@@ -1,8 +1,8 @@
 //
 //  PageViewController.swift
-//  Landmarks
+//  Landmarks2
 //
-//  Created by 김영빈 on 2023/03/18.
+//  Created by 김영빈 on 2023/06/29.
 //
 
 //  PageViewController.swift

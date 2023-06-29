@@ -1,8 +1,8 @@
 //
 //  PageControl.swift
-//  Landmarks
+//  Landmarks2
 //
-//  Created by 김영빈 on 2023/03/18.
+//  Created by 김영빈 on 2023/06/29.
 //
 
 //  PageControl.swift
@@ -13,7 +13,7 @@ struct PageControl: UIViewRepresentable {
     var numberOfPages: Int
     @Binding var currentPage: Int
     
-    // 새로운 코디네이터를 만들고 리턴
+    // 새 코디네이터를 만들고 리턴
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -47,5 +47,4 @@ struct PageControl: UIViewRepresentable {
             control.currentPage = sender.currentPage
         }
     }
-    
 }
