@@ -45,6 +45,19 @@
 		B82AABFD2A4D9ACC00F2D51C /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82AABFC2A4D9ACC00F2D51C /* PageControl.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B82BFE6F2A4DF33C0069061C /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B80AB1A12A49BAF300CB4B05 /* Landmarks2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landmarks2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80AB1A42A49BAF300CB4B05 /* Landmarks2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmarks2App.swift; sourceTree = "<group>"; };
@@ -144,7 +157,6 @@
 				B82AABC32A4C597E00F2D51C /* Landmarks */,
 				B82AABCF2A4C600A00F2D51C /* Badges */,
 				B82AABC42A4C599400F2D51C /* Helpers */,
-				B82AABD82A4C623D00F2D51C /* Hike.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,6 +164,7 @@
 		B80AB1BD2A49C0AB00CB4B05 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B82AABD82A4C623D00F2D51C /* Hike.swift */,
 				B80AB1BA2A49BF5300CB4B05 /* ModelData.swift */,
 				B80AB1B82A49BE1E00CB4B05 /* Landmark.swift */,
 				B82AABEA2A4D4D1F00F2D51C /* Profile.swift */,
@@ -253,6 +266,7 @@
 				B80AB19D2A49BAF300CB4B05 /* Sources */,
 				B80AB19E2A49BAF300CB4B05 /* Frameworks */,
 				B80AB19F2A49BAF300CB4B05 /* Resources */,
+				B82BFE6F2A4DF33C0069061C /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -470,6 +484,7 @@
 		B80AB1B02A49BAF500CB4B05 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -499,6 +514,7 @@
 		B80AB1B12A49BAF500CB4B05 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
