@@ -1,5 +1,5 @@
 //
-//  BatchedSensorManagerView.swift
+//  MotionManagerView.swift
 //  CoreMotionTest
 //
 //  Created by 김영빈 on 2023/07/02.
@@ -8,36 +8,35 @@
 import SwiftUI
 import CoreMotion
 
-struct RotationRateView: View {
-    @State private var rotX: [[Double]] = [[]]
-    @State private var rotY: [[Double]] = [[]]
-    @State private var rotZ: [[Double]] = [[]]
+struct AccelerometersView: View {
+    @State private var accX: [[Double]] = [[]]
+    @State private var accY: [[Double]] = [[]]
+    @State private var accZ: [[Double]] = [[]]
     @State private var timer: Timer?
     @State private var scrollWidth: CGFloat = UIScreen.main.bounds.width
     
     @State private var isSwinging = false
     @State private var isUpdating = false
     
-    @State private var rotationX: Double = 0
-    @State private var rotationY: Double = 0
-    @State private var rotationZ: Double = 0
+    @State private var accelerationX: Double = 0
+    @State private var accelerationY: Double = 0
+    @State private var accelerationZ: Double = 0
     
     // CMMotionManager: 모션에 대한 이벤트들을 처리할 수 있게 도와주는 오픈 클래스
     let motionManager = CMMotionManager()
     
     var body: some View {
         VStack {
-            Text("Rotation rate")
+            Text("Accelerometers")
                 .font(.largeTitle)
                 .bold()
             
             Text(isSwinging ? "Swinging" : "Not Swinging")
-                .font(.title)
+                .font(.title2)
                 .foregroundColor(isSwinging ? .green : .red)
-                .padding(10)
             
-//            Text("Acceleration").bold()
-//            Text("X: \(accelerationX), Y: \(accelerationY), Z: \(accelerationZ)")
+            Text("Acceleration").bold()
+            Text("X: \(accelerationX), Y: \(accelerationY), Z: \(accelerationZ)")
 //            Text("Rotation Rate").bold()
 //            Text("X: \(rotationRateX), Y: \(rotationRateY), Z: \(rotationRateZ)")
 //                .padding(.bottom, 30)
@@ -46,8 +45,8 @@ struct RotationRateView: View {
                 Text("X").bold()
                 ScrollView(.horizontal) {
                     HStack(spacing: 0) {
-                        ForEach(rotX.indices, id: \.self) { index in
-                            GraphView(dataPoints: rotX[index])
+                        ForEach(accX.indices, id: \.self) { index in
+                            GraphView(dataPoints: accX[index])
                                 .frame(width: UIScreen.main.bounds.width, height: 120)
                         }
                     }
@@ -56,8 +55,8 @@ struct RotationRateView: View {
                 Text("Y").bold()
                 ScrollView(.horizontal) {
                     HStack(spacing: 0) {
-                        ForEach(rotY.indices, id: \.self) { index in
-                            GraphView(dataPoints: rotY[index])
+                        ForEach(accY.indices, id: \.self) { index in
+                            GraphView(dataPoints: accY[index])
                                 .frame(width: UIScreen.main.bounds.width, height: 120)
                         }
                     }
@@ -66,8 +65,8 @@ struct RotationRateView: View {
                 Text("Z").bold()
                 ScrollView(.horizontal) {
                     HStack(spacing: 0) {
-                        ForEach(rotZ.indices, id: \.self) { index in
-                            GraphView(dataPoints: rotZ[index])
+                        ForEach(accZ.indices, id: \.self) { index in
+                            GraphView(dataPoints: accZ[index])
                                 .frame(width: UIScreen.main.bounds.width, height: 120)
                         }
                     }
@@ -104,7 +103,7 @@ struct RotationRateView: View {
     }
 }
 
-extension RotationRateView {
+extension AccelerometersView {
     func startMotionUpdates() {
         // 가속도계 업데이트를 위한 큐 설정
         let queue = OperationQueue()
@@ -125,19 +124,19 @@ extension RotationRateView {
             }
             
             // 스윙 모션 감지에 필요한 데이터 불러오기 (가속도계나 자이로스코프 데이터 등... 필요한거 추가)
-            let rotationRate = motion.rotationRate
-            rotationX = rotationRate.x
-            rotationY = rotationRate.y
-            rotationZ = rotationRate.z
-            rotX[rotX.count - 1].append(contentsOf: [rotationRate.x])
-            rotY[rotY.count - 1].append(contentsOf: [rotationRate.y])
-            rotZ[rotZ.count - 1].append(contentsOf: [rotationRate.z])
+            let acceleration = motion.userAcceleration
+            accelerationX = acceleration.x
+            accelerationY = acceleration.y
+            accelerationZ = acceleration.z
+            accX[accX.count - 1].append(contentsOf: [acceleration.x])
+            accY[accY.count - 1].append(contentsOf: [acceleration.y])
+            accZ[accZ.count - 1].append(contentsOf: [acceleration.z])
             
             scrollWidth += 1
             
             //MARK: 스윙 감지 로직 작성 필요
             // 스윙 감지 로직 작성
-            if rotationRate.x > 2.0 || rotationRate.y > 2.0 || rotationRate.z > 2.0 {
+            if acceleration.x > 2.0 || acceleration.y > 2.0 || acceleration.z > 2.0 {
                 // 동작 감지됨
                 DispatchQueue.main.async {
                     let isSwingDetected = true
@@ -159,8 +158,8 @@ extension RotationRateView {
     }
 }
 
-struct RotationRateView_Previews: PreviewProvider {
+struct AccelerometersView_Previews: PreviewProvider {
     static var previews: some View {
-        RotationRateView()
+        AccelerometersView()
     }
 }

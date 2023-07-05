@@ -16,14 +16,18 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $tabSelection) {
-            AccelerationView()
+            AccelerometersView()
                 .tabItem {
-                    Text("Motion")
+                    Text("Accelerometers")
                 }
 
-            RotationRateView()
+            GyroscopesView()
                 .tabItem {
-                    Text("Graph")
+                    Text("Gyroscopes")
+                }
+            WatchConnectivityTestView()
+                .tabItem {
+                    Text("Watch")
                 }
         }
     }
