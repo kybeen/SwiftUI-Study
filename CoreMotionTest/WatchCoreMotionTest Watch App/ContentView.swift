@@ -15,9 +15,9 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Acceleration X: \(viewModel.accelerationX)")
-            Text("Acceleration Y: \(viewModel.accelerationY)")
-            Text("Acceleration Z: \(viewModel.accelerationZ)")
+            Text("Acceleration X: \(viewModel.watchAccelerationX)")
+            Text("Acceleration Y: \(viewModel.watchAccelerationY)")
+            Text("Acceleration Z: \(viewModel.watchAccelerationZ)")
         }
         .onAppear {
             guard motionManager.isDeviceMotionAvailable else {

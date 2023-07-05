@@ -45,3 +45,14 @@ Apple의 Exploring SwiftUI Sample Apps 튜토리얼을 보며 샘플 앱들을 �
 ----
 ### [ ScreenTime ]
 - Apple Screen Time API를 활용하기 위해 공부한 내용입니다.
+
+
+----
+### [ CoreMotionTest ]
+- Core Motion 프레임워크를 사용해서 기기의 센서값을 받아오는 것을 공부한 내용입니다.
+- Watch Connectivity 프레임워크를 함께 사용해서 watchOS 앱에서 수집한 센서값들을 iOS 앱에 불러와서 확인해보았습니다.
+
+
+----
+### [ WatchConnectivityStudy ]
+- Watch Connectivity 프레임워크를 사용해서 iOS 앱과 watchOS 앱 사이에 데이터를 교환하는 방법을 공부한 내용입니다.
