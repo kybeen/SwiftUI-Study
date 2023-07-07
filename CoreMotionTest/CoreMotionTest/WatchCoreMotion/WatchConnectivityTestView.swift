@@ -5,6 +5,7 @@
 //  Created by 김영빈 on 2023/07/05.
 //
 
+/* watchOS 앱에서 받아온 가속도계 센서값을 확인하는 뷰 */
 import SwiftUI
 
 struct WatchConnectivityTestView: View {
@@ -60,32 +61,6 @@ struct WatchConnectivityTestView: View {
                 }
                 .frame(width: scrollWidth, height: 120)
             }
-//
-//            HStack {
-//                Button {
-//                    startMotionUpdates()
-//                    isUpdating = true
-//                } label: {
-//                    Text(isUpdating ? "Swinging..." : "Start Swing")
-//                        .font(.title)
-//                        .padding()
-//                        .background(isUpdating ? .gray : .green)
-//                        .foregroundColor(.white)
-//                        .cornerRadius(10)
-//                }
-//
-//                Button {
-//                    stopMotionUpdates()
-//                    isUpdating = false
-//                } label: {
-//                    Text("Stop Swing")
-//                        .font(.title)
-//                        .padding()
-//                        .background(isUpdating ? .red : .gray)
-//                        .foregroundColor(.white)
-//                        .cornerRadius(10)
-//                }
-//            }
         }
     }
 }

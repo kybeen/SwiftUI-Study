@@ -5,8 +5,10 @@
 //  Created by 김영빈 on 2023/07/02.
 //
 
+/* 가속도계 센서 데이터 - iOS */
 import SwiftUI
 import CoreMotion
+import Charts
 
 struct AccelerometersView: View {
     @State private var accX: [[Double]] = [[]]
@@ -37,42 +39,39 @@ struct AccelerometersView: View {
             
             Text("Acceleration").bold()
             Text("X: \(accelerationX), Y: \(accelerationY), Z: \(accelerationZ)")
-//            Text("Rotation Rate").bold()
-//            Text("X: \(rotationRateX), Y: \(rotationRateY), Z: \(rotationRateZ)")
-//                .padding(.bottom, 30)
             
-            VStack {
-                Text("X").bold()
-                ScrollView(.horizontal) {
-                    HStack(spacing: 0) {
-                        ForEach(accX.indices, id: \.self) { index in
-                            GraphView(dataPoints: accX[index])
-                                .frame(width: UIScreen.main.bounds.width, height: 120)
-                        }
-                    }
-                }
-                .frame(width: scrollWidth, height: 120)
-                Text("Y").bold()
-                ScrollView(.horizontal) {
-                    HStack(spacing: 0) {
-                        ForEach(accY.indices, id: \.self) { index in
-                            GraphView(dataPoints: accY[index])
-                                .frame(width: UIScreen.main.bounds.width, height: 120)
-                        }
-                    }
-                }
-                .frame(width: scrollWidth, height: 120)
-                Text("Z").bold()
-                ScrollView(.horizontal) {
-                    HStack(spacing: 0) {
-                        ForEach(accZ.indices, id: \.self) { index in
-                            GraphView(dataPoints: accZ[index])
-                                .frame(width: UIScreen.main.bounds.width, height: 120)
-                        }
-                    }
-                }
-                .frame(width: scrollWidth, height: 120)
-            }
+//            VStack {
+//                Text("X").bold()
+//                ScrollView(.horizontal) {
+//                    HStack(spacing: 0) {
+//                        ForEach(accX.indices, id: \.self) { index in
+//                            GraphView(dataPoints: accX[index])
+//                                .frame(width: UIScreen.main.bounds.width, height: 120)
+//                        }
+//                    }
+//                }
+//                .frame(width: scrollWidth, height: 120)
+//                Text("Y").bold()
+//                ScrollView(.horizontal) {
+//                    HStack(spacing: 0) {
+//                        ForEach(accY.indices, id: \.self) { index in
+//                            GraphView(dataPoints: accY[index])
+//                                .frame(width: UIScreen.main.bounds.width, height: 120)
+//                        }
+//                    }
+//                }
+//                .frame(width: scrollWidth, height: 120)
+//                Text("Z").bold()
+//                ScrollView(.horizontal) {
+//                    HStack(spacing: 0) {
+//                        ForEach(accZ.indices, id: \.self) { index in
+//                            GraphView(dataPoints: accZ[index])
+//                                .frame(width: UIScreen.main.bounds.width, height: 120)
+//                        }
+//                    }
+//                }
+//                .frame(width: scrollWidth, height: 120)
+//            }
             
             HStack {
                 Button {

@@ -54,5 +54,10 @@ Apple의 Exploring SwiftUI Sample Apps 튜토리얼을 보며 샘플 앱들을 �
 
 
 ----
-### [ WatchConnectivityStudy ]
+### [ WatchConnectivityStudy, WatchConnectivityStudy2 ]
 - Watch Connectivity 프레임워크를 사용해서 iOS 앱과 watchOS 앱 사이에 데이터를 교환하는 방법을 공부한 내용입니다.
+
+
+----
+### [ PhotoKitTest ]
+- SwiftUI에서 UIKit을 사용하기 위해 PhotosUI 프레임워크를 활용해봅니다. (UIKit이 메인임)

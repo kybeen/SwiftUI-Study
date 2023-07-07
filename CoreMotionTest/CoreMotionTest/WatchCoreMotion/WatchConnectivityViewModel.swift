@@ -9,10 +9,10 @@ import Foundation
 import WatchConnectivity
 import SwiftUI
 
-// WatchConnectivity를 사용하기 위한 ViewModel
+/* WatchConnectivity를 사용하기 위한 ViewModel */
 // WCSessionDelegate 프로토콜을 채택하고 WCSession을 초기화하여 WatchConnectivity를 활성화합니다.
 class WatchConnectivityViewModel: NSObject, ObservableObject, WCSessionDelegate {
-    static let shared = WatchConnectivityViewModel()
+//    static let shared = WatchConnectivityViewModel()
     @Published var watchAccelerationX: Double = 0.0
     @Published var watchAccelerationY: Double = 0.0
     @Published var watchAccelerationZ: Double = 0.0
@@ -25,7 +25,7 @@ class WatchConnectivityViewModel: NSObject, ObservableObject, WCSessionDelegate 
         
         if WCSession.isSupported() {
             WCSession.default.delegate = self
-            WCSession.default.activate()
+            WCSession.default.activate() // 세션 활성화
         }
     }
     

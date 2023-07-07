@@ -5,6 +5,7 @@
 //  Created by 김영빈 on 2023/07/02.
 //
 
+/* 자이로스코프 센서 데이터 - iOS */
 import SwiftUI
 import CoreMotion
 
