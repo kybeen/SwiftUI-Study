@@ -8,7 +8,7 @@
 import Foundation
 import WatchConnectivity
 
-class viewModelWatch: NSObject, WCSessionDelegate, ObservableObject {
+class ViewModelWatch: NSObject, WCSessionDelegate, ObservableObject {
     var session: WCSession
     @Published var messageText = "" // iOS 앱에서 수신한 메세지를 화면에 보여주기 위한 문자열
     @Published var number = ""

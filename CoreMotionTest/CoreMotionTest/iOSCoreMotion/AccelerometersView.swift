@@ -40,38 +40,38 @@ struct AccelerometersView: View {
             Text("Acceleration").bold()
             Text("X: \(accelerationX), Y: \(accelerationY), Z: \(accelerationZ)")
             
-//            VStack {
-//                Text("X").bold()
-//                ScrollView(.horizontal) {
-//                    HStack(spacing: 0) {
-//                        ForEach(accX.indices, id: \.self) { index in
-//                            GraphView(dataPoints: accX[index])
-//                                .frame(width: UIScreen.main.bounds.width, height: 120)
-//                        }
-//                    }
-//                }
-//                .frame(width: scrollWidth, height: 120)
-//                Text("Y").bold()
-//                ScrollView(.horizontal) {
-//                    HStack(spacing: 0) {
-//                        ForEach(accY.indices, id: \.self) { index in
-//                            GraphView(dataPoints: accY[index])
-//                                .frame(width: UIScreen.main.bounds.width, height: 120)
-//                        }
-//                    }
-//                }
-//                .frame(width: scrollWidth, height: 120)
-//                Text("Z").bold()
-//                ScrollView(.horizontal) {
-//                    HStack(spacing: 0) {
-//                        ForEach(accZ.indices, id: \.self) { index in
-//                            GraphView(dataPoints: accZ[index])
-//                                .frame(width: UIScreen.main.bounds.width, height: 120)
-//                        }
-//                    }
-//                }
-//                .frame(width: scrollWidth, height: 120)
-//            }
+            VStack {
+                Text("X").bold()
+                ScrollView(.horizontal) {
+                    HStack(spacing: 0) {
+                        ForEach(accX.indices, id: \.self) { index in
+                            GraphView(dataPoints: accX[index])
+                                .frame(width: UIScreen.main.bounds.width, height: 120)
+                        }
+                    }
+                }
+                .frame(width: scrollWidth, height: 120)
+                Text("Y").bold()
+                ScrollView(.horizontal) {
+                    HStack(spacing: 0) {
+                        ForEach(accY.indices, id: \.self) { index in
+                            GraphView(dataPoints: accY[index])
+                                .frame(width: UIScreen.main.bounds.width, height: 120)
+                        }
+                    }
+                }
+                .frame(width: scrollWidth, height: 120)
+                Text("Z").bold()
+                ScrollView(.horizontal) {
+                    HStack(spacing: 0) {
+                        ForEach(accZ.indices, id: \.self) { index in
+                            GraphView(dataPoints: accZ[index])
+                                .frame(width: UIScreen.main.bounds.width, height: 120)
+                        }
+                    }
+                }
+                .frame(width: scrollWidth, height: 120)
+            }
             
             HStack {
                 Button {

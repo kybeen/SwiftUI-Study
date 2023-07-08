@@ -1,4 +1,4 @@
-## SwiftUI 공부하기
+## SwiftUI를 사용한 iOS 개발 공부
 ----
 공부한 내용을 노션에 정리합니다.
 - **Apple SwiftUI Tutorials 공식 문서** : https://healthy-degree-cc2.notion.site/SwiftUI-125bc7f695f6424da47269130dc4df21

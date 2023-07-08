@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B81CD2812A586ACD0022738F /* ViewModelWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81CD2802A586ACD0022738F /* ViewModelWatch.swift */; };
+		B81CD2832A59534B0022738F /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC9BEB2A530ED5007E918C /* GraphView.swift */; };
 		B82BFEA92A5017F60069061C /* CoreMotionTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82BFEA82A5017F60069061C /* CoreMotionTestApp.swift */; };
 		B82BFEAB2A5017F60069061C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82BFEAA2A5017F60069061C /* ContentView.swift */; };
 		B82BFEAD2A5017F70069061C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82BFEAC2A5017F70069061C /* Assets.xcassets */; };
@@ -19,8 +21,7 @@
 		B8EC9BF82A53CCE9007E918C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EC9BF72A53CCE9007E918C /* Assets.xcassets */; };
 		B8EC9BFB2A53CCE9007E918C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EC9BFA2A53CCE9007E918C /* Preview Assets.xcassets */; };
 		B8EC9BFE2A53CCE9007E918C /* WatchCoreMotionTest Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EC9BF12A53CCE7007E918C /* WatchCoreMotionTest Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B8EC9C042A54F4C8007E918C /* WatchConnectivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC9C032A54F4C8007E918C /* WatchConnectivityViewModel.swift */; };
-		B8EC9C052A54F87F007E918C /* WatchConnectivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC9C032A54F4C8007E918C /* WatchConnectivityViewModel.swift */; };
+		B8EC9C042A54F4C8007E918C /* ViewModelPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC9C032A54F4C8007E918C /* ViewModelPhone.swift */; };
 		B8EC9C072A54FCAF007E918C /* WatchConnectivityTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC9C062A54FCAF007E918C /* WatchConnectivityTestView.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B81CD2802A586ACD0022738F /* ViewModelWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelWatch.swift; sourceTree = "<group>"; };
+		B81CD2822A5892CE0022738F /* WatchCoreMotionTest-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchCoreMotionTest-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B82BFEA52A5017F60069061C /* CoreMotionTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMotionTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B82BFEA82A5017F60069061C /* CoreMotionTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMotionTestApp.swift; sourceTree = "<group>"; };
 		B82BFEAA2A5017F60069061C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,7 +66,7 @@
 		B8EC9BF52A53CCE7007E918C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B8EC9BF72A53CCE9007E918C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8EC9BFA2A53CCE9007E918C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B8EC9C032A54F4C8007E918C /* WatchConnectivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityViewModel.swift; sourceTree = "<group>"; };
+		B8EC9C032A54F4C8007E918C /* ViewModelPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelPhone.swift; sourceTree = "<group>"; };
 		B8EC9C062A54FCAF007E918C /* WatchConnectivityTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,7 +141,7 @@
 		B84D815F2A558E620073063F /* WatchCoreMotion */ = {
 			isa = PBXGroup;
 			children = (
-				B8EC9C032A54F4C8007E918C /* WatchConnectivityViewModel.swift */,
+				B8EC9C032A54F4C8007E918C /* ViewModelPhone.swift */,
 				B8EC9C062A54FCAF007E918C /* WatchConnectivityTestView.swift */,
 			);
 			path = WatchCoreMotion;
@@ -147,6 +150,8 @@
 		B8EC9BF22A53CCE7007E918C /* WatchCoreMotionTest Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				B81CD2822A5892CE0022738F /* WatchCoreMotionTest-Watch-App-Info.plist */,
+				B81CD2802A586ACD0022738F /* ViewModelWatch.swift */,
 				B8EC9BF32A53CCE7007E918C /* WatchCoreMotionTestApp.swift */,
 				B8EC9BF52A53CCE7007E918C /* ContentView.swift */,
 				B8EC9BF72A53CCE9007E918C /* Assets.xcassets */,
@@ -265,7 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8EC9C042A54F4C8007E918C /* WatchConnectivityViewModel.swift in Sources */,
+				B8EC9C042A54F4C8007E918C /* ViewModelPhone.swift in Sources */,
 				B8EC9C072A54FCAF007E918C /* WatchConnectivityTestView.swift in Sources */,
 				B8EC9BEC2A530ED5007E918C /* GraphView.swift in Sources */,
 				B8EC9BE92A51A3AC007E918C /* GyroscopesView.swift in Sources */,
@@ -280,8 +285,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8EC9BF62A53CCE7007E918C /* ContentView.swift in Sources */,
-				B8EC9C052A54F87F007E918C /* WatchConnectivityViewModel.swift in Sources */,
+				B81CD2812A586ACD0022738F /* ViewModelWatch.swift in Sources */,
 				B8EC9BF42A53CCE7007E918C /* WatchCoreMotionTestApp.swift in Sources */,
+				B81CD2832A59534B0022738F /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +491,7 @@
 				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchCoreMotionTest-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchCoreMotionTest;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "gyroscope accelerometer";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -517,6 +524,7 @@
 				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchCoreMotionTest-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchCoreMotionTest;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "gyroscope accelerometer";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

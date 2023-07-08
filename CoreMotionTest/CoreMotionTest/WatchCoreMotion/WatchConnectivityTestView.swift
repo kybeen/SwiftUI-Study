@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct WatchConnectivityTestView: View {
-    @StateObject private var viewModel = WatchConnectivityViewModel()
+    @ObservedObject var viewModel = ViewModelPhone()
 
     @State private var scrollWidth: CGFloat = UIScreen.main.bounds.width
     
