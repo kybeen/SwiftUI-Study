@@ -18,6 +18,8 @@
 		B8FEBA4B2A59936A00EB6464 /* WatchDeviceMotionCollector Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8FEBA3E2A59936800EB6464 /* WatchDeviceMotionCollector Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8FEBA512A59D33C00EB6464 /* PhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEBA502A59D33C00EB6464 /* PhoneViewModel.swift */; };
 		B8FEBA532A59D34A00EB6464 /* WatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEBA522A59D34A00EB6464 /* WatchViewModel.swift */; };
+		B8FEBA552A5AFC2600EB6464 /* LeftHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEBA542A5AFC2600EB6464 /* LeftHandView.swift */; };
+		B8FEBA572A5AFC6800EB6464 /* RightHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FEBA562A5AFC6800EB6464 /* RightHandView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		B8FEBA472A59936A00EB6464 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B8FEBA502A59D33C00EB6464 /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
 		B8FEBA522A59D34A00EB6464 /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
+		B8FEBA542A5AFC2600EB6464 /* LeftHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftHandView.swift; sourceTree = "<group>"; };
+		B8FEBA562A5AFC6800EB6464 /* RightHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightHandView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 				B8FEBA522A59D34A00EB6464 /* WatchViewModel.swift */,
 				B8FEBA442A59936A00EB6464 /* Assets.xcassets */,
 				B8FEBA462A59936A00EB6464 /* Preview Content */,
+				B8FEBA542A5AFC2600EB6464 /* LeftHandView.swift */,
+				B8FEBA562A5AFC6800EB6464 /* RightHandView.swift */,
 			);
 			path = "WatchDeviceMotionCollector Watch App";
 			sourceTree = "<group>";
@@ -248,8 +254,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8FEBA432A59936800EB6464 /* ContentView.swift in Sources */,
+				B8FEBA552A5AFC2600EB6464 /* LeftHandView.swift in Sources */,
 				B8FEBA412A59936800EB6464 /* WatchDeviceMotionCollectorApp.swift in Sources */,
 				B8FEBA532A59D34A00EB6464 /* WatchViewModel.swift in Sources */,
+				B8FEBA572A5AFC6800EB6464 /* RightHandView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

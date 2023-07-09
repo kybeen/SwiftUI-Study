@@ -18,6 +18,8 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
     }
     
     @Published var csvString = ""
+    @Published var activityType = ""
+    @Published var handType = ""
     
     //MARK: 델리게이트 메서드 3개 정의
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -37,6 +39,8 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
         DispatchQueue.main.async {
             // 받아온 데이터 저장
             self.csvString = userInfo["csv"] as? String ?? ""
+            self.activityType = userInfo["activity"] as? String ?? ""
+            self.handType = userInfo["hand"] as? String ?? ""
             self.saveToCSV()
         }
     }
@@ -45,8 +49,22 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
     func saveToCSV() {
         let fileManager = FileManager.default
 
+        // 폴더명
         let folderName = "DeviceMotionData"
-        let csvFileName = "device_motion_data.csv"
+        // 파일명
+        var activityLabel = ""
+        var handLabel = ""
+        if self.activityType == "포핸드" {
+            activityLabel = "forehand_"
+        } else {
+            activityLabel = "backhand_"
+        }
+        if self.handType == "오른손잡이" {
+            handLabel = "right_"
+        } else {
+            handLabel = "left_"
+        }
+        let csvFileName = handLabel + activityLabel + "data.csv"
 
         // 폴더 생성
         guard let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {

@@ -9,11 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var phoneViewModel = PhoneViewModel()
+    @State var reachable = "No"
     
     var body: some View {
         VStack {
+            HStack {
+                Button("Update") {
+                    if self.phoneViewModel.session.isReachable {
+                        self.reachable = "Yes"
+                    } else {
+                        self.reachable = "No"
+                    }
+                }
+                Text("Reachable: \(reachable)")
+            }
+            .padding()
+            Text("Received data").font(.title)
+            Text("Activity class : \(phoneViewModel.activityType)").bold()
+            Text("Hand type : \(phoneViewModel.handType)").bold()
+            
             ScrollView {
-                Text("Received data")
                 Text(phoneViewModel.csvString)
             }
         }
