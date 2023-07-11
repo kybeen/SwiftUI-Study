@@ -21,6 +21,7 @@ struct RightHandView: View {
     @State var rotationRateZ: Double = 0.0
     
     @State private var isUpdating = false
+    @State var isSentCSV = false
     @State var csvString = ""
     @State var activityType = "포핸드"
     let handType = "오른손잡이"
@@ -29,7 +30,12 @@ struct RightHandView: View {
         VStack {
             HStack {
                 Text("\(handType) -").bold()
-                Text("\(timestamp)") // 타임스탬프
+                if isSentCSV {
+                    Text("전송완료")
+                }
+                else {
+                    Text("\(timestamp)") // 타임스탬프
+                }
             }
             HStack {
                 Button(activityType) {
@@ -51,6 +57,7 @@ struct RightHandView: View {
                     Button("Start") {
                         startRecording()
                         isUpdating = true
+                        isSentCSV = false
                     }.foregroundColor(.green)
                 }
             }
@@ -87,7 +94,7 @@ extension RightHandView {
         }
         
         // 모션 갱신 주기 설정 (몇 초마다 모션 데이터를 업데이트 할 지)
-        motionManager.deviceMotionUpdateInterval = 0.1
+        motionManager.deviceMotionUpdateInterval = 0.05 //1.0 / 100
         var startTime: TimeInterval = 0.0 //MARK: 시작 시간 저장 변수
         // Device Motion 업데이트 받기 시작
         motionManager.startDeviceMotionUpdates(to: queue) { (data, error) in
@@ -103,7 +110,9 @@ extension RightHandView {
                 startTime = motion.timestamp //MARK: 첫 번째 데이터의 타임스탬프 저장
             }
             let timestamp = motion.timestamp - startTime //MARK: 시작 시간으로부터 경과한 시간 계산
-            csvString = csvString + "\(timestamp), \(acceleration.x), \(acceleration.y), \(acceleration.z), \(rotationRate.x), \(rotationRate.y), \(rotationRate.z)\n"
+            let addCSV = "\(timestamp), \(acceleration.x), \(acceleration.y), \(acceleration.z), \(rotationRate.x), \(rotationRate.y), \(rotationRate.z)\n"
+            csvString = csvString + addCSV
+            print("Timestamp : \(timestamp)")
             
             self.timestamp = timestamp //MARK: UI 업데이트는 메인 큐에서 실행
             self.accelerationX = acceleration.x
@@ -118,9 +127,63 @@ extension RightHandView {
     //MARK: Device Motion 레코딩 종료 함수
     func stopRecording() {
         motionManager.stopDeviceMotionUpdates()
-        // 아이폰으로 csv 문자열 전송
-        self.watchViewModel.session.transferUserInfo(["csv" : csvString, "activity" : activityType, "hand" : handType])
-        print("Send CSV string to iPhone.")
+//        // 아이폰으로 csv 문자열 전송
+//        self.watchViewModel.session.transferUserInfo(["csv" : csvString, "activity" : activityType, "hand" : handType])
+//        print("Send CSV string to iPhone.")
+//        self.isSentCSV = true
+        // .csv 파일로 만들고 전송
+        saveAndSendToCSV()
+    }
+    
+    //MARK: CSV 파일 만들고 아이폰으로 전송해주는 함수
+    func saveAndSendToCSV() {
+        let fileManager = FileManager.default
+
+        // 폴더명 설정
+        let folderName = "DeviceMotionData"
+        // 파일명 설정
+        var activityLabel = ""
+        var handLabel = ""
+        if self.activityType == "포핸드" {
+            activityLabel = "forehand"
+        } else {
+            activityLabel = "backhand"
+        }
+        if self.handType == "오른손잡이" {
+            handLabel = "right_"
+        } else {
+            handLabel = "left_"
+        }
+        let csvFileName = handLabel + activityLabel + ".csv"
+
+        // 폴더 생성
+        guard let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Failed to access documents directory.")
+            return
+        }
+        let directoryURL = documentURL.appendingPathComponent(folderName)
+        do {
+            try fileManager.createDirectory(atPath: directoryURL.path, withIntermediateDirectories: true)
+        }
+        catch let error as NSError {
+            print("폴더 생성 에러!!!: \(error)")
+        }
+
+        // CSV 파일 생성(저장)
+        let fileURL = directoryURL.appendingPathComponent(csvFileName)
+        do {
+            try self.csvString.write(to: fileURL, atomically: true, encoding: .utf8)
+            print("CSV file saved at: \(fileURL)")
+            print("File name : \(csvFileName)")
+        }
+        catch let error as NSError {
+            print("Failed to save CSV file!!!: \(error.localizedDescription)")
+        }
+        
+        // CSV 파일 아이폰으로 전송
+        watchViewModel.session.transferFile(fileURL, metadata: ["activity": activityType, "hand": handType, "fileName": csvFileName])
+        print("Send CSV file to iPhone.")
+        isSentCSV = true
     }
 }
 

@@ -1,43 +1,23 @@
 //
 //  ContentView.swift
-//  DeviceMotionCollector
+//  FileManagerStudy
 //
-//  Created by 김영빈 on 2023/07/08.
+//  Created by 김영빈 on 2023/07/11.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var phoneViewModel = PhoneViewModel()
-    @State var reachable = "No"
-    
     var body: some View {
         VStack {
             Button("FILE SAVE TEST 1", action: {test1()})
             Button("FILE SAVE TEST 2", action: {test2()})
-            HStack {
-                Button("Update") {
-                    if self.phoneViewModel.session.isReachable {
-                        self.reachable = "Yes"
-                    } else {
-                        self.reachable = "No"
-                    }
-                }
-                Text("Reachable: \(reachable)")
-            }
-            .padding()
-            Text("Received data").font(.title)
-            Text("Activity class : \(phoneViewModel.activityType)").bold()
-            Text("Hand type : \(phoneViewModel.handType)").bold()
-            
-//            ScrollView {
-//                Text(phoneViewModel.csvString)
-//            }
-            Text("CSV file name : \(phoneViewModel.csvFileName)").bold()
         }
         .padding()
     }
-    
+}
+
+extension ContentView {
     func test1() {
         let fileManager = FileManager.default // FileManager 인스턴스 생성
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] // 요청된 도메인에서 지정된 공통 디렉토리에 대한 URL 배열을 리턴

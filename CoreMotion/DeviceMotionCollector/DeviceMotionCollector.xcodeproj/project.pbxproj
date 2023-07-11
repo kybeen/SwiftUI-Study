@@ -61,6 +61,7 @@
 		B8FEBA522A59D34A00EB6464 /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
 		B8FEBA542A5AFC2600EB6464 /* LeftHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftHandView.swift; sourceTree = "<group>"; };
 		B8FEBA562A5AFC6800EB6464 /* RightHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightHandView.swift; sourceTree = "<group>"; };
+		B8FEBA582A5C181000EB6464 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +103,7 @@
 		B8FEBA2B2A59934E00EB6464 /* DeviceMotionCollector */ = {
 			isa = PBXGroup;
 			children = (
+				B8FEBA582A5C181000EB6464 /* Info.plist */,
 				B8FEBA2C2A59934E00EB6464 /* DeviceMotionCollectorApp.swift */,
 				B8FEBA2E2A59934E00EB6464 /* ContentView.swift */,
 				B8FEBA502A59D33C00EB6464 /* PhoneViewModel.swift */,
@@ -398,6 +400,8 @@
 				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeviceMotionCollector/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +432,8 @@
 				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeviceMotionCollector/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
