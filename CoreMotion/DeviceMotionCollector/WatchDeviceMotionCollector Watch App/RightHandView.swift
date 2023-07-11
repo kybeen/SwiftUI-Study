@@ -25,6 +25,7 @@ struct RightHandView: View {
     @State var csvString = ""
     @State var activityType = "포핸드"
     let handType = "오른손잡이"
+    @State var num = 1
     
     var body: some View {
         VStack {
@@ -36,6 +37,17 @@ struct RightHandView: View {
                 else {
                     Text("\(timestamp)") // 타임스탬프
                 }
+            }
+            HStack {
+                Button("-") {
+                    if num > 1 {
+                        num -= 1
+                    }
+                }.frame(width: 50, height: 50)
+                Text("\(num)")
+                Button("+") {
+                    num += 1
+                }.frame(width: 50, height: 50)
             }
             HStack {
                 Button(activityType) {
@@ -145,23 +157,18 @@ extension RightHandView {
         var activityLabel = ""
         var handLabel = ""
         if self.activityType == "포핸드" {
-            activityLabel = "forehand"
+            activityLabel = "forehand_"
         } else {
-            activityLabel = "backhand"
+            activityLabel = "backhand_"
         }
         if self.handType == "오른손잡이" {
             handLabel = "right_"
         } else {
             handLabel = "left_"
         }
-        let csvFileName = handLabel + activityLabel + ".csv"
+        let csvFileName = handLabel + activityLabel + String(num) + ".csv"
 
         //MARK: 폴더 생성
-//        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//        guard let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
-//            print("Failed to access documents directory.")
-//            return
-//        }
         let directoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(folderName)
         if !fileManager.fileExists(atPath: directoryURL.path) {
             do {
@@ -173,16 +180,16 @@ extension RightHandView {
 
         //MARK: CSV 파일 생성(저장)
         let fileURL = directoryURL.appendingPathComponent(csvFileName)
-        try? self.csvString.write(to: fileURL, atomically: true, encoding: .utf8)
-        print("CSV file saved at: \(fileURL)")
-//        do {
-//            try self.csvString.write(to: fileURL, atomically: true, encoding: .utf8)
-//            print("CSV file saved at: \(fileURL)")
-//            print("File name : \(csvFileName)")
-//        }
-//        catch let error as NSError {
-//            print("Failed to save CSV file!!!: \(error.localizedDescription)")
-//        }
+//        try? self.csvString.write(to: fileURL, atomically: true, encoding: .utf8)
+//        print("CSV file saved at: \(fileURL)")
+        do {
+            try self.csvString.write(to: fileURL, atomically: true, encoding: .utf8)
+            print("CSV file saved at: \(fileURL)")
+            print("File name : \(csvFileName)")
+        }
+        catch let error as NSError {
+            print("Failed to save CSV file!!!: \(error.localizedDescription)")
+        }
         
         //MARK: CSV 파일 아이폰으로 전송
         watchViewModel.session.transferFile(fileURL, metadata: ["activity": activityType, "hand": handType, "fileName": csvFileName])

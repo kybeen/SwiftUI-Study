@@ -37,6 +37,7 @@ extension ContentView {
         print("documentsURL: \(documentsURL)")
         print("directoryURL: \(directoryURL)")
         print("fileURL: \(fileURL)")
+        print("\n")
         
     }
     func test2() {
@@ -58,6 +59,7 @@ extension ContentView {
         print("documentsURL: \(documentsURL)")
         print("directoryURL: \(directoryURL)")
         print("fileURL: \(fileURL)")
+        print("\n")
         
     }
 }

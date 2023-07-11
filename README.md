@@ -48,7 +48,7 @@ Apple의 Exploring SwiftUI Sample Apps 튜토리얼을 보며 샘플 앱들을 �
 
 ----
 ### [ DeviceMotionCollector ]
-- 애플워치에서 Core Motion 프레임워크를 통해 수집한 데이터를 iOS 기기로 전송한 뒤 .csv 파일로 저장하는 샘플 앱
+- 애플워치에서 Core Motion 프레임워크를 통해 수집한 데이터를 .csv 파일로  iOS 기기로 전송한 뒤 .csv 파일로 저장하는 샘플 앱
 
 ----
 ### [ WatchConnectivityStudy, WatchConnectivityStudy2 ]

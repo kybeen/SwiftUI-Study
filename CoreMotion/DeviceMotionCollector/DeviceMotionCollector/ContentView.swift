@@ -17,8 +17,10 @@ struct ContentView: View {
                 Button("Update") {
                     if self.phoneViewModel.session.isReachable {
                         self.reachable = "Yes"
+                        print("YES!!!")
                     } else {
                         self.reachable = "No"
+                        print("NO...")
                     }
                 }
                 Text("Reachable: \(reachable)")
