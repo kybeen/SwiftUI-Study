@@ -58,3 +58,9 @@ Apple의 Exploring SwiftUI Sample Apps 튜토리얼을 보며 샘플 앱들을 �
 ----
 ### [ PhotoKitTest ]
 - SwiftUI에서 UIKit을 사용하기 위해 PhotosUI 프레임워크를 활용해봅니다. (UIKit이 메인임)
+
+
+----
+### [ FileManagerStudy ]
+-  공부한 내용
+  - FileManager를 사용하여 앱애서 생성된 파일을 기기의 Documents 디렉토리에 저장해보는 샘플 앱

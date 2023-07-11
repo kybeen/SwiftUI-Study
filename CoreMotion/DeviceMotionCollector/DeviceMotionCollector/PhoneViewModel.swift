@@ -52,52 +52,83 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
             
             // 전송된 파일의 임시 경로
             let tempURL = file.fileURL
+            print("temp URL: \(tempURL)")
             
             // 파일을 저장할 경로 설정
-            let fileManager = FileManager.default
-            let folderName = "DeviceMotionData"
+            let fileManager = FileManager.default // FileManager 인스턴스 생성
+            let directoryName = "DeviceMotionData"
             self.csvFileName = file.metadata?["fileName"] as? String ?? "Unknown" // 파일명
-
-            // 폴더 경로
-            guard let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
-                print("Failed to access documents directory.")
-                return
-            }
-            let directoryURL = documentURL.appendingPathComponent(folderName)
-            print("Directory URL : \(directoryURL)")
+//            let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] // 요청된 도메인에서 지정된 공통 디렉토리에 대한 URL 배열을 리턴
             
-            // DeviceMotionData 폴더가 이미 존재하는지 확인 후 생성
-            if fileManager.fileExists(atPath: directoryURL.path) {
+            // 디렉토리 만들기
+            let directoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(directoryName)
+//            guard let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+//                print("Failed to access documents directory.")
+//                return
+//            }
+//            let directoryURL = documentURL.appendingPathComponent(directoryName)
+            if !fileManager.fileExists(atPath: directoryURL.path) {
                 do {
                     try fileManager.createDirectory(atPath: directoryURL.path, withIntermediateDirectories: true, attributes: nil)
-                    print("디렉토리 생성 : \(directoryURL.path)")
-                }
-                catch let error as NSError {
-                    print("폴더 생성 에러!!!: \(error)")
+                } catch {
+                    NSLog("Couldn't create document directory")
                 }
             }
-            
-            // 파일명이 포함된 저장 경로
+            print("Directory URL : \(directoryURL)")
+            // 파일 만들기
             let fileURL = directoryURL.appendingPathComponent(self.csvFileName)
             print("File URL : \(fileURL)")
-            // 같은 이름의 파일이 이미 존재하는 경우 삭제
-            if fileManager.fileExists(atPath: fileURL.path) {
-                do {
-                    try fileManager.removeItem(at: fileURL)
-                    print("Removed existing file: \(fileURL)")
-                } catch {
-                    print("Failed to remove existing file: \(fileURL), error: \(error.localizedDescription)")
-                }
-            }
-            
+//            // 같은 이름의 파일이 이미 존재하는 경우 삭제
+//            if !fileManager.fileExists(atPath: fileURL.path) {
+//                do {
+//                    try fileManager.removeItem(at: fileURL)
+//                    print("Removed existing file: \(fileURL)")
+//                } catch {
+//                    print("Failed to remove existing file: \(fileURL), error: \(error.localizedDescription)")
+//                }
+//            }
             // 파일 이동
-            do {
-                try fileManager.moveItem(at: tempURL, to: fileURL)
-                print("Received and saved CSV file: \(fileURL)")
-                print("File name : \(self.csvFileName)")
-            } catch {
-                print("Failed to save received CSV file!!!: \(error.localizedDescription)")
-            }
+            try? fileManager.moveItem(at: tempURL, to: fileURL)
+            print("Received and saved CSV file: \(fileURL)")
+//            do {
+//                try
+//                print("File name : \(self.csvFileName)")
+//            } catch {
+//                print("Failed to save received CSV file!!!: \(error.localizedDescription)")
+//            }
+            
+//            // DeviceMotionData 폴더가 이미 존재하는지 확인 후 생성
+//            if fileManager.fileExists(atPath: directoryURL.path) {
+//                do {
+//                    try fileManager.createDirectory(atPath: directoryURL.path, withIntermediateDirectories: true, attributes: nil)
+//                    print("디렉토리 생성 : \(directoryURL.path)")
+//                }
+//                catch let error as NSError {
+//                    print("폴더 생성 에러!!!: \(error)")
+//                }
+//            }
+//
+//            // 파일명이 포함된 저장 경로
+//            let fileURL = directoryURL.appendingPathComponent(self.csvFileName)
+//            print("File URL : \(fileURL)")
+//            // 같은 이름의 파일이 이미 존재하는 경우 삭제
+//            if fileManager.fileExists(atPath: fileURL.path) {
+//                do {
+//                    try fileManager.removeItem(at: fileURL)
+//                    print("Removed existing file: \(fileURL)")
+//                } catch {
+//                    print("Failed to remove existing file: \(fileURL), error: \(error.localizedDescription)")
+//                }
+//            }
+            
+//            // 파일 이동
+//            do {
+//                try fileManager.moveItem(at: tempURL, to: fileURL)
+//                print("Received and saved CSV file: \(fileURL)")
+//                print("File name : \(self.csvFileName)")
+//            } catch {
+//                print("Failed to save received CSV file!!!: \(error.localizedDescription)")
+//            }
             
         }
     }

@@ -137,7 +137,7 @@ extension RightHandView {
     
     //MARK: CSV 파일 만들고 아이폰으로 전송해주는 함수
     func saveAndSendToCSV() {
-        let fileManager = FileManager.default
+        let fileManager = FileManager.default // FileManager 인스턴스 생성
 
         // 폴더명 설정
         let folderName = "DeviceMotionData"
@@ -156,31 +156,35 @@ extension RightHandView {
         }
         let csvFileName = handLabel + activityLabel + ".csv"
 
-        // 폴더 생성
-        guard let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            print("Failed to access documents directory.")
-            return
-        }
-        let directoryURL = documentURL.appendingPathComponent(folderName)
-        do {
-            try fileManager.createDirectory(atPath: directoryURL.path, withIntermediateDirectories: true)
-        }
-        catch let error as NSError {
-            print("폴더 생성 에러!!!: \(error)")
+        //MARK: 폴더 생성
+//        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//        guard let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+//            print("Failed to access documents directory.")
+//            return
+//        }
+        let directoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(folderName)
+        if !fileManager.fileExists(atPath: directoryURL.path) {
+            do {
+                try fileManager.createDirectory(atPath: directoryURL.path, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                NSLog("Couldn't create directory")
+            }
         }
 
-        // CSV 파일 생성(저장)
+        //MARK: CSV 파일 생성(저장)
         let fileURL = directoryURL.appendingPathComponent(csvFileName)
-        do {
-            try self.csvString.write(to: fileURL, atomically: true, encoding: .utf8)
-            print("CSV file saved at: \(fileURL)")
-            print("File name : \(csvFileName)")
-        }
-        catch let error as NSError {
-            print("Failed to save CSV file!!!: \(error.localizedDescription)")
-        }
+        try? self.csvString.write(to: fileURL, atomically: true, encoding: .utf8)
+        print("CSV file saved at: \(fileURL)")
+//        do {
+//            try self.csvString.write(to: fileURL, atomically: true, encoding: .utf8)
+//            print("CSV file saved at: \(fileURL)")
+//            print("File name : \(csvFileName)")
+//        }
+//        catch let error as NSError {
+//            print("Failed to save CSV file!!!: \(error.localizedDescription)")
+//        }
         
-        // CSV 파일 아이폰으로 전송
+        //MARK: CSV 파일 아이폰으로 전송
         watchViewModel.session.transferFile(fileURL, metadata: ["activity": activityType, "hand": handType, "fileName": csvFileName])
         print("Send CSV file to iPhone.")
         isSentCSV = true
