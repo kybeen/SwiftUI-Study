@@ -149,8 +149,8 @@ extension RightHandView {
     
     //MARK: CSV 파일 만들고 아이폰으로 전송해주는 함수
     func saveAndSendToCSV() {
-        let fileManager = FileManager.default // FileManager 인스턴스 생성
-
+        let fileManager = FileManager.default
+        
         // 폴더명 설정
         let folderName = "DeviceMotionData"
         // 파일명 설정
@@ -186,7 +186,7 @@ extension RightHandView {
         //MARK: CSV 파일 생성(저장)
         let csvURL = directoryURL.appendingPathComponent(csvFileName)
         print("File URL : \(csvURL)")
-        print("저장될 파일 경로 : \(directoryURL.appendingPathComponent(csvFileName))")
+        print("저장될 파일 경로 : \(csvURL)")
         do {
             try self.csvString.write(to: csvURL, atomically: true, encoding: .utf8)
             print("CSV file saved at: \(csvURL)")

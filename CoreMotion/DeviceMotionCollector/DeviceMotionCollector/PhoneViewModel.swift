@@ -54,14 +54,14 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
 //            // 전송된 파일의 임시 경로
 //            let tempURL = file.fileURL
 //            print("temp URL: \(tempURL)")
-            
-            
+
+
             // 파일을 저장할 경로 설정
             let fileManager = FileManager.default // FileManager 인스턴스 생성
             let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] // documents 디렉토리 경로 (계속 바뀌기 때문에 새로 불러와야 함)
             print("documentsURL: \(documentsURL)")
             let directoryName = "DeviceMotionData" // 디렉토리명
-            
+
             // 디렉토리 만들기
             let directoryURL = documentsURL.appendingPathComponent(directoryName)
             // DeviceMotionData 폴더가 이미 존재하는지 확인 후 생성
@@ -79,8 +79,8 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
             let csvURL = directoryURL.appendingPathComponent(fileName) // 파일명이 포함된 파일 저장 경로
             print("File URL : \(csvURL)")
             print("저장될 파일 경로 : \(directoryURL.appendingPathComponent(fileName))")
-            
-            
+
+
             if fileManager.fileExists(atPath: directoryURL.path) {
                 print("디렉토리 경로 확인됨: \(directoryURL.path)")
             } else {
@@ -96,7 +96,7 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
             } else {
                 print("저장할 경로 확인 안됨;;;")
             }
-            
+
             // 파일 이동
             do {
                 try fileManager.moveItem(at: file.fileURL, to: csvURL)
@@ -105,7 +105,7 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
             } catch {
                 print("Failed to save received CSV file. : \(error.localizedDescription)")
             }
-            
+
             // 저장된 항목들 확인
             var fileList : Array<Any>? = nil
             do {
