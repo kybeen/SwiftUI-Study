@@ -45,6 +45,7 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
     //MARK: 다른 기기의 세션으로부터 transferFile(_:metadata:) 메서드로 파일을 받았을 떄 호출되는 메서드
     func session(_ session: WCSession, didReceive file: WCSessionFile) {
         DispatchQueue.main.async {
+            print("===========================================================")
             // 전송된 파일의 메타데이터 확인
             self.activityType = file.metadata?["activity"] as? String ?? "Unknown"
             self.handType = file.metadata?["hand"] as? String ?? "Unknown"
@@ -81,16 +82,20 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
             
             
             if fileManager.fileExists(atPath: directoryURL.path) {
-                print("디렉토리 경로 확인됨")
+                print("디렉토리 경로 확인됨: \(directoryURL.path)")
             } else {
-                print("디렉토리 경로가 없대요;;;")
+                print("디렉토리 경로가 없대요;;;: \(directoryURL.path)")
             }
             if fileManager.fileExists(atPath: file.fileURL.path) {
                 print("받아온 파일 경로 확인됨: \(file.fileURL.path)")
             } else {
-                print("받아온 파일이 없대요;;;")
+                print("받아온 파일이 없대요;;;: \(file.fileURL.path)")
             }
-            
+            if fileManager.fileExists(atPath: csvURL.path) {
+                print("저장할 경로 : \(csvURL)")
+            } else {
+                print("저장할 경로 확인 안됨;;;")
+            }
             
             // 파일 이동
             do {
@@ -110,7 +115,7 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
                 print("[Error] : \(error.localizedDescription)")
             }
             print("디렉토리 내용 확인: \(fileList)")
-            print("\n")
+            print("===========================================================\n\n")
         }
     }
 }

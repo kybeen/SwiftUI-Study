@@ -106,7 +106,7 @@ extension RightHandView {
         }
         
         // 모션 갱신 주기 설정 (몇 초마다 모션 데이터를 업데이트 할 지)
-        motionManager.deviceMotionUpdateInterval = 0.05 //1.0 / 100
+        motionManager.deviceMotionUpdateInterval = 0.01 //1.0 / 100
         var startTime: TimeInterval = 0.0 //MARK: 시작 시간 저장 변수
         // Device Motion 업데이트 받기 시작
         motionManager.startDeviceMotionUpdates(to: queue) { (data, error) in
@@ -169,22 +169,27 @@ extension RightHandView {
         let csvFileName = handLabel + activityLabel + String(num) + ".csv"
 
         //MARK: 폴더 생성
-        let directoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(folderName)
+        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        print("documentsURL: \(documentsURL)")
+        let directoryURL = documentsURL.appendingPathComponent(folderName)
         if !fileManager.fileExists(atPath: directoryURL.path) {
             do {
                 try fileManager.createDirectory(atPath: directoryURL.path, withIntermediateDirectories: true, attributes: nil)
+                print("DeviceMotionData 디렉토리 생성 완료!!! : \(directoryURL)")
             } catch {
                 NSLog("Couldn't create directory")
             }
+        } else {
+            print("Directory URL : \(directoryURL)")
         }
 
         //MARK: CSV 파일 생성(저장)
-        let fileURL = directoryURL.appendingPathComponent(csvFileName)
-//        try? self.csvString.write(to: fileURL, atomically: true, encoding: .utf8)
-//        print("CSV file saved at: \(fileURL)")
+        let csvURL = directoryURL.appendingPathComponent(csvFileName)
+        print("File URL : \(csvURL)")
+        print("저장될 파일 경로 : \(directoryURL.appendingPathComponent(csvFileName))")
         do {
-            try self.csvString.write(to: fileURL, atomically: true, encoding: .utf8)
-            print("CSV file saved at: \(fileURL)")
+            try self.csvString.write(to: csvURL, atomically: true, encoding: .utf8)
+            print("CSV file saved at: \(csvURL)")
             print("File name : \(csvFileName)")
         }
         catch let error as NSError {
@@ -192,7 +197,7 @@ extension RightHandView {
         }
         
         //MARK: CSV 파일 아이폰으로 전송
-        watchViewModel.session.transferFile(fileURL, metadata: ["activity": activityType, "hand": handType, "fileName": csvFileName])
+        watchViewModel.session.transferFile(csvURL, metadata: ["activity": activityType, "hand": handType, "fileName": csvFileName])
         print("Send CSV file to iPhone.")
         isSentCSV = true
     }
