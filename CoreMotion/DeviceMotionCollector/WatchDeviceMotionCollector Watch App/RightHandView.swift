@@ -10,7 +10,7 @@ import CoreMotion
 
 struct RightHandView: View {
     let motionManager = CMMotionManager()
-    let watchViewModel = WatchViewModel()
+    @ObservedObject var watchViewModel = WatchViewModel()
     
     @State var timestamp: Double = 0.0
     @State var accelerationX: Double = 0.0
@@ -23,20 +23,17 @@ struct RightHandView: View {
     @State private var isUpdating = false
     @State var isSentCSV = false
     @State var csvString = ""
-    @State var activityType = "포핸드"
-    let handType = "오른손잡이"
+    @State var activityType = "forehand_"
+    @State var activityLabel = "포핸드"
+    @State var handType = "right_"
     @State var num = 1
     
     var body: some View {
         VStack {
+            Text("\(handType)\(activityType)\(num).csv").bold()
             HStack {
-                Text("\(handType) -").bold()
-                if isSentCSV {
-                    Text("전송완료")
-                }
-                else {
-                    Text("\(timestamp)") // 타임스탬프
-                }
+                Text("\(watchViewModel.hzValue)Hz - ").bold().foregroundColor(.indigo)
+                Text("\(timestamp)") // 타임스탬프
             }
             HStack {
                 Button("-") {
@@ -50,11 +47,19 @@ struct RightHandView: View {
                 }.frame(width: 50, height: 50)
             }
             HStack {
-                Button(activityType) {
-                    if activityType == "포핸드" { activityType = "백핸드" }
-                    else { activityType = "포핸드" }
+                Button(activityLabel) {
+                    if activityType == "forehand_" {
+                        activityType = "backhand_"
+                        activityLabel = "백핸드"
+                        num = 1
+                    }
+                    else {
+                        activityType = "forehand_"
+                        activityLabel = "포핸드"
+                        num = 1
+                    }
                 }
-                .foregroundColor(activityType=="포핸드" ? .orange : .purple)
+                .foregroundColor(activityType=="forehand_" ? .orange : .purple)
                 
                 //MARK: 측정 버튼
                 if isUpdating {
@@ -74,18 +79,21 @@ struct RightHandView: View {
                 }
             }
             
-            //MARK: 센서값 보기
-            ScrollView {
-                Text("Acceleration").bold()
-                Text("X: \(accelerationX)")
-                Text("Y: \(accelerationY)")
-                Text("Z: \(accelerationZ)")
-                    .padding(.bottom, 5)
-                Text("Rotation Rate").bold()
-                Text("X: \(rotationRateX)")
-                Text("Y: \(rotationRateY)")
-                Text("Z: \(rotationRateZ)")
+            if isSentCSV {
+                Text("전송완료!!!").bold().foregroundColor(.blue)
             }
+//            //MARK: 센서값 보기
+//            ScrollView {
+//                Text("Acceleration").bold()
+//                Text("X: \(accelerationX)")
+//                Text("Y: \(accelerationY)")
+//                Text("Z: \(accelerationZ)")
+//                    .padding(.bottom, 5)
+//                Text("Rotation Rate").bold()
+//                Text("X: \(rotationRateX)")
+//                Text("Y: \(rotationRateY)")
+//                Text("Z: \(rotationRateZ)")
+//            }
         }
         .padding()
     }
@@ -106,7 +114,8 @@ extension RightHandView {
         }
         
         // 모션 갱신 주기 설정 (몇 초마다 모션 데이터를 업데이트 할 지)
-        motionManager.deviceMotionUpdateInterval = 0.01 //1.0 / 100
+        motionManager.deviceMotionUpdateInterval = TimeInterval(1 / watchViewModel.hzValue)
+        print("모션 갱신 주기(deviceMotionUpdateInterval) : \(watchViewModel.hzValue)Hz -> \(TimeInterval(1 / watchViewModel.hzValue))")
         var startTime: TimeInterval = 0.0 //MARK: 시작 시간 저장 변수
         // Device Motion 업데이트 받기 시작
         motionManager.startDeviceMotionUpdates(to: queue) { (data, error) in
@@ -143,6 +152,7 @@ extension RightHandView {
 //        self.watchViewModel.session.transferUserInfo(["csv" : csvString, "activity" : activityType, "hand" : handType])
 //        print("Send CSV string to iPhone.")
 //        self.isSentCSV = true
+        
         // .csv 파일로 만들고 전송
         saveAndSendToCSV()
     }
@@ -154,19 +164,7 @@ extension RightHandView {
         // 폴더명 설정
         let folderName = "DeviceMotionData"
         // 파일명 설정
-        var activityLabel = ""
-        var handLabel = ""
-        if self.activityType == "포핸드" {
-            activityLabel = "forehand_"
-        } else {
-            activityLabel = "backhand_"
-        }
-        if self.handType == "오른손잡이" {
-            handLabel = "right_"
-        } else {
-            handLabel = "left_"
-        }
-        let csvFileName = handLabel + activityLabel + String(num) + ".csv"
+        let csvFileName = self.handType + self.activityType + String(num) + ".csv"
 
         //MARK: 폴더 생성
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]

@@ -17,19 +17,16 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
         session.activate()
     }
 
-    @Published var activityType = ""
-    @Published var handType = ""
     @Published var csvFileName = ""
+    @Published var isSucceeded = "Fail"
+    @Published var savedCSV: [String]?
     
     //MARK: 델리게이트 메서드 3개 정의
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
     }
     func sessionDidBecomeInactive(_ session: WCSession) {
-        
     }
     func sessionDidDeactivate(_ session: WCSession) {
-        
     }
     
 //    //MARK: 다른 기기의 세션으로부터 transferUserInfo(_:) 메서드로 데이터를 받았을 떄 호출되는 메서드
@@ -47,8 +44,6 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
         DispatchQueue.main.async {
             print("===========================================================")
             // 전송된 파일의 메타데이터 확인
-            self.activityType = file.metadata?["activity"] as? String ?? "Unknown"
-            self.handType = file.metadata?["hand"] as? String ?? "Unknown"
             self.csvFileName = file.metadata?["fileName"] as? String ?? "Unknown" // 파일명
             let fileName = file.metadata?["fileName"] as? String ?? "Unknown" // 파일명
 //            // 전송된 파일의 임시 경로
@@ -77,44 +72,48 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
             }
             // 파일 만들기
             let csvURL = directoryURL.appendingPathComponent(fileName) // 파일명이 포함된 파일 저장 경로
-            print("File URL : \(csvURL)")
-            print("저장될 파일 경로 : \(directoryURL.appendingPathComponent(fileName))")
+            print("저장될 파일 경로 : \(csvURL)")
 
 
-            if fileManager.fileExists(atPath: directoryURL.path) {
-                print("디렉토리 경로 확인됨: \(directoryURL.path)")
-            } else {
-                print("디렉토리 경로가 없대요;;;: \(directoryURL.path)")
-            }
-            if fileManager.fileExists(atPath: file.fileURL.path) {
-                print("받아온 파일 경로 확인됨: \(file.fileURL.path)")
-            } else {
-                print("받아온 파일이 없대요;;;: \(file.fileURL.path)")
-            }
-            if fileManager.fileExists(atPath: csvURL.path) {
-                print("저장할 경로 : \(csvURL)")
-            } else {
-                print("저장할 경로 확인 안됨;;;")
-            }
+//            if fileManager.fileExists(atPath: directoryURL.path) {
+//                print("디렉토리 경로 확인됨: \(directoryURL.path)")
+//            } else {
+//                print("디렉토리 경로가 없대요;;;: \(directoryURL.path)")
+//            }
+//            if fileManager.fileExists(atPath: file.fileURL.path) {
+//                print("받아온 파일 경로 확인됨: \(file.fileURL.path)")
+//            } else {
+//                print("받아온 파일이 없대요;;;: \(file.fileURL.path)")
+//            }
+//            if fileManager.fileExists(atPath: csvURL.path) {
+//                print("저장할 경로 : \(csvURL)")
+//            } else {
+//                print("저장할 경로 확인 안됨;;;")
+//            }
 
             // 파일 이동
             do {
+                // 저장 성공
                 try fileManager.moveItem(at: file.fileURL, to: csvURL)
                 print("File saved!!! : \(fileName)")
                 print("Received and saved CSV file!!! : \(csvURL)")
+                self.isSucceeded = "Success!!!"
             } catch {
+                // 저장 실패
                 print("Failed to save received CSV file. : \(error.localizedDescription)")
+                self.isSucceeded = "Fail..."
             }
 
             // 저장된 항목들 확인
-            var fileList : Array<Any>? = nil
+            var fileList : [String] = []
             do {
                 fileList = try fileManager.contentsOfDirectory(atPath: directoryURL.path)
             }
             catch {
                 print("[Error] : \(error.localizedDescription)")
             }
-            print("디렉토리 내용 확인: \(fileList)")
+            self.savedCSV = fileList.sorted()
+            print("디렉토리 내용 확인: \(self.savedCSV!), 타입: \(type(of: self.savedCSV))")
             print("===========================================================\n\n")
         }
     }
