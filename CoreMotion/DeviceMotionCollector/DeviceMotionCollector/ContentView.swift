@@ -72,6 +72,56 @@ struct ContentView: View {
             }
         }
         .padding()
+        .onAppear() {
+            // 처음 화면이 로드될 때 디렉토리 생성 체크하고, 저장된 CSV 파일들 목록을 불러옴
+            createDirectory()
+            loadCSVFiles()
+        }
+    }
+}
+
+extension ContentView {
+    //MARK: CSV 파일을 저장할 디렉토리를 만드는 함수
+    func createDirectory() {
+        // 파일을 저장할 경로 설정
+        let fileManager = FileManager.default // FileManager 인스턴스 생성
+        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] // documents 디렉토리 경로 (계속 바뀌기 때문에 새로 불러와야 함)
+        print("documentsURL: \(documentsURL)")
+        let directoryName = "DeviceMotionData" // 디렉토리명
+
+        // 디렉토리 만들기
+        let directoryURL = documentsURL.appendingPathComponent(directoryName)
+        // DeviceMotionData 폴더가 이미 존재하는지 확인 후 생성
+        if !fileManager.fileExists(atPath: directoryURL.path) {
+            do {
+                try fileManager.createDirectory(atPath: directoryURL.path, withIntermediateDirectories: true, attributes: nil)
+                print("DeviceMotionData 디렉토리 생성 완료!!! : \(directoryURL)")
+            } catch {
+                NSLog("Couldn't create document directory.")
+            }
+        } else {
+            print("디렉토리가 이미 존재하기 때문에 생성하지 않았습니다.\nDirectory URL : \(directoryURL)")
+        }
+    }
+    
+    //MARK: CSV 파일을 불러오는 함수
+    func loadCSVFiles() {
+        let fileManager = FileManager.default // FileManager 인스턴스 생성
+        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] // documents 디렉토리 경로 (계속 바뀌기 때문에 새로 불러와야 함)
+        print("documentsURL: \(documentsURL)")
+        let directoryName = "DeviceMotionData" // 디렉토리명
+        let directoryURL = documentsURL.appendingPathComponent(directoryName)
+        
+        // 저장된 항목들 확인
+        var fileList : [String] = []
+        do {
+            fileList = try FileManager.default.contentsOfDirectory(atPath: directoryURL.path)
+        }
+        catch {
+            print("[Error] : \(error.localizedDescription)")
+        }
+        phoneViewModel.savedCSV = fileList.sorted()
+        print("디렉토리 내용 확인: \(phoneViewModel.savedCSV!))")
     }
 }
 
