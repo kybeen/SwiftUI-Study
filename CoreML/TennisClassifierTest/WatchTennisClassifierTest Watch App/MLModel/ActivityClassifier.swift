@@ -80,7 +80,6 @@ class ActivityClassifier: NSObject, ObservableObject {
                 guard let modelURL = Bundle.main.url(forResource: "RightHandTennisActivityClassifier", withExtension: "mlmodelc") else {
                     fatalError("Failed to locate the model file")
                 }
-                
                 guard let model = try? RightHandTennisActivityClassifier(contentsOf: modelURL) else {
                     fatalError("Failed to create the model.")
                 }
@@ -90,7 +89,6 @@ class ActivityClassifier: NSObject, ObservableObject {
                 for (index, value) in inputArray.enumerated() {
                     inputMultiArray[index] = NSNumber(value: value)
                 }
-                
                 let input = RightHandTennisActivityClassifierInput(
                     Acceleration_X: inputMultiArray,
                     Acceleration_Y: inputMultiArray,

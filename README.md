@@ -46,9 +46,6 @@ Apple의 Exploring SwiftUI Sample Apps 튜토리얼을 보며 샘플 앱들을 �
 - Core Motion 프레임워크를 사용해서 기기의 센서값을 받아오는 것을 공부한 내용입니다.
 - Watch Connectivity 프레임워크를 함께 사용해서 watchOS 앱에서 수집한 센서값들을 iOS 앱에 불러와서 확인해보았습니다.
 
-----
-### [ DeviceMotionCollector ]
-- 애플워치에서 Core Motion 프레임워크를 통해 수집한 데이터를 .csv 파일로  iOS 기기로 전송한 뒤 .csv 파일로 저장하는 샘플 앱
 
 ----
 ### [ WatchConnectivityStudy, WatchConnectivityStudy2 ]
