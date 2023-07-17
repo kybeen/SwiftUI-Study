@@ -14,6 +14,7 @@ struct ContentView: View {
         VStack {
             Text("Class: \(activityClassifier.classLabel)")
             Text("Confidence: \(activityClassifier.confidence)")
+            Text("Time: \(activityClassifier.timestamp)")
             Button("Start Detecting") {
                 activityClassifier.startTracking()
             }

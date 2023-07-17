@@ -13,6 +13,9 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Text("Class: \(phoneViewModel.forehandLabel)").font(.largeTitle)
+            Text("Confidence: \(phoneViewModel.confidence)").font(.largeTitle)
+            Text("Forehand Count: \(phoneViewModel.forehandCount)").font(.largeTitle)
             HStack {
                 Button("Update") {
                     if phoneViewModel.session.isReachable {
@@ -23,9 +26,7 @@ struct ContentView: View {
                 }
                 Text("\(reachable)")
             }
-            Text("Class: \(phoneViewModel.forehandLabel)")
-            Text("Confidence: \(phoneViewModel.confidence)")
-            Text("Forehand Count: \(phoneViewModel.forehandCount)")
+            .padding()
         }
         .padding()
     }

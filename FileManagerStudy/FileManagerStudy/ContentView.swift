@@ -22,7 +22,7 @@ extension ContentView {
         let fileManager = FileManager.default // FileManager 인스턴스 생성
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] // 요청된 도메인에서 지정된 공통 디렉토리에 대한 URL 배열을 리턴
         /* 디렉토리 만들기 */
-        let directoryURL = documentsURL.appendingPathComponent("kybeen")
+        let directoryURL = documentsURL.appendingPathComponent("kybeen/test1")
         if !fileManager.fileExists(atPath: directoryURL.path) {
             do {
                 try fileManager.createDirectory(atPath: directoryURL.path, withIntermediateDirectories: true, attributes: nil)
@@ -44,7 +44,7 @@ extension ContentView {
         let fileManager = FileManager.default // FileManager 인스턴스 생성
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] // 요청된 도메인에서 지정된 공통 디렉토리에 대한 URL 배열을 리턴
         /* 디렉토리 만들기 */
-        let directoryURL = documentsURL.appendingPathComponent("kybeen")
+        let directoryURL = documentsURL.appendingPathComponent("kybeen/test2")
         if !fileManager.fileExists(atPath: directoryURL.path) {
             do {
                 try fileManager.createDirectory(atPath: directoryURL.path, withIntermediateDirectories: true, attributes: nil)

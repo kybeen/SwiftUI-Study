@@ -14,7 +14,7 @@
 		B80407882A5FA0AF0023CA63 /* WatchTennisClassifierTest Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B804077B2A5FA0AE0023CA63 /* WatchTennisClassifierTest Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B84F4DA22A5FA7D60030A93C /* WatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DA12A5FA7D60030A93C /* WatchViewModel.swift */; };
 		B84F4DA32A5FA8020030A93C /* ActivityClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F392A5EA21900F10EBE /* ActivityClassifier.swift */; };
-		B84F4DA42A5FA8520030A93C /* RightHandTennisActivityClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F3B2A5F222600F10EBE /* RightHandTennisActivityClassifier.mlmodel */; };
+		B84F4DB02A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */; };
 		B8C14F292A5EA16800F10EBE /* TennisClassifierTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F282A5EA16800F10EBE /* TennisClassifierTestApp.swift */; };
 		B8C14F2B2A5EA16800F10EBE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F2A2A5EA16800F10EBE /* ContentView.swift */; };
 		B8C14F2D2A5EA16800F10EBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8C14F2C2A5EA16800F10EBE /* Assets.xcassets */; };
@@ -53,13 +53,13 @@
 		B80407812A5FA0AF0023CA63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B80407842A5FA0AF0023CA63 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B84F4DA12A5FA7D60030A93C /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
+		B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RightHandTennisActivityClassifier.mlmodel; sourceTree = "<group>"; };
 		B8C14F252A5EA16800F10EBE /* TennisClassifierTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisClassifierTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C14F282A5EA16800F10EBE /* TennisClassifierTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisClassifierTestApp.swift; sourceTree = "<group>"; };
 		B8C14F2A2A5EA16800F10EBE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B8C14F2C2A5EA16800F10EBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8C14F2F2A5EA16800F10EBE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B8C14F392A5EA21900F10EBE /* ActivityClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityClassifier.swift; sourceTree = "<group>"; };
-		B8C14F3B2A5F222600F10EBE /* RightHandTennisActivityClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RightHandTennisActivityClassifier.mlmodel; sourceTree = "<group>"; };
 		B8C14F3D2A5F771A00F10EBE /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,7 +143,7 @@
 		B8C14F362A5EA18500F10EBE /* MLModel */ = {
 			isa = PBXGroup;
 			children = (
-				B8C14F3B2A5F222600F10EBE /* RightHandTennisActivityClassifier.mlmodel */,
+				B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */,
 				B8C14F392A5EA21900F10EBE /* ActivityClassifier.swift */,
 			);
 			path = MLModel;
@@ -255,7 +255,7 @@
 				B84F4DA32A5FA8020030A93C /* ActivityClassifier.swift in Sources */,
 				B804077E2A5FA0AE0023CA63 /* WatchTennisClassifierTestApp.swift in Sources */,
 				B84F4DA22A5FA7D60030A93C /* WatchViewModel.swift in Sources */,
-				B84F4DA42A5FA8520030A93C /* RightHandTennisActivityClassifier.mlmodel in Sources */,
+				B84F4DB02A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
