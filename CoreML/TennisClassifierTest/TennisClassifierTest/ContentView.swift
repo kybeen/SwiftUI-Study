@@ -12,21 +12,43 @@ struct ContentView: View {
     @State var reachable = "No"
     
     var body: some View {
-        VStack {
-            Text("Class: \(phoneViewModel.forehandLabel)").font(.largeTitle)
-            Text("Confidence: \(phoneViewModel.confidence)").font(.largeTitle)
-            Text("Forehand Count: \(phoneViewModel.forehandCount)").font(.largeTitle)
+        VStack(alignment: .leading) {
             HStack {
-                Button("Update") {
+                Text("Swing type: ").bold().font(.largeTitle)
+                Text("\(phoneViewModel.classLabel)").font(.largeTitle)
+            }
+            HStack {
+                Text("Result: ").bold().font(.largeTitle)
+                Text("\(phoneViewModel.resultLabel)").font(.largeTitle)
+            }
+            HStack {
+                Text("Prob: ").bold().font(.largeTitle)
+                Text("\(phoneViewModel.confidence)").font(.largeTitle)
+            }
+            HStack {
+                Text("Perfect Count: ").bold().font(.largeTitle)
+                Text("\(phoneViewModel.perfectCount)").font(.largeTitle)
+            }
+            HStack {
+                Text("Bad Count: ").bold().font(.largeTitle)
+                Text("\(phoneViewModel.badCount)").font(.largeTitle)
+            }
+            HStack {
+                Text("Total Swing: ").bold().font(.largeTitle)
+                Text("\(phoneViewModel.totalCount)").font(.largeTitle)
+            }
+            HStack {
+                Button {
                     if phoneViewModel.session.isReachable {
                         reachable = "Yes"
                     } else {
                         reachable = "No"
                     }
+                } label: {
+                    Text("Update").bold().font(.title)
                 }
-                Text("\(reachable)")
+                Text("➡️ \(reachable)").font(.title)
             }
-            .padding()
         }
         .padding()
     }

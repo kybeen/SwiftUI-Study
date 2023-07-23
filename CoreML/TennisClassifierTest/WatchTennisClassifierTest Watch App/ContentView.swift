@@ -12,14 +12,40 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Text("Class: \(activityClassifier.classLabel)")
+            Text("감지된 동작 (\(activityClassifier.classLabel))")
+            Text("Result: \(activityClassifier.resultLabel)")
             Text("Confidence: \(activityClassifier.confidence)")
             Text("Time: \(activityClassifier.timestamp)")
-            Button("Start Detecting") {
-                activityClassifier.startTracking()
+            HStack {
+                Button {
+                    activityClassifier.startTracking()
+                } label: {
+                    Image(systemName: "play.fill").foregroundColor(.green)
+                }
+                Button {
+                    activityClassifier.stopTracking()
+                } label: {
+                    Image(systemName: "stop.fill").foregroundColor(.red)
+                }
             }
-            Button("Stop Detecting") {
-                activityClassifier.stopTracking()
+            
+            HStack {
+                Spacer()
+                VStack {
+                    Text("Perfect").bold()
+                    Text("\(activityClassifier.perfectCount)")
+                }.foregroundColor(.green)
+                Spacer()
+                VStack {
+                    Text("Bad").bold()
+                    Text("\(activityClassifier.badCount)")
+                }.foregroundColor(.red)
+                Spacer()
+            }
+            .padding()
+            
+            if activityClassifier.isSwinging {
+                Text("스윙 감지!!!").italic().foregroundColor(.cyan)
             }
         }
         .padding()

@@ -17,9 +17,12 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
         session.activate()
     }
     
-    @Published var forehandLabel = "?"
+    @Published var classLabel = "?"
+    @Published var resultLabel = "?"
     @Published var confidence: Double = 0.0
-    @Published var forehandCount: Int = 0
+    @Published var perfectCount: Int = 0
+    @Published var badCount: Int = 0
+    @Published var totalCount: Int = 0
     
     //MARK: 델리게이트 메서드
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -37,9 +40,12 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
         DispatchQueue.main.async {
             // 받아온 데이터 저장
             print("Received data from apple watch")
-            self.forehandLabel = userInfo["forehandLabel"] as? String ?? "?"
-            self.confidence = userInfo["confidence"] as? Double ?? 0.0
-            self.forehandCount = userInfo["forehandCount"] as? Int ?? 0
+            self.classLabel = userInfo["label"] as? String ?? self.classLabel
+            self.resultLabel = userInfo["result"] as? String ?? self.resultLabel
+            self.confidence = userInfo["confidence"] as? Double ?? self.confidence
+            self.perfectCount = userInfo["perfectCount"] as? Int ?? self.perfectCount
+            self.badCount = userInfo["badCount"] as? Int ?? self.badCount
+            self.totalCount = userInfo["totalCount"] as? Int ?? self.totalCount
         }
     }
 }

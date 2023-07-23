@@ -15,6 +15,9 @@
 		B84F4DA22A5FA7D60030A93C /* WatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DA12A5FA7D60030A93C /* WatchViewModel.swift */; };
 		B84F4DA32A5FA8020030A93C /* ActivityClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F392A5EA21900F10EBE /* ActivityClassifier.swift */; };
 		B84F4DB02A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */; };
+		B84F4DB42A6707130030A93C /* TennisClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DB32A6707120030A93C /* TennisClassifier.mlmodel */; };
+		B84F4DB62A6774630030A93C /* TennisClassifier2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DB52A6774630030A93C /* TennisClassifier2.mlmodel */; };
+		B87CEBD22A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBD12A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel */; };
 		B8C14F292A5EA16800F10EBE /* TennisClassifierTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F282A5EA16800F10EBE /* TennisClassifierTestApp.swift */; };
 		B8C14F2B2A5EA16800F10EBE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F2A2A5EA16800F10EBE /* ContentView.swift */; };
 		B8C14F2D2A5EA16800F10EBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8C14F2C2A5EA16800F10EBE /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 		B80407842A5FA0AF0023CA63 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B84F4DA12A5FA7D60030A93C /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
 		B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RightHandTennisActivityClassifier.mlmodel; sourceTree = "<group>"; };
+		B84F4DB32A6707120030A93C /* TennisClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TennisClassifier.mlmodel; sourceTree = "<group>"; };
+		B84F4DB52A6774630030A93C /* TennisClassifier2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TennisClassifier2.mlmodel; sourceTree = "<group>"; };
+		B87CEBD12A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_window50.mlmodel; sourceTree = "<group>"; };
 		B8C14F252A5EA16800F10EBE /* TennisClassifierTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisClassifierTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C14F282A5EA16800F10EBE /* TennisClassifierTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisClassifierTestApp.swift; sourceTree = "<group>"; };
 		B8C14F2A2A5EA16800F10EBE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -143,6 +149,9 @@
 		B8C14F362A5EA18500F10EBE /* MLModel */ = {
 			isa = PBXGroup;
 			children = (
+				B87CEBD12A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel */,
+				B84F4DB52A6774630030A93C /* TennisClassifier2.mlmodel */,
+				B84F4DB32A6707120030A93C /* TennisClassifier.mlmodel */,
 				B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */,
 				B8C14F392A5EA21900F10EBE /* ActivityClassifier.swift */,
 			);
@@ -251,9 +260,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B84F4DB42A6707130030A93C /* TennisClassifier.mlmodel in Sources */,
+				B87CEBD22A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel in Sources */,
 				B80407802A5FA0AE0023CA63 /* ContentView.swift in Sources */,
 				B84F4DA32A5FA8020030A93C /* ActivityClassifier.swift in Sources */,
 				B804077E2A5FA0AE0023CA63 /* WatchTennisClassifierTestApp.swift in Sources */,
+				B84F4DB62A6774630030A93C /* TennisClassifier2.mlmodel in Sources */,
 				B84F4DA22A5FA7D60030A93C /* WatchViewModel.swift in Sources */,
 				B84F4DB02A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel in Sources */,
 			);
@@ -293,14 +305,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchTennisClassifierTest;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = kybeen.DeviceMotionCollector;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = kybeen.TennisClassifierTest;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kybeen.DeviceMotionCollector.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = kybeen.TennisClassifierTest.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -324,14 +336,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = WatchTennisClassifierTest;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = kybeen.DeviceMotionCollector;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = kybeen.TennisClassifierTest;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kybeen.DeviceMotionCollector.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = kybeen.TennisClassifierTest.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -478,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kybeen.DeviceMotionCollector;
+				PRODUCT_BUNDLE_IDENTIFIER = kybeen.TennisClassifierTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -508,7 +520,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kybeen.DeviceMotionCollector;
+				PRODUCT_BUNDLE_IDENTIFIER = kybeen.TennisClassifierTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
