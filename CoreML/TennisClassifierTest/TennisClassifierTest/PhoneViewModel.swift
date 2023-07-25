@@ -19,9 +19,11 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
     
     @Published var classLabel = "?"
     @Published var resultLabel = "?"
-    @Published var confidence: Double = 0.0
-    @Published var perfectCount: Int = 0
-    @Published var badCount: Int = 0
+    @Published var confidence: String = "0.0"
+    @Published var forehandPerfectCount: Int = 0
+    @Published var forehandBadCount: Int = 0
+    @Published var backhandPerfectCount: Int = 0
+    @Published var backhandBadCount: Int = 0
     @Published var totalCount: Int = 0
     
     //MARK: 델리게이트 메서드
@@ -42,9 +44,11 @@ class PhoneViewModel: NSObject, WCSessionDelegate, ObservableObject {
             print("Received data from apple watch")
             self.classLabel = userInfo["label"] as? String ?? self.classLabel
             self.resultLabel = userInfo["result"] as? String ?? self.resultLabel
-            self.confidence = userInfo["confidence"] as? Double ?? self.confidence
-            self.perfectCount = userInfo["perfectCount"] as? Int ?? self.perfectCount
-            self.badCount = userInfo["badCount"] as? Int ?? self.badCount
+            self.confidence = userInfo["confidence"] as? String ?? self.confidence
+            self.forehandPerfectCount = userInfo["forehandPerfectCount"] as? Int ?? self.forehandPerfectCount
+            self.forehandBadCount = userInfo["forehandBadCount"] as? Int ?? self.forehandBadCount
+            self.backhandPerfectCount = userInfo["backhandPerfectCount"] as? Int ?? self.backhandPerfectCount
+            self.backhandBadCount = userInfo["backhandBadCount"] as? Int ?? self.backhandBadCount
             self.totalCount = userInfo["totalCount"] as? Int ?? self.totalCount
         }
     }

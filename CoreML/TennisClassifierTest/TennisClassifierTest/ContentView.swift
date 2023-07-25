@@ -12,29 +12,49 @@ struct ContentView: View {
     @State var reachable = "No"
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .trailing) {
             HStack {
                 Text("Swing type: ").bold().font(.largeTitle)
+                Spacer()
                 Text("\(phoneViewModel.classLabel)").font(.largeTitle)
             }
             HStack {
                 Text("Result: ").bold().font(.largeTitle)
+                Spacer()
                 Text("\(phoneViewModel.resultLabel)").font(.largeTitle)
             }
             HStack {
-                Text("Prob: ").bold().font(.largeTitle)
-                Text("\(phoneViewModel.confidence)").font(.largeTitle)
+                Text("Probability: ").bold().font(.largeTitle)
+                Spacer()
+                Text("\(String(phoneViewModel.confidence.prefix(8)))").font(.title)
             }
             HStack {
-                Text("Perfect Count: ").bold().font(.largeTitle)
-                Text("\(phoneViewModel.perfectCount)").font(.largeTitle)
+                Text("Forehand: ").bold().font(.largeTitle).padding(.trailing, 10)
+                Spacer()
+                VStack {
+                    Text("Perfect")
+                    Text("\(phoneViewModel.forehandPerfectCount)")
+                }.bold().foregroundColor(.green).padding(.trailing, 10)
+                VStack {
+                    Text("Bad")
+                    Text("\(phoneViewModel.forehandBadCount)")
+                }.bold().foregroundColor(.red)
             }
             HStack {
-                Text("Bad Count: ").bold().font(.largeTitle)
-                Text("\(phoneViewModel.badCount)").font(.largeTitle)
+                Text("Backhand: ").bold().font(.largeTitle).padding(.trailing, 10)
+                Spacer()
+                VStack {
+                    Text("Perfect")
+                    Text("\(phoneViewModel.backhandPerfectCount)")
+                }.bold().foregroundColor(.green).padding(.trailing, 10)
+                VStack {
+                    Text("Bad")
+                    Text("\(phoneViewModel.backhandBadCount)")
+                }.bold().foregroundColor(.red)
             }
             HStack {
                 Text("Total Swing: ").bold().font(.largeTitle)
+                Spacer()
                 Text("\(phoneViewModel.totalCount)").font(.largeTitle)
             }
             HStack {
@@ -49,8 +69,8 @@ struct ContentView: View {
                 }
                 Text("➡️ \(reachable)").font(.title)
             }
-        }
-        .padding()
+            .padding(.top, 10)
+        }.padding()
     }
 }
 

@@ -15,9 +15,15 @@
 		B84F4DA22A5FA7D60030A93C /* WatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DA12A5FA7D60030A93C /* WatchViewModel.swift */; };
 		B84F4DA32A5FA8020030A93C /* ActivityClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F392A5EA21900F10EBE /* ActivityClassifier.swift */; };
 		B84F4DB02A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */; };
-		B84F4DB42A6707130030A93C /* TennisClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DB32A6707120030A93C /* TennisClassifier.mlmodel */; };
-		B84F4DB62A6774630030A93C /* TennisClassifier2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DB52A6774630030A93C /* TennisClassifier2.mlmodel */; };
 		B87CEBD22A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBD12A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel */; };
+		B87CEBD42A6DFEFB0038BFDB /* TeringClassifier_window100.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBD32A6DFEFB0038BFDB /* TeringClassifier_window100.mlmodel */; };
+		B87CEBD72A6E51F80038BFDB /* TeringClassifier_window200_OnlySwing.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBD52A6E51F80038BFDB /* TeringClassifier_window200_OnlySwing.mlmodel */; };
+		B87CEBD82A6E51F80038BFDB /* TeringClassifier_window200.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBD62A6E51F80038BFDB /* TeringClassifier_window200.mlmodel */; };
+		B87CEBDA2A6E51FF0038BFDB /* TeringClassifier_window100_OnlySwing.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBD92A6E51FF0038BFDB /* TeringClassifier_window100_OnlySwing.mlmodel */; };
+		B87CEBEE2A6F67FE0038BFDB /* TeringClassifier_window150.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBED2A6F67FE0038BFDB /* TeringClassifier_window150.mlmodel */; };
+		B87CEBF02A6FB3560038BFDB /* TeringClassifier_marcus_bazzi.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBEF2A6FB3560038BFDB /* TeringClassifier_marcus_bazzi.mlmodel */; };
+		B87CEBF32A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window100.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBF12A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window100.mlmodel */; };
+		B87CEBF42A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window200.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBF22A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window200.mlmodel */; };
 		B8C14F292A5EA16800F10EBE /* TennisClassifierTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F282A5EA16800F10EBE /* TennisClassifierTestApp.swift */; };
 		B8C14F2B2A5EA16800F10EBE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F2A2A5EA16800F10EBE /* ContentView.swift */; };
 		B8C14F2D2A5EA16800F10EBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8C14F2C2A5EA16800F10EBE /* Assets.xcassets */; };
@@ -57,9 +63,16 @@
 		B80407842A5FA0AF0023CA63 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B84F4DA12A5FA7D60030A93C /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
 		B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RightHandTennisActivityClassifier.mlmodel; sourceTree = "<group>"; };
-		B84F4DB32A6707120030A93C /* TennisClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TennisClassifier.mlmodel; sourceTree = "<group>"; };
-		B84F4DB52A6774630030A93C /* TennisClassifier2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TennisClassifier2.mlmodel; sourceTree = "<group>"; };
 		B87CEBD12A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_window50.mlmodel; sourceTree = "<group>"; };
+		B87CEBD32A6DFEFB0038BFDB /* TeringClassifier_window100.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_window100.mlmodel; sourceTree = "<group>"; };
+		B87CEBD52A6E51F80038BFDB /* TeringClassifier_window200_OnlySwing.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_window200_OnlySwing.mlmodel; sourceTree = "<group>"; };
+		B87CEBD62A6E51F80038BFDB /* TeringClassifier_window200.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_window200.mlmodel; sourceTree = "<group>"; };
+		B87CEBD92A6E51FF0038BFDB /* TeringClassifier_window100_OnlySwing.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_window100_OnlySwing.mlmodel; sourceTree = "<group>"; };
+		B87CEBEC2A6EDA970038BFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B87CEBED2A6F67FE0038BFDB /* TeringClassifier_window150.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_window150.mlmodel; sourceTree = "<group>"; };
+		B87CEBEF2A6FB3560038BFDB /* TeringClassifier_marcus_bazzi.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_marcus_bazzi.mlmodel; sourceTree = "<group>"; };
+		B87CEBF12A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window100.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_marcus_bazzi_totalData_window100.mlmodel; sourceTree = "<group>"; };
+		B87CEBF22A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window200.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_marcus_bazzi_totalData_window200.mlmodel; sourceTree = "<group>"; };
 		B8C14F252A5EA16800F10EBE /* TennisClassifierTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisClassifierTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C14F282A5EA16800F10EBE /* TennisClassifierTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisClassifierTestApp.swift; sourceTree = "<group>"; };
 		B8C14F2A2A5EA16800F10EBE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,6 +142,7 @@
 		B8C14F272A5EA16800F10EBE /* TennisClassifierTest */ = {
 			isa = PBXGroup;
 			children = (
+				B87CEBEC2A6EDA970038BFDB /* Info.plist */,
 				B8C14F282A5EA16800F10EBE /* TennisClassifierTestApp.swift */,
 				B8C14F2A2A5EA16800F10EBE /* ContentView.swift */,
 				B8C14F3D2A5F771A00F10EBE /* PhoneViewModel.swift */,
@@ -149,9 +163,15 @@
 		B8C14F362A5EA18500F10EBE /* MLModel */ = {
 			isa = PBXGroup;
 			children = (
+				B87CEBF12A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window100.mlmodel */,
+				B87CEBF22A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window200.mlmodel */,
+				B87CEBEF2A6FB3560038BFDB /* TeringClassifier_marcus_bazzi.mlmodel */,
+				B87CEBED2A6F67FE0038BFDB /* TeringClassifier_window150.mlmodel */,
+				B87CEBD92A6E51FF0038BFDB /* TeringClassifier_window100_OnlySwing.mlmodel */,
+				B87CEBD52A6E51F80038BFDB /* TeringClassifier_window200_OnlySwing.mlmodel */,
+				B87CEBD62A6E51F80038BFDB /* TeringClassifier_window200.mlmodel */,
+				B87CEBD32A6DFEFB0038BFDB /* TeringClassifier_window100.mlmodel */,
 				B87CEBD12A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel */,
-				B84F4DB52A6774630030A93C /* TennisClassifier2.mlmodel */,
-				B84F4DB32A6707120030A93C /* TennisClassifier.mlmodel */,
 				B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */,
 				B8C14F392A5EA21900F10EBE /* ActivityClassifier.swift */,
 			);
@@ -260,13 +280,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B84F4DB42A6707130030A93C /* TennisClassifier.mlmodel in Sources */,
+				B87CEBF02A6FB3560038BFDB /* TeringClassifier_marcus_bazzi.mlmodel in Sources */,
 				B87CEBD22A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel in Sources */,
 				B80407802A5FA0AE0023CA63 /* ContentView.swift in Sources */,
 				B84F4DA32A5FA8020030A93C /* ActivityClassifier.swift in Sources */,
 				B804077E2A5FA0AE0023CA63 /* WatchTennisClassifierTestApp.swift in Sources */,
-				B84F4DB62A6774630030A93C /* TennisClassifier2.mlmodel in Sources */,
+				B87CEBF32A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window100.mlmodel in Sources */,
+				B87CEBD72A6E51F80038BFDB /* TeringClassifier_window200_OnlySwing.mlmodel in Sources */,
+				B87CEBDA2A6E51FF0038BFDB /* TeringClassifier_window100_OnlySwing.mlmodel in Sources */,
+				B87CEBEE2A6F67FE0038BFDB /* TeringClassifier_window150.mlmodel in Sources */,
+				B87CEBD82A6E51F80038BFDB /* TeringClassifier_window200.mlmodel in Sources */,
+				B87CEBD42A6DFEFB0038BFDB /* TeringClassifier_window100.mlmodel in Sources */,
 				B84F4DA22A5FA7D60030A93C /* WatchViewModel.swift in Sources */,
+				B87CEBF42A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window200.mlmodel in Sources */,
 				B84F4DB02A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,6 +506,7 @@
 				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TennisClassifierTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -510,6 +537,7 @@
 				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TennisClassifierTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

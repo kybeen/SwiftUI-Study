@@ -12,9 +12,16 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Text("감지된 동작 (\(activityClassifier.classLabel))")
-            Text("Result: \(activityClassifier.resultLabel)")
-            Text("Confidence: \(activityClassifier.confidence)")
+            HStack {
+                Text("감지된 동작: ")
+                Text("\(activityClassifier.classLabel)").foregroundColor(activityClassifier.classLabel=="Forehand" ? .cyan : (activityClassifier.classLabel=="Backhand" ? .yellow : .gray))
+            }
+            HStack {
+                Text("Result: ")
+                Text(activityClassifier.resultLabel)
+                    .foregroundColor(activityClassifier.resultLabel == "Perfect" ? .green : (activityClassifier.resultLabel == "Bad" ? .red : .gray))
+            }
+            Text("Confidence: \(String(activityClassifier.confidence.prefix(5)))")
             Text("Time: \(activityClassifier.timestamp)")
             HStack {
                 Button {
@@ -30,22 +37,30 @@ struct ContentView: View {
             }
             
             HStack {
+                Text("\(String(activityClassifier.classLabel.prefix(4)))").font(.body).foregroundColor(activityClassifier.classLabel=="Forehand" ? .cyan : (activityClassifier.classLabel=="Backhand" ? .yellow : .gray))
                 Spacer()
                 VStack {
                     Text("Perfect").bold()
-                    Text("\(activityClassifier.perfectCount)")
+                    if activityClassifier.classLabel == "Forehand" {
+                        Text("\(activityClassifier.forehandPerfectCount)")
+                    } else if activityClassifier.classLabel == "Backhand" {
+                        Text("\(activityClassifier.backhandPerfectCount)")
+                    }
                 }.foregroundColor(.green)
                 Spacer()
                 VStack {
                     Text("Bad").bold()
-                    Text("\(activityClassifier.badCount)")
+                    if activityClassifier.classLabel == "Forehand" {
+                        Text("\(activityClassifier.forehandBadCount)")
+                    } else if activityClassifier.classLabel == "Backhand" {
+                        Text("\(activityClassifier.backhandBadCount)")
+                    }
                 }.foregroundColor(.red)
-                Spacer()
             }
             .padding()
             
             if activityClassifier.isSwinging {
-                Text("스윙 감지!!!").italic().foregroundColor(.cyan)
+                Text("스윙 감지!!!").italic().foregroundColor(.mint)
             }
         }
         .padding()
