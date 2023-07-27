@@ -61,6 +61,7 @@
 		B804077F2A5FA0AE0023CA63 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B80407812A5FA0AF0023CA63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B80407842A5FA0AF0023CA63 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B82110C42A720C0F0043CE6D /* WatchTennisClassifierTest Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchTennisClassifierTest Watch App.entitlements"; sourceTree = "<group>"; };
 		B84F4DA12A5FA7D60030A93C /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
 		B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RightHandTennisActivityClassifier.mlmodel; sourceTree = "<group>"; };
 		B87CEBD12A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_window50.mlmodel; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 		B804077C2A5FA0AE0023CA63 /* WatchTennisClassifierTest Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				B82110C42A720C0F0043CE6D /* WatchTennisClassifierTest Watch App.entitlements */,
 				B8C14F362A5EA18500F10EBE /* MLModel */,
 				B804077D2A5FA0AE0023CA63 /* WatchTennisClassifierTestApp.swift */,
 				B804077F2A5FA0AE0023CA63 /* ContentView.swift */,
@@ -323,13 +325,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "WatchTennisClassifierTest Watch App/WatchTennisClassifierTest Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchTennisClassifierTest Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchTennisClassifierTest-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchTennisClassifierTest;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = kybeen.TennisClassifierTest;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -354,13 +361,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "WatchTennisClassifierTest Watch App/WatchTennisClassifierTest Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchTennisClassifierTest Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchTennisClassifierTest-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchTennisClassifierTest;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = kybeen.TennisClassifierTest;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;

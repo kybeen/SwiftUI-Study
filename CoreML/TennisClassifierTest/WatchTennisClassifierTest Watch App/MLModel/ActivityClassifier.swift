@@ -14,9 +14,9 @@ class ActivityClassifier: NSObject, ObservableObject {
     let motionManager = CMMotionManager()
     let watchViewModel = WatchviewModel()
     
-    let MODEL_NAME = "TeringClassifier_marcus_bazzi_totalData_window200"
-    let WINDOW_SIZE = 200 // 슬라이딩 윈도우 크기 설정
-    let PRE_BUFFER_SIZE = 70 // 미리 채워놓을 버퍼 사이즈 (WINDOW_SIZE 절반 정도)
+    let MODEL_NAME = "TeringClassifier_marcus_bazzi_totalData_window100" // 모델 호출 코드도 수정해야함
+    let WINDOW_SIZE = 100 // 슬라이딩 윈도우 크기 설정
+    let PRE_BUFFER_SIZE = 30 // 미리 채워놓을 버퍼 사이즈 (WINDOW_SIZE 절반 정도)
     let FREQUENCY = 50 // 데이터 빈도수
     let THRESHOLD: Double = 0.8 // Perfect-Bad 기준
     @Published var classLabel: String = "?" // 동작 분류 결과 라벨
@@ -47,7 +47,7 @@ class ActivityClassifier: NSObject, ObservableObject {
         guard let modelURL = Bundle.main.url(forResource: self.MODEL_NAME, withExtension: "mlmodelc") else {
             fatalError("Failed to locate the model file.")
         }
-        guard let model = try? RightHandTennisActivityClassifier(contentsOf: modelURL) else {
+        guard let model = try? TeringClassifier_marcus_bazzi_totalData_window100(contentsOf: modelURL) else {
             fatalError("Failed to create the model.")
         }
         print("모델 불러오기 성공!!! : \(model)")
@@ -57,8 +57,7 @@ class ActivityClassifier: NSObject, ObservableObject {
             return
         }
         var startTime: TimeInterval = 0.0 // 시작 시간 저장 변수
-        let updateInterval = 1.0 / Double(FREQUENCY) //TODO: 빈도수 확인 필요
-//        motionManager.deviceMotionUpdateInterval = TimeInterval(1 / FREQUENCY) // 센서 데이터 빈도수 설정
+        let updateInterval = 1.0 / Double(FREQUENCY) // 센서 데이터 빈도수 설정
         motionManager.deviceMotionUpdateInterval = updateInterval // 센서 데이터 빈도수 설정
         print("모션 갱신 주기 설정 : \(FREQUENCY)Hz -> \(motionManager.deviceMotionUpdateInterval)")
         motionManager.startDeviceMotionUpdates(to: .main) { (deviceMotion, error) in
@@ -123,7 +122,7 @@ class ActivityClassifier: NSObject, ObservableObject {
                             MultiArrayRotY[i] = NSNumber(value: self.bufferRotY[i])
                             MultiArrayRotZ[i] = NSNumber(value: self.bufferRotZ[i])
                         }
-                        let input = RightHandTennisActivityClassifierInput(
+                        let input = TeringClassifier_marcus_bazzi_totalData_window100Input(
                             Acceleration_X: MultiArrayAccX,
                             Acceleration_Y: MultiArrayAccY,
                             Acceleration_Z: MultiArrayAccZ,
