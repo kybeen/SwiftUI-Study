@@ -9,10 +9,6 @@ import SwiftUI
 
 struct MetricsView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
-    let formatter = MeasurementFormatter()
-    init() {
-        formatter.numberFormatter.maximumFractionDigits = 0
-    }
     
     var body: some View {
         TimelineView(MetricsTimelineSchedule(from: workoutManager.builder?.startDate ?? Date(),

@@ -36,7 +36,7 @@ class WorkoutManager: NSObject, ObservableObject {
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = workoutType
         configuration.locationType = .outdoor
-        print("configuration: \(configuration)")
+//        print("configuration: \(configuration)")
         
         // Workout Session 생성
         do {

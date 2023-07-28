@@ -400,7 +400,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "HealthKitTest-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = HealthKitTest;
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "앱에서 저장된 workout을 확인하기 위해 당신의 관련 workout 데이터가 사용될 것입니다.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "애플워치 앱에서 추적된 workout들은 HealthKit에 저장될 것입니다.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -435,7 +434,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "HealthKitTest-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = HealthKitTest;
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "앱에서 저장된 workout을 확인하기 위해 당신의 관련 workout 데이터가 사용될 것입니다.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "애플워치 앱에서 추적된 workout들은 HealthKit에 저장될 것입니다.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

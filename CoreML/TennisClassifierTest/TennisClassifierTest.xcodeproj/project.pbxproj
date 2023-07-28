@@ -342,7 +342,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchTennisClassifierTest-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchTennisClassifierTest;
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -378,7 +377,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchTennisClassifierTest-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchTennisClassifierTest;
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "테니스 모션 동작 및 운동 데이터를 추적하고 감지하기 위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

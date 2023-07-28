@@ -10,13 +10,12 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @StateObject var activityClassifier = ActivityClassifier.shared
-//    @ObservedObject var activityClassifier = ActivityClassifier()
     
-    // 소모 칼로리에 대한 formatter
-    let formatter = MeasurementFormatter()
-    init() {
-        formatter.numberFormatter.maximumFractionDigits = 0
-    }
+//    // 소모 칼로리에 대한 formatter
+//    let formatter = MeasurementFormatter()
+//    init() {
+//        formatter.numberFormatter.maximumFractionDigits = 0
+//    }
 
     var body: some View {
         TimelineView(
@@ -31,7 +30,9 @@ struct ContentView: View {
                         showSubseconds: context.cadence == .live
                     ).foregroundColor(.yellow)
                     Text(workoutManager.heartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
-                    Text(formatter.string(from: Measurement(value: workoutManager.activeEnergy, unit: UnitEnergy.kilocalories)))
+//                    Text(formatter.string(from: Measurement(value: workoutManager.activeEnergy, unit: UnitEnergy.kilocalories)))
+                    Text(Measurement(value: workoutManager.activeEnergy, unit: UnitEnergy.kilocalories)
+                            .formatted(.measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number.precision(.fractionLength(0)))))
                 }
                 .font(.system(.title3, design: .rounded)
                     .monospacedDigit()
@@ -151,10 +152,6 @@ struct ContentView: View {
 //            }
 //        }
 //        .padding()
-//        .onAppear {
-//            // HealthKit 권한 요청
-//            workoutManager.requestAuthorization()
-//        }
     }
 }
 

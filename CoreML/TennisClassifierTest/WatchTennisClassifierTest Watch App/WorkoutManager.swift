@@ -16,7 +16,7 @@ class WorkoutManager: NSObject, ObservableObject {
     var session: HKWorkoutSession?
     var builder: HKLiveWorkoutBuilder?
     
-    //MARK: 운동 시작 시 작업 함수
+    //MARK: Workout 시작
     func startWorkout(workoutType: HKWorkoutActivityType) {
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = workoutType
@@ -26,9 +26,8 @@ class WorkoutManager: NSObject, ObservableObject {
         do {
             session = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
             builder = session?.associatedWorkoutBuilder()
-            print("Workout Session 생성 성공!!!.")
+            print("세선 생성 완료")
         } catch {
-            print("Workout Session 생성 실패.")
             return
         }
         
@@ -46,7 +45,7 @@ class WorkoutManager: NSObject, ObservableObject {
         session?.startActivity(with: startDate)
         builder?.beginCollection(withStart: startDate) { (success, error) in
             // The workout has started
-            print("Workout session 데이터 수집 시작!!!")
+            print("Workout session 시작!!!")
         }
         activityClassifier.startTracking() // Device Motion 감지 시작
     }
@@ -62,11 +61,20 @@ class WorkoutManager: NSObject, ObservableObject {
         
         // 위에서 정의한 quantity 타입들에 대해 권한 요청
         healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
+            if error != nil {
+                print("권한 요청 오류: \(error?.localizedDescription)")
+            } else {
+                if success {
+                    print("권한이 허락되었습니다.")
+                } else {
+                    print("권한이 아직 없어요.")
+                }
+            }
             for type in typesToShare {
-                print("권한 상태 확인 -> Share: \(self.healthStore.authorizationStatus(for: type))")
+                print("\(type)권한 상태 확인 -> Share: \(self.healthStore.authorizationStatus(for: type))")
             }
             for type in typesToRead {
-                print("권한 상태 확인 -> Share: \(self.healthStore.authorizationStatus(for: type))")
+                print("\(type)권한 상태 확인 -> Share: \(self.healthStore.authorizationStatus(for: type))")
             }
         }
     }
@@ -93,7 +101,6 @@ class WorkoutManager: NSObject, ObservableObject {
     func endWorkout() {
         activityClassifier.stopTracking()
         session?.end()
-        resetWorkout()
         print("세션 종료 \(session?.state.rawValue)")
     }
     
@@ -148,6 +155,7 @@ extension WorkoutManager: HKWorkoutSessionDelegate {
                 self.builder?.finishWorkout { (workout, error) in
                     DispatchQueue.main.async {
                         self.workout = workout // 운동 종료 시 workout 데이터 저장 (UI 업데이트를 위해 메인 큐에 할당)
+                        print("workout 저장: \(workout) -> \(self.workout)")
                     }
                 }
             }
