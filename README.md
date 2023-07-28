@@ -61,3 +61,12 @@ Apple의 Exploring SwiftUI Sample Apps 튜토리얼을 보며 샘플 앱들을 �
 ### [ FileManagerStudy ]
 -  공부한 내용
   - FileManager를 사용하여 앱애서 생성된 파일을 기기의 Documents 디렉토리에 저장해보는 샘플 앱
+
+
+----
+### [ HealthKitTest ]
+- HealthKit 공부용 앱
+  - 운동 세션 시작하고 끝내기
+  - 운동 세션 백그라운드에서도 돌아가게 하기
+  - 운동 데이터 계속 받아오기
+  - 운동 종료 후 데이터 확인

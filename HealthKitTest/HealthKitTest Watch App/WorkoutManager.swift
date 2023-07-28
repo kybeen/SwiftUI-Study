@@ -31,15 +31,18 @@ class WorkoutManager: NSObject, ObservableObject {
     var session: HKWorkoutSession?
     var builder: HKLiveWorkoutBuilder?
     
+    //MARK: Workout 시작
     func startWorkout(workoutType: HKWorkoutActivityType) {
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = workoutType
         configuration.locationType = .outdoor
+        print("configuration: \(configuration)")
         
         // Workout Session 생성
         do {
             session = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
             builder = session?.associatedWorkoutBuilder()
+            print("세선 생성 완료")
         } catch {
             // Handle any exceptions.
             return
@@ -59,6 +62,9 @@ class WorkoutManager: NSObject, ObservableObject {
         session?.startActivity(with: startDate)
         builder?.beginCollection(withStart: startDate) { (success, error) in
             // The workout has started.
+            print("Workout 시작 \(success)")
+            print("session: \(self.session?.state)")
+            print("builder: \(self.builder.debugDescription)")
         }
     }
     
@@ -81,10 +87,25 @@ class WorkoutManager: NSObject, ObservableObject {
         // Request authorization for those quantity types.
         healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
             // Handle error.
+            if error != nil {
+                print("권한 요청 오류: \(error?.localizedDescription)")
+            } else {
+                if success {
+                    print("권한이 허락되었습니다.")
+                } else {
+                    print("권한이 아직 없어요.")
+                }
+            }
         }
+        print("================================ 권한 확인 ================================")
+        print("heartRate: \(healthStore.authorizationStatus(for: HKQuantityType.quantityType(forIdentifier: .heartRate)!))")
+        print("activeEnergyBurned: \(healthStore.authorizationStatus(for: HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!))")
+        print("distanceWalkingRunning: \(healthStore.authorizationStatus(for: HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!))")
+        print("distanceCycling: \(healthStore.authorizationStatus(for: HKQuantityType.quantityType(forIdentifier: .distanceCycling)!))")
+        print("=========================================================================")
     }
     
-    //MARK: - State Control
+    //MARK: - Session State Control
     // workout 세션의 상태에 따른 일시정지, 재개, 종료 처리
     
     // The workout session state.
@@ -92,10 +113,12 @@ class WorkoutManager: NSObject, ObservableObject {
     
     func pause() {
         session?.pause()
+//        print("일시정지!!! -> 세션 상태 : \(session?.state.rawValue)")
     }
     
     func resume() {
         session?.resume()
+//        print("다시 시작!!! -> 세션 상태 : \(session?.state.rawValue)")
     }
     
     func togglePause() {
@@ -109,6 +132,7 @@ class WorkoutManager: NSObject, ObservableObject {
     func endWorkout() {
         session?.end()
         showingSummaryView = true
+//        print("새션 종료!!! -> 세션 상태 : \(session?.state.rawValue)")
     }
     
     //MARK: - Workout Metrics
@@ -138,6 +162,7 @@ class WorkoutManager: NSObject, ObservableObject {
             default:
                 return
             }
+//            print("statistics 업데이트: \(statistics)")
         }
     }
     
@@ -158,10 +183,7 @@ class WorkoutManager: NSObject, ObservableObject {
 // 이벤트 처리 델리게이트 메서드
 extension WorkoutManager: HKWorkoutSessionDelegate {
     // wowrkout 세션의 state가 변할 때 호출되는 메서드
-    func workoutSession(_ workoutSession: HKWorkoutSession,
-                        didChangeTo toState: HKWorkoutSessionState,
-                        from fromState: HKWorkoutSessionState,
-                        date: Date) {
+    func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
         // running 변수는 toState값이 running인지 여부에 따라 업데이트되며, UI 업데이트를 위해 메인 큐로 발송됩니다.
         DispatchQueue.main.async {
             self.running = toState == .running
@@ -169,13 +191,12 @@ extension WorkoutManager: HKWorkoutSessionDelegate {
         
         // Wait for the session to transition states before ending the builder.
         // 세션이 종료되면 workout 샘플 수집을 멈춘다. (endCollection)
-        // 그 후 HKWorkout을 Health database에 저장한다. (finishWorkout)
-        // -> WorkoutManager가 HKWorkoutSession 델리게이트로 할당되어 있어야 함
         if toState == .ended {
             builder?.endCollection(withEnd: date) { (success, error) in
                 self.builder?.finishWorkout { (workout, error) in
                     DispatchQueue.main.async {
                         self.workout = workout // 운동 종료 시 workout 데이터 저장 (UI 업데이트를 위해 메인 큐에 할당)
+                        print("workout 저장: \(workout) -> \(self.workout)")
                     }
                 }
             }
@@ -197,7 +218,7 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
     // builder가 새로운 샘플을 수집할 때마다 호출되는 메서드
     func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
         for type in collectedTypes { // 수집된 샘플의 타입이 HKQuantityType 타입인지 확인
-            guard let quantityType = type as?  HKQuantityType else { return }
+            guard let quantityType = type as? HKQuantityType else { return }
             
             let statistics = workoutBuilder.statistics(for: quantityType)
             

@@ -10,15 +10,18 @@ import CoreML
 import CoreMotion
 import Combine
 
-class ActivityClassifier: NSObject, ObservableObject {
+class ActivityClassifier: ObservableObject {
+    static let shared = ActivityClassifier()
+    private init() {}
+    
     let motionManager = CMMotionManager()
     let watchViewModel = WatchviewModel()
     
     let MODEL_NAME = "TeringClassifier_marcus_bazzi_totalData_window100" // 모델 호출 코드도 수정해야함
     let WINDOW_SIZE = 100 // 슬라이딩 윈도우 크기 설정
-    let PRE_BUFFER_SIZE = 30 // 미리 채워놓을 버퍼 사이즈 (WINDOW_SIZE 절반 정도)
+    let PRE_BUFFER_SIZE = 70 // 미리 채워놓을 버퍼 사이즈 (WINDOW_SIZE 절반 정도)
     let FREQUENCY = 50 // 데이터 빈도수
-    let THRESHOLD: Double = 0.8 // Perfect-Bad 기준
+    let THRESHOLD: Double = 0.95 // Perfect-Bad 기준
     @Published var classLabel: String = "?" // 동작 분류 결과 라벨
     @Published var resultLabel: String = "?"
 //    @Published var confidence: Double = 0.0 // 분류 Confidence

@@ -13,6 +13,7 @@ struct SessionPagingView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @State private var selection: Tab = .metrics
 
+    // 탭뷰 선택값
     enum Tab {
         case controls, metrics, nowPlaying
     }
@@ -26,6 +27,7 @@ struct SessionPagingView: View {
         .navigationTitle(workoutManager.selectedWorkout?.name ?? "")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(selection == .nowPlaying)
+        // 일시정지나 다시 시작하면 MetricsView로 다시 전환되도록
         .onChange(of: workoutManager.running) { _ in
             displayMetricsView()
         }
@@ -37,6 +39,7 @@ struct SessionPagingView: View {
         }
     }
     
+    // MetricsView로 탭뷰 포커싱해주는 함수
     private func displayMetricsView() {
         withAnimation {
             selection = .metrics
@@ -47,5 +50,6 @@ struct SessionPagingView: View {
 struct SessionPagingView_Previews: PreviewProvider {
     static var previews: some View {
         SessionPagingView()
+            .environmentObject(WorkoutManager())
     }
 }

@@ -32,7 +32,7 @@ struct SummaryView: View {
                     SummaryMetricView(
                         title: "Total Time",
                         value: durationFormatter.string(from: workoutManager.workout?.duration ?? 0.0) ?? ""
-                    ).accentColor(Color.yellow)
+                    ).foregroundColor(.yellow)
                     SummaryMetricView(
                         title: "Total Distance",
                         value: Measurement(
@@ -41,14 +41,17 @@ struct SummaryView: View {
                         ).formatted(
                             .measurement(
                                 width: .abbreviated,
-                                usage: .road
+                                usage: .road,
+                                numberFormatStyle: .number.precision(.fractionLength(2))
                             )
                         )
-                    ).accentColor(Color.green)
-                    SummaryMetricView(
-                        title: "Total Energy",
-                        value: formatter.string(from: Measurement(value: workoutManager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0, unit: UnitEnergy.kilocalories))
-                    ).accentColor(Color.pink)
+                    ).foregroundColor(.green)
+                    SummaryMetricView(title: "Total Energy", value: Measurement(value: workoutManager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0, unit: UnitEnergy.kilocalories).formatted(.measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number.precision(.fractionLength(0)))))
+                        .foregroundColor(.pink)
+//                    SummaryMetricView(
+//                        title: "Total Energy",
+//                        value: formatter.string(from: Measurement(value: workoutManager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0, unit: UnitEnergy.kilocalories))
+//                    ).accentColor(Color.pink)
                     SummaryMetricView(
                         title: "Avg. Heart Rate",
                         value: workoutManager.averageHeartRate.formatted(
@@ -83,11 +86,10 @@ struct SummaryMetricView: View {
 
     var body: some View {
         Text(title)
+            .foregroundStyle(.foreground)
         Text(value)
-            .font(.system(.title2, design: .rounded)
-                    .lowercaseSmallCaps()
-            )
-            .foregroundColor(.accentColor)
+            .font(.system(.title2, design: .rounded).lowercaseSmallCaps())
+//            .foregroundColor(.accentColor)
         Divider()
     }
 }

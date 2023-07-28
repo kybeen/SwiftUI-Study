@@ -12,6 +12,8 @@
 		B80407822A5FA0AF0023CA63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B80407812A5FA0AF0023CA63 /* Assets.xcassets */; };
 		B80407852A5FA0AF0023CA63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B80407842A5FA0AF0023CA63 /* Preview Assets.xcassets */; };
 		B80407882A5FA0AF0023CA63 /* WatchTennisClassifierTest Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B804077B2A5FA0AE0023CA63 /* WatchTennisClassifierTest Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B82111222A72A1FF0043CE6D /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82111212A72A1FF0043CE6D /* WorkoutManager.swift */; };
+		B82111272A72E7150043CE6D /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82111262A72E7150043CE6D /* ElapsedTimeView.swift */; };
 		B84F4DA22A5FA7D60030A93C /* WatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DA12A5FA7D60030A93C /* WatchViewModel.swift */; };
 		B84F4DA32A5FA8020030A93C /* ActivityClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14F392A5EA21900F10EBE /* ActivityClassifier.swift */; };
 		B84F4DB02A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */; };
@@ -62,6 +64,8 @@
 		B80407812A5FA0AF0023CA63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B80407842A5FA0AF0023CA63 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B82110C42A720C0F0043CE6D /* WatchTennisClassifierTest Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchTennisClassifierTest Watch App.entitlements"; sourceTree = "<group>"; };
+		B82111212A72A1FF0043CE6D /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		B82111262A72E7150043CE6D /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
 		B84F4DA12A5FA7D60030A93C /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
 		B84F4DAF2A64E5340030A93C /* RightHandTennisActivityClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RightHandTennisActivityClassifier.mlmodel; sourceTree = "<group>"; };
 		B87CEBD12A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_window50.mlmodel; sourceTree = "<group>"; };
@@ -109,8 +113,10 @@
 				B804077D2A5FA0AE0023CA63 /* WatchTennisClassifierTestApp.swift */,
 				B804077F2A5FA0AE0023CA63 /* ContentView.swift */,
 				B84F4DA12A5FA7D60030A93C /* WatchViewModel.swift */,
+				B82111212A72A1FF0043CE6D /* WorkoutManager.swift */,
 				B80407812A5FA0AF0023CA63 /* Assets.xcassets */,
 				B80407832A5FA0AF0023CA63 /* Preview Content */,
+				B82111262A72E7150043CE6D /* ElapsedTimeView.swift */,
 			);
 			path = "WatchTennisClassifierTest Watch App";
 			sourceTree = "<group>";
@@ -284,11 +290,13 @@
 			files = (
 				B87CEBF02A6FB3560038BFDB /* TeringClassifier_marcus_bazzi.mlmodel in Sources */,
 				B87CEBD22A6C08BF0038BFDB /* TeringClassifier_window50.mlmodel in Sources */,
+				B82111222A72A1FF0043CE6D /* WorkoutManager.swift in Sources */,
 				B80407802A5FA0AE0023CA63 /* ContentView.swift in Sources */,
 				B84F4DA32A5FA8020030A93C /* ActivityClassifier.swift in Sources */,
 				B804077E2A5FA0AE0023CA63 /* WatchTennisClassifierTestApp.swift in Sources */,
 				B87CEBF32A6FDBC00038BFDB /* TeringClassifier_marcus_bazzi_totalData_window100.mlmodel in Sources */,
 				B87CEBD72A6E51F80038BFDB /* TeringClassifier_window200_OnlySwing.mlmodel in Sources */,
+				B82111272A72E7150043CE6D /* ElapsedTimeView.swift in Sources */,
 				B87CEBDA2A6E51FF0038BFDB /* TeringClassifier_window100_OnlySwing.mlmodel in Sources */,
 				B87CEBEE2A6F67FE0038BFDB /* TeringClassifier_window150.mlmodel in Sources */,
 				B87CEBD82A6E51F80038BFDB /* TeringClassifier_window200.mlmodel in Sources */,

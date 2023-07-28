@@ -4,6 +4,8 @@
 <dict>
 	<key>UIBackgroundModes</key>
 	<array/>
+	<key>WKApplication</key>
+	<true/>
 	<key>WKBackgroundModes</key>
 	<array>
 		<string>workout-processing</string>
