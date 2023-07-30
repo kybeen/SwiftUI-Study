@@ -17,10 +17,10 @@ struct SummaryView: View {
         formatter.zeroFormattingBehavior = .pad
         return formatter
     }()
-    let formatter = MeasurementFormatter()
-    init() {
-        formatter.numberFormatter.maximumFractionDigits = 0
-    }
+//    let formatter = MeasurementFormatter()
+//    init() {
+//        formatter.numberFormatter.maximumFractionDigits = 0
+//    }
     
     var body: some View {
         if workoutManager.workout == nil {

@@ -175,7 +175,7 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
     
     // builder가 새로운 샘플을 수집할 때마다 호출되는 메서드
     func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
-        for type in collectedTypes { // 수집된 샘플의 타입이 HKQuantityType 탙입인지 확인
+        for type in collectedTypes { // 수집된 샘플의 타입이 HKQuantityType 타입인지 확인
             guard let quantityType = type as? HKQuantityType else { return }
             
             let statistics = workoutBuilder.statistics(for: quantityType)
