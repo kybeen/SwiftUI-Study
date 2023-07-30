@@ -19,6 +19,7 @@
 		B87504672A76B48D0098167A /* LocationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87504662A76B48D0098167A /* LocationDetails.swift */; };
 		B87504692A76B5920098167A /* LocationDetailsDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87504682A76B5920098167A /* LocationDetailsDemo.swift */; };
 		B875046B2A76BAE30098167A /* TeringChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875046A2A76BAE30098167A /* TeringChartView.swift */; };
+		B875046F2A76DA490098167A /* TopStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875046E2A76DA490098167A /* TopStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		B87504662A76B48D0098167A /* LocationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetails.swift; sourceTree = "<group>"; };
 		B87504682A76B5920098167A /* LocationDetailsDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsDemo.swift; sourceTree = "<group>"; };
 		B875046A2A76BAE30098167A /* TeringChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeringChartView.swift; sourceTree = "<group>"; };
+		B875046E2A76DA490098167A /* TopStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,18 +69,11 @@
 		B82111842A76A2E70043CE6D /* ChartsStudy */ = {
 			isa = PBXGroup;
 			children = (
+				B875046D2A76D8170098167A /* Swift Charts - Raise the bar */,
+				B875046C2A76D7D10098167A /* Swift Charts - Introduce */,
 				B82111852A76A2E70043CE6D /* ChartsStudyApp.swift */,
-				B82111872A76A2E70043CE6D /* ContentView.swift */,
-				B82111932A76A3630043CE6D /* StylesDetailChart.swift */,
 				B82111892A76A2E90043CE6D /* Assets.xcassets */,
 				B821118B2A76A2E90043CE6D /* Preview Content */,
-				B875045E2A76A8310098167A /* CupertinoDetails.swift */,
-				B87504602A76AB270098167A /* CupertinoDetailsDemo.swift */,
-				B87504622A76B24F0098167A /* LocationsToggleChart.swift */,
-				B87504642A76B2620098167A /* LocationsToggleDemo.swift */,
-				B87504662A76B48D0098167A /* LocationDetails.swift */,
-				B87504682A76B5920098167A /* LocationDetailsDemo.swift */,
-				B875046A2A76BAE30098167A /* TeringChartView.swift */,
 			);
 			path = ChartsStudy;
 			sourceTree = "<group>";
@@ -89,6 +84,30 @@
 				B821118C2A76A2E90043CE6D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B875046C2A76D7D10098167A /* Swift Charts - Introduce */ = {
+			isa = PBXGroup;
+			children = (
+				B82111872A76A2E70043CE6D /* ContentView.swift */,
+				B82111932A76A3630043CE6D /* StylesDetailChart.swift */,
+				B875045E2A76A8310098167A /* CupertinoDetails.swift */,
+				B87504602A76AB270098167A /* CupertinoDetailsDemo.swift */,
+				B87504622A76B24F0098167A /* LocationsToggleChart.swift */,
+				B87504642A76B2620098167A /* LocationsToggleDemo.swift */,
+				B87504662A76B48D0098167A /* LocationDetails.swift */,
+				B87504682A76B5920098167A /* LocationDetailsDemo.swift */,
+				B875046A2A76BAE30098167A /* TeringChartView.swift */,
+			);
+			path = "Swift Charts - Introduce";
+			sourceTree = "<group>";
+		};
+		B875046D2A76D8170098167A /* Swift Charts - Raise the bar */ = {
+			isa = PBXGroup;
+			children = (
+				B875046E2A76DA490098167A /* TopStyle.swift */,
+			);
+			path = "Swift Charts - Raise the bar";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +187,7 @@
 				B875045F2A76A8310098167A /* CupertinoDetails.swift in Sources */,
 				B82111882A76A2E70043CE6D /* ContentView.swift in Sources */,
 				B82111862A76A2E70043CE6D /* ChartsStudyApp.swift in Sources */,
+				B875046F2A76DA490098167A /* TopStyle.swift in Sources */,
 				B82111942A76A3630043CE6D /* StylesDetailChart.swift in Sources */,
 				B87504672A76B48D0098167A /* LocationDetails.swift in Sources */,
 				B87504612A76AB270098167A /* CupertinoDetailsDemo.swift in Sources */,

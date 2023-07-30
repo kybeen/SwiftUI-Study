@@ -70,3 +70,9 @@ Apple의 Exploring SwiftUI Sample Apps 튜토리얼을 보며 샘플 앱들을 �
   - 운동 세션 백그라운드에서도 돌아가게 하기
   - 운동 데이터 계속 받아오기
   - 운동 종료 후 데이터 확인
+
+
+----
+### [ ChartsStudy ]
+- Swift Charts 공부용 앱
+  - WWDC22년 영상을 보고 실습함
